@@ -15,6 +15,9 @@
 		97031C221C77AF9F00678712 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97031C201C77AF9F00678712 /* LaunchScreen.storyboard */; };
 		97031C2D1C77AF9F00678712 /* HummingBirdTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C2C1C77AF9F00678712 /* HummingBirdTests.m */; };
 		97031C381C77AF9F00678712 /* HummingBirdUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C371C77AF9F00678712 /* HummingBirdUITests.m */; };
+		97031C4A1C77AFEA00678712 /* NetworkingClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C471C77AFEA00678712 /* NetworkingClient.m */; };
+		97031C4B1C77AFEA00678712 /* NetworkingErrorMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C491C77AFEA00678712 /* NetworkingErrorMessages.m */; };
+		97031C4F1C77B01300678712 /* UIView+Autolayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C4E1C77B01300678712 /* UIView+Autolayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,12 @@
 		97031C331C77AF9F00678712 /* HummingBirdUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HummingBirdUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		97031C371C77AF9F00678712 /* HummingBirdUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HummingBirdUITests.m; sourceTree = "<group>"; };
 		97031C391C77AF9F00678712 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		97031C461C77AFEA00678712 /* NetworkingClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkingClient.h; sourceTree = "<group>"; };
+		97031C471C77AFEA00678712 /* NetworkingClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkingClient.m; sourceTree = "<group>"; };
+		97031C481C77AFEA00678712 /* NetworkingErrorMessages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkingErrorMessages.h; sourceTree = "<group>"; };
+		97031C491C77AFEA00678712 /* NetworkingErrorMessages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkingErrorMessages.m; sourceTree = "<group>"; };
+		97031C4D1C77B01300678712 /* UIView+Autolayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Autolayout.h"; sourceTree = "<group>"; };
+		97031C4E1C77B01300678712 /* UIView+Autolayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Autolayout.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +110,7 @@
 		97031C111C77AF9F00678712 /* HummingBird */ = {
 			isa = PBXGroup;
 			children = (
+				97031C451C77AFD900678712 /* Helpers */,
 				97031C151C77AF9F00678712 /* AppDelegate.h */,
 				97031C161C77AF9F00678712 /* AppDelegate.m */,
 				97031C181C77AF9F00678712 /* ViewController.h */,
@@ -138,6 +148,35 @@
 				97031C391C77AF9F00678712 /* Info.plist */,
 			);
 			path = HummingBirdUITests;
+			sourceTree = "<group>";
+		};
+		97031C451C77AFD900678712 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				97031C501C77B01900678712 /* AutoLayout */,
+				97031C4C1C77AFEF00678712 /* Networking */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		97031C4C1C77AFEF00678712 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				97031C461C77AFEA00678712 /* NetworkingClient.h */,
+				97031C471C77AFEA00678712 /* NetworkingClient.m */,
+				97031C481C77AFEA00678712 /* NetworkingErrorMessages.h */,
+				97031C491C77AFEA00678712 /* NetworkingErrorMessages.m */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		97031C501C77B01900678712 /* AutoLayout */ = {
+			isa = PBXGroup;
+			children = (
+				97031C4D1C77B01300678712 /* UIView+Autolayout.h */,
+				97031C4E1C77B01300678712 /* UIView+Autolayout.m */,
+			);
+			name = AutoLayout;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,9 +309,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97031C4A1C77AFEA00678712 /* NetworkingClient.m in Sources */,
 				97031C1A1C77AF9F00678712 /* ViewController.m in Sources */,
 				97031C171C77AF9F00678712 /* AppDelegate.m in Sources */,
 				97031C141C77AF9F00678712 /* main.m in Sources */,
+				97031C4B1C77AFEA00678712 /* NetworkingErrorMessages.m in Sources */,
+				97031C4F1C77B01300678712 /* UIView+Autolayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
