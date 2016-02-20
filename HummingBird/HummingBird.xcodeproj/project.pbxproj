@@ -9,15 +9,23 @@
 /* Begin PBXBuildFile section */
 		97031C141C77AF9F00678712 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C131C77AF9F00678712 /* main.m */; };
 		97031C171C77AF9F00678712 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C161C77AF9F00678712 /* AppDelegate.m */; };
-		97031C1A1C77AF9F00678712 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C191C77AF9F00678712 /* ViewController.m */; };
+		97031C1A1C77AF9F00678712 /* FeedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C191C77AF9F00678712 /* FeedVC.m */; };
 		97031C1D1C77AF9F00678712 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97031C1B1C77AF9F00678712 /* Main.storyboard */; };
 		97031C1F1C77AF9F00678712 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97031C1E1C77AF9F00678712 /* Assets.xcassets */; };
 		97031C221C77AF9F00678712 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97031C201C77AF9F00678712 /* LaunchScreen.storyboard */; };
 		97031C2D1C77AF9F00678712 /* HummingBirdTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C2C1C77AF9F00678712 /* HummingBirdTests.m */; };
 		97031C381C77AF9F00678712 /* HummingBirdUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C371C77AF9F00678712 /* HummingBirdUITests.m */; };
-		97031C4A1C77AFEA00678712 /* NetworkingClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C471C77AFEA00678712 /* NetworkingClient.m */; };
-		97031C4B1C77AFEA00678712 /* NetworkingErrorMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C491C77AFEA00678712 /* NetworkingErrorMessages.m */; };
-		97031C4F1C77B01300678712 /* UIView+Autolayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C4E1C77B01300678712 /* UIView+Autolayout.m */; };
+		97031C4A1C77AFEA00678712 /* FMNetworkingClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C471C77AFEA00678712 /* FMNetworkingClient.m */; };
+		97031C4B1C77AFEA00678712 /* FMNetworkingErrorMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C491C77AFEA00678712 /* FMNetworkingErrorMessages.m */; };
+		97031C4F1C77B01300678712 /* UIView+FMAutolayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C4E1C77B01300678712 /* UIView+FMAutolayout.m */; };
+		97031C561C77B5BB00678712 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C551C77B5BB00678712 /* Constants.m */; };
+		97031C621C77D99700678712 /* FMSearchBarTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C611C77D99600678712 /* FMSearchBarTVC.m */; };
+		97031C651C77DB4500678712 /* FMImageCapturing.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C641C77DB4500678712 /* FMImageCapturing.m */; };
+		97031C691C77DB7100678712 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C681C77DB7100678712 /* UIImage+ImageEffects.m */; };
+		97031C6D1C78D97700678712 /* AnimeSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C6C1C78D97700678712 /* AnimeSearchVC.m */; };
+		97031C771C78E7B000678712 /* UIViewController+Loading.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C761C78E7B000678712 /* UIViewController+Loading.m */; };
+		97031C7B1C78F10400678712 /* FMSearchTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C7A1C78F10400678712 /* FMSearchTVC.m */; };
+		97031C811C78F81F00678712 /* FMEmptyResultsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C801C78F81F00678712 /* FMEmptyResultsView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,8 +50,8 @@
 		97031C131C77AF9F00678712 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		97031C151C77AF9F00678712 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		97031C161C77AF9F00678712 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		97031C181C77AF9F00678712 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		97031C191C77AF9F00678712 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		97031C181C77AF9F00678712 /* FeedVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedVC.h; sourceTree = "<group>"; };
+		97031C191C77AF9F00678712 /* FeedVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedVC.m; sourceTree = "<group>"; };
 		97031C1C1C77AF9F00678712 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		97031C1E1C77AF9F00678712 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97031C211C77AF9F00678712 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,12 +62,28 @@
 		97031C331C77AF9F00678712 /* HummingBirdUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HummingBirdUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		97031C371C77AF9F00678712 /* HummingBirdUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HummingBirdUITests.m; sourceTree = "<group>"; };
 		97031C391C77AF9F00678712 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		97031C461C77AFEA00678712 /* NetworkingClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkingClient.h; sourceTree = "<group>"; };
-		97031C471C77AFEA00678712 /* NetworkingClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkingClient.m; sourceTree = "<group>"; };
-		97031C481C77AFEA00678712 /* NetworkingErrorMessages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkingErrorMessages.h; sourceTree = "<group>"; };
-		97031C491C77AFEA00678712 /* NetworkingErrorMessages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkingErrorMessages.m; sourceTree = "<group>"; };
-		97031C4D1C77B01300678712 /* UIView+Autolayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Autolayout.h"; sourceTree = "<group>"; };
-		97031C4E1C77B01300678712 /* UIView+Autolayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Autolayout.m"; sourceTree = "<group>"; };
+		97031C461C77AFEA00678712 /* FMNetworkingClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMNetworkingClient.h; sourceTree = "<group>"; };
+		97031C471C77AFEA00678712 /* FMNetworkingClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMNetworkingClient.m; sourceTree = "<group>"; };
+		97031C481C77AFEA00678712 /* FMNetworkingErrorMessages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMNetworkingErrorMessages.h; sourceTree = "<group>"; };
+		97031C491C77AFEA00678712 /* FMNetworkingErrorMessages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMNetworkingErrorMessages.m; sourceTree = "<group>"; };
+		97031C4D1C77B01300678712 /* UIView+FMAutolayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FMAutolayout.h"; sourceTree = "<group>"; };
+		97031C4E1C77B01300678712 /* UIView+FMAutolayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FMAutolayout.m"; sourceTree = "<group>"; };
+		97031C541C77B5BB00678712 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		97031C551C77B5BB00678712 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		97031C601C77D99600678712 /* FMSearchBarTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMSearchBarTVC.h; sourceTree = "<group>"; };
+		97031C611C77D99600678712 /* FMSearchBarTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMSearchBarTVC.m; sourceTree = "<group>"; };
+		97031C631C77DB4500678712 /* FMImageCapturing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMImageCapturing.h; sourceTree = "<group>"; };
+		97031C641C77DB4500678712 /* FMImageCapturing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMImageCapturing.m; sourceTree = "<group>"; };
+		97031C671C77DB7100678712 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		97031C681C77DB7100678712 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		97031C6B1C78D97700678712 /* AnimeSearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimeSearchVC.h; sourceTree = "<group>"; };
+		97031C6C1C78D97700678712 /* AnimeSearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimeSearchVC.m; sourceTree = "<group>"; };
+		97031C751C78E7B000678712 /* UIViewController+Loading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Loading.h"; sourceTree = "<group>"; };
+		97031C761C78E7B000678712 /* UIViewController+Loading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Loading.m"; sourceTree = "<group>"; };
+		97031C791C78F10400678712 /* FMSearchTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMSearchTVC.h; sourceTree = "<group>"; };
+		97031C7A1C78F10400678712 /* FMSearchTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMSearchTVC.m; sourceTree = "<group>"; };
+		97031C7F1C78F81F00678712 /* FMEmptyResultsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMEmptyResultsView.h; sourceTree = "<group>"; };
+		97031C801C78F81F00678712 /* FMEmptyResultsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMEmptyResultsView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,15 +135,15 @@
 			isa = PBXGroup;
 			children = (
 				97031C451C77AFD900678712 /* Helpers */,
-				97031C151C77AF9F00678712 /* AppDelegate.h */,
-				97031C161C77AF9F00678712 /* AppDelegate.m */,
-				97031C181C77AF9F00678712 /* ViewController.h */,
-				97031C191C77AF9F00678712 /* ViewController.m */,
+				97031C7D1C78F7EF00678712 /* Views */,
+				97031C6A1C78D94900678712 /* Controllers */,
 				97031C1B1C77AF9F00678712 /* Main.storyboard */,
 				97031C1E1C77AF9F00678712 /* Assets.xcassets */,
 				97031C201C77AF9F00678712 /* LaunchScreen.storyboard */,
 				97031C231C77AF9F00678712 /* Info.plist */,
 				97031C121C77AF9F00678712 /* Supporting Files */,
+				97031C541C77B5BB00678712 /* Constants.h */,
+				97031C551C77B5BB00678712 /* Constants.m */,
 			);
 			path = HummingBird;
 			sourceTree = "<group>";
@@ -153,8 +177,11 @@
 		97031C451C77AFD900678712 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				97031C661C77DB4D00678712 /* ImageHandling */,
+				97031C5F1C77D95700678712 /* SearchBar */,
 				97031C501C77B01900678712 /* AutoLayout */,
 				97031C4C1C77AFEF00678712 /* Networking */,
+				97031C781C78E7B400678712 /* Loading */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -162,10 +189,10 @@
 		97031C4C1C77AFEF00678712 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				97031C461C77AFEA00678712 /* NetworkingClient.h */,
-				97031C471C77AFEA00678712 /* NetworkingClient.m */,
-				97031C481C77AFEA00678712 /* NetworkingErrorMessages.h */,
-				97031C491C77AFEA00678712 /* NetworkingErrorMessages.m */,
+				97031C461C77AFEA00678712 /* FMNetworkingClient.h */,
+				97031C471C77AFEA00678712 /* FMNetworkingClient.m */,
+				97031C481C77AFEA00678712 /* FMNetworkingErrorMessages.h */,
+				97031C491C77AFEA00678712 /* FMNetworkingErrorMessages.m */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -173,10 +200,95 @@
 		97031C501C77B01900678712 /* AutoLayout */ = {
 			isa = PBXGroup;
 			children = (
-				97031C4D1C77B01300678712 /* UIView+Autolayout.h */,
-				97031C4E1C77B01300678712 /* UIView+Autolayout.m */,
+				97031C4D1C77B01300678712 /* UIView+FMAutolayout.h */,
+				97031C4E1C77B01300678712 /* UIView+FMAutolayout.m */,
 			);
 			name = AutoLayout;
+			sourceTree = "<group>";
+		};
+		97031C5F1C77D95700678712 /* SearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				97031C601C77D99600678712 /* FMSearchBarTVC.h */,
+				97031C611C77D99600678712 /* FMSearchBarTVC.m */,
+			);
+			name = SearchBar;
+			sourceTree = "<group>";
+		};
+		97031C661C77DB4D00678712 /* ImageHandling */ = {
+			isa = PBXGroup;
+			children = (
+				97031C671C77DB7100678712 /* UIImage+ImageEffects.h */,
+				97031C681C77DB7100678712 /* UIImage+ImageEffects.m */,
+				97031C631C77DB4500678712 /* FMImageCapturing.h */,
+				97031C641C77DB4500678712 /* FMImageCapturing.m */,
+			);
+			name = ImageHandling;
+			sourceTree = "<group>";
+		};
+		97031C6A1C78D94900678712 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				97031C151C77AF9F00678712 /* AppDelegate.h */,
+				97031C161C77AF9F00678712 /* AppDelegate.m */,
+				97031C7C1C78F7E300678712 /* Search */,
+				97031C821C78F9C100678712 /* Feed */,
+				97031C831C78F9CF00678712 /* AnimeSearch */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		97031C781C78E7B400678712 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				97031C751C78E7B000678712 /* UIViewController+Loading.h */,
+				97031C761C78E7B000678712 /* UIViewController+Loading.m */,
+			);
+			name = Loading;
+			sourceTree = "<group>";
+		};
+		97031C7C1C78F7E300678712 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				97031C791C78F10400678712 /* FMSearchTVC.h */,
+				97031C7A1C78F10400678712 /* FMSearchTVC.m */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
+		97031C7D1C78F7EF00678712 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				97031C7E1C78F80700678712 /* Search */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		97031C7E1C78F80700678712 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				97031C7F1C78F81F00678712 /* FMEmptyResultsView.h */,
+				97031C801C78F81F00678712 /* FMEmptyResultsView.m */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
+		97031C821C78F9C100678712 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				97031C181C77AF9F00678712 /* FeedVC.h */,
+				97031C191C77AF9F00678712 /* FeedVC.m */,
+			);
+			name = Feed;
+			sourceTree = "<group>";
+		};
+		97031C831C78F9CF00678712 /* AnimeSearch */ = {
+			isa = PBXGroup;
+			children = (
+				97031C6B1C78D97700678712 /* AnimeSearchVC.h */,
+				97031C6C1C78D97700678712 /* AnimeSearchVC.m */,
+			);
+			name = AnimeSearch;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,12 +421,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97031C4A1C77AFEA00678712 /* NetworkingClient.m in Sources */,
-				97031C1A1C77AF9F00678712 /* ViewController.m in Sources */,
+				97031C4A1C77AFEA00678712 /* FMNetworkingClient.m in Sources */,
+				97031C621C77D99700678712 /* FMSearchBarTVC.m in Sources */,
+				97031C7B1C78F10400678712 /* FMSearchTVC.m in Sources */,
+				97031C1A1C77AF9F00678712 /* FeedVC.m in Sources */,
+				97031C651C77DB4500678712 /* FMImageCapturing.m in Sources */,
+				97031C691C77DB7100678712 /* UIImage+ImageEffects.m in Sources */,
 				97031C171C77AF9F00678712 /* AppDelegate.m in Sources */,
 				97031C141C77AF9F00678712 /* main.m in Sources */,
-				97031C4B1C77AFEA00678712 /* NetworkingErrorMessages.m in Sources */,
-				97031C4F1C77B01300678712 /* UIView+Autolayout.m in Sources */,
+				97031C6D1C78D97700678712 /* AnimeSearchVC.m in Sources */,
+				97031C4B1C77AFEA00678712 /* FMNetworkingErrorMessages.m in Sources */,
+				97031C811C78F81F00678712 /* FMEmptyResultsView.m in Sources */,
+				97031C561C77B5BB00678712 /* Constants.m in Sources */,
+				97031C4F1C77B01300678712 /* UIView+FMAutolayout.m in Sources */,
+				97031C771C78E7B000678712 /* UIViewController+Loading.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

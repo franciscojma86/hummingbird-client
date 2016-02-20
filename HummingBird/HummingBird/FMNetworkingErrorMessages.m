@@ -1,20 +1,20 @@
 //
-//  NetworkingErrorMessages.m
+//  FMNetworkingErrorMessages.m
 //  NetworkingDemo
 //
 //  Created by Francisco Magdaleno on 1/22/16.
 //  Copyright © 2016 franciscojma86. All rights reserved.
 //
 
-#import "NetworkingErrorMessages.h"
+#import "FMNetworkingErrorMessages.h"
 
-@implementation NetworkingErrorMessages
+@implementation FMNetworkingErrorMessages
 
 + (NSString *)networkingErrorMessageWithError:(NSError *)error
                                      response:(NSHTTPURLResponse *)response
                                          data:(NSData *)data {
     if (error) {
-        NSString *errorString = [NetworkingErrorMessages stringFromErrorCode:error.code];
+        NSString *errorString = [FMNetworkingErrorMessages stringFromErrorCode:error.code];
         if (errorString) {
             return errorString;
         }

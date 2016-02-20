@@ -7,15 +7,27 @@
 //
 
 #import "AppDelegate.h"
-
+#import "Constants.h"
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
 
+#pragma mark -UI methods
+- (void)createAppearance {
+    //Global tint
+    [self.window setTintColor:PRIMARY_COLOR];
+    //Navigation bars
+    NSDictionary *atts = @{NSForegroundColorAttributeName:PRIMARY_COLOR};
+    [[UINavigationBar appearance] setTitleTextAttributes:atts];
+    [[UINavigationBar appearance] setBarTintColor:BACKGROUND_COLOR];
 
+}
+
+#pragma mark -Application delegate methods
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [self createAppearance];
     // Override point for customization after application launch.
     return YES;
 }

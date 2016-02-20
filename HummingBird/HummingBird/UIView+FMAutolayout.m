@@ -6,7 +6,7 @@
 //  Copyright © 2016 franciscojma86. All rights reserved.
 //
 
-#import "UIView+Autolayout.h"
+#import "UIView+FMAutolayout.h"
 
 @implementation UIView (Autolayout)
 

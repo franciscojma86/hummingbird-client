@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NetworkingClient : NSObject
+@interface FMNetworkingClient : NSObject
 
 //TODO: Implement download delegate methods
 //TODO: Implement image upload methods
@@ -21,13 +21,11 @@
 
 //Types of response expected from the calls
 typedef void (^SuccessJSONBlock)(id json);
-typedef void (^SuccessDataBlock)(NSData * data);
+typedef void (^SuccessDataBlock)(NSData *data);
 typedef void (^FailMessageBlock)(NSString *errorMessage, BOOL cancelled);
 
-@property (nonatomic,strong) NSURLSession *session;
-@property (nonatomic,strong) NSURL *baseURL;
 
-+(NetworkingClient *)sharedClient;
++(FMNetworkingClient *)sharedClient;
 
 /**
  * Creates a data task call for any REST call

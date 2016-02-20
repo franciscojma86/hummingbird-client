@@ -6,22 +6,29 @@
 //  Copyright © 2016 franciscojma86. All rights reserved.
 //
 
-#import "NetworkingClient.h"
-#import "NetworkingErrorMessages.h"
-@implementation NetworkingClient
+#import "FMNetworkingClient.h"
+#import "FMNetworkingErrorMessages.h"
 
-#warning IMPLEMENT YOUR OWN URL HERE
-#define BASE_URL @"https://api.parse.com/1/"
+@interface FMNetworkingClient ()
+
+@property (nonatomic,strong) NSURLSession *session;
+@property (nonatomic,strong) NSURL *baseURL;
+
+@end
+
+@implementation FMNetworkingClient
+
+#define BASE_URL @"http://hummingbird.me/api/v1"
 
 
 
 
-+(NetworkingClient *)sharedClient {
-    static NetworkingClient *_sharedClient = nil;
++(FMNetworkingClient *)sharedClient {
+    static FMNetworkingClient *_sharedClient = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         NSURL *base = [NSURL URLWithString:BASE_URL];
-        _sharedClient = [[NetworkingClient alloc] initWithBaseURL:base];
+        _sharedClient = [[FMNetworkingClient alloc] initWithBaseURL:base];
     });
     return _sharedClient;
 }
@@ -31,10 +38,7 @@
     if (self) {
         _baseURL = baseURL;
         NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-#warning REPLACE THE HEADERS IN YOUR APPLICATION
-        [config setHTTPAdditionalHeaders:@{@"Accept":@"application/json",
-                                           @"X-Parse-Application-Id": @"B0spj1qml8mRbvfDIXCf8jh6XBu0z4rfbOfQ5yfW",
-                                           @"X-Parse-REST-API-Key": @"RE3O4eiT3hxkDa1Rnyynoh69PJZhF890nr4VdSHG"}];
+//        [config setHTTPAdditionalHeaders:@{@"Accept":@"application/json"}];
         
         //set delegate as self if you are thinking of showing progress bars
         //otherwise I suggest using the callback blocks
@@ -67,7 +71,7 @@
                                                      } else {
                                                          dispatch_async(dispatch_get_main_queue(), ^{
                                                            //responds to any server or system error
-                                                             NSString *errorMessage = [NetworkingErrorMessages networkingErrorMessageWithError:error
+                                                             NSString *errorMessage = [FMNetworkingErrorMessages networkingErrorMessageWithError:error
                                                                                                                                       response:httpResponse
                                                                                                                                           data:data];
                                                              BOOL cancelled = [error.localizedDescription isEqualToString:@"cancelled"];
@@ -105,7 +109,6 @@
                                                                      NSError *error) {
                                                      //Convert to http response to get the status code
                                                      NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-#warning change the status code to whatever your app needs
                                                      if (httpResponse.statusCode == 201 || httpResponse.statusCode == 200 ) {
                                                          dispatch_async(dispatch_get_main_queue(), ^{
                                                              if (successJSONDataBlock) successJSONDataBlock([self parseDataToJSON:data]);
@@ -114,7 +117,7 @@
                                                      } else {
                                                          dispatch_async(dispatch_get_main_queue(), ^{
                                                              //responds to any server or system error
-                                                             NSString *errorMessage = [NetworkingErrorMessages networkingErrorMessageWithError:error
+                                                             NSString *errorMessage = [FMNetworkingErrorMessages networkingErrorMessageWithError:error
                                                                                                                                       response:httpResponse
                                                                                                                                           data:data];
                                                              BOOL cancelled = [error.localizedDescription isEqualToString:@"cancelled"];

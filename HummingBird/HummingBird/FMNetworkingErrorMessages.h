@@ -1,5 +1,5 @@
 //
-//  NetworkingErrorMessages.h
+//  FMNetworkingErrorMessages.h
 //  NetworkingDemo
 //
 //  Created by Francisco Magdaleno on 1/22/16.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NetworkingErrorMessages : NSObject
+@interface FMNetworkingErrorMessages : NSObject
 
 + (NSString *)networkingErrorMessageWithError:(NSError *)error
                                      response:(NSHTTPURLResponse *)response
