@@ -57,6 +57,7 @@
 
 - (void)showAnimeSearchVC {
     AnimeSearchVC *controller = [[AnimeSearchVC alloc]initWithStyle:UITableViewStyleGrouped];
+    [controller setCoreDataStack:self.coreDataStack];
     [self showViewController:controller sender:self];
 }
 

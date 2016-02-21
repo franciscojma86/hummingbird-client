@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "FMSearchTVC.h"
 
+@class CoreDataStack;
 @interface AnimeSearchVC : FMSearchTVC
+
+@property (nonatomic,strong) CoreDataStack *coreDataStack;
 
 @end

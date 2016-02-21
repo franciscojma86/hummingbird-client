@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@class CoreDataStack;
 
 @interface FeedVC : UITableViewController
 
+@property (nonatomic,strong) CoreDataStack *coreDataStack;
 
 @end
 

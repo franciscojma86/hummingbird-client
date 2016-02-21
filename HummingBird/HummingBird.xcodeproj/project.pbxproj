@@ -29,6 +29,10 @@
 		97031C871C78FE5800678712 /* NetworkingCallsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C861C78FE5800678712 /* NetworkingCallsHelper.m */; };
 		97031C8A1C796C5100678712 /* CoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C891C796C5100678712 /* CoreDataStack.m */; };
 		97031C931C7974A900678712 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 97031C911C7974A900678712 /* Model.xcdatamodeld */; };
+		97031C981C797FC400678712 /* Anime+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C951C797FC400678712 /* Anime+CoreDataProperties.m */; };
+		97031C991C797FC400678712 /* Anime.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C971C797FC400678712 /* Anime.m */; };
+		97031C9D1C7A33A900678712 /* NSDictionary+NullObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C9C1C7A33A900678712 /* NSDictionary+NullObjects.m */; };
+		97031CA01C7A354F00678712 /* FMDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C9F1C7A354F00678712 /* FMDateFormatter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +96,14 @@
 		97031C881C796C5100678712 /* CoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataStack.h; sourceTree = "<group>"; };
 		97031C891C796C5100678712 /* CoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataStack.m; sourceTree = "<group>"; };
 		97031C921C7974A900678712 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		97031C941C797FC400678712 /* Anime+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Anime+CoreDataProperties.h"; sourceTree = "<group>"; };
+		97031C951C797FC400678712 /* Anime+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Anime+CoreDataProperties.m"; sourceTree = "<group>"; };
+		97031C961C797FC400678712 /* Anime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Anime.h; sourceTree = "<group>"; };
+		97031C971C797FC400678712 /* Anime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Anime.m; sourceTree = "<group>"; };
+		97031C9B1C7A33A900678712 /* NSDictionary+NullObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+NullObjects.h"; sourceTree = "<group>"; };
+		97031C9C1C7A33A900678712 /* NSDictionary+NullObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+NullObjects.m"; sourceTree = "<group>"; };
+		97031C9E1C7A354F00678712 /* FMDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDateFormatter.h; sourceTree = "<group>"; };
+		97031C9F1C7A354F00678712 /* FMDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDateFormatter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +202,7 @@
 				97031C501C77B01900678712 /* AutoLayout */,
 				97031C4C1C77AFEF00678712 /* Networking */,
 				97031C781C78E7B400678712 /* Loading */,
+				97031CA11C7A35B600678712 /* Formatting */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -201,6 +214,8 @@
 				97031C471C77AFEA00678712 /* FMNetworkingClient.m */,
 				97031C481C77AFEA00678712 /* FMNetworkingErrorMessages.h */,
 				97031C491C77AFEA00678712 /* FMNetworkingErrorMessages.m */,
+				97031C9B1C7A33A900678712 /* NSDictionary+NullObjects.h */,
+				97031C9C1C7A33A900678712 /* NSDictionary+NullObjects.m */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -320,6 +335,7 @@
 		97031C8C1C796C6300678712 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				97031C9A1C797FCE00678712 /* Entities */,
 				97031C881C796C5100678712 /* CoreDataStack.h */,
 				97031C891C796C5100678712 /* CoreDataStack.m */,
 				97031C911C7974A900678712 /* Model.xcdatamodeld */,
@@ -334,6 +350,26 @@
 				97031C551C77B5BB00678712 /* Constants.m */,
 			);
 			name = Constants;
+			sourceTree = "<group>";
+		};
+		97031C9A1C797FCE00678712 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				97031C941C797FC400678712 /* Anime+CoreDataProperties.h */,
+				97031C951C797FC400678712 /* Anime+CoreDataProperties.m */,
+				97031C961C797FC400678712 /* Anime.h */,
+				97031C971C797FC400678712 /* Anime.m */,
+			);
+			name = Entities;
+			sourceTree = "<group>";
+		};
+		97031CA11C7A35B600678712 /* Formatting */ = {
+			isa = PBXGroup;
+			children = (
+				97031C9E1C7A354F00678712 /* FMDateFormatter.h */,
+				97031C9F1C7A354F00678712 /* FMDateFormatter.m */,
+			);
+			name = Formatting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -466,9 +502,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97031C981C797FC400678712 /* Anime+CoreDataProperties.m in Sources */,
 				97031C4A1C77AFEA00678712 /* FMNetworkingClient.m in Sources */,
+				97031CA01C7A354F00678712 /* FMDateFormatter.m in Sources */,
 				97031C621C77D99700678712 /* FMSearchBarTVC.m in Sources */,
 				97031C7B1C78F10400678712 /* FMSearchTVC.m in Sources */,
+				97031C9D1C7A33A900678712 /* NSDictionary+NullObjects.m in Sources */,
 				97031C8A1C796C5100678712 /* CoreDataStack.m in Sources */,
 				97031C1A1C77AF9F00678712 /* FeedVC.m in Sources */,
 				97031C651C77DB4500678712 /* FMImageCapturing.m in Sources */,
@@ -482,6 +521,7 @@
 				97031C811C78F81F00678712 /* FMEmptyResultsView.m in Sources */,
 				97031C561C77B5BB00678712 /* Constants.m in Sources */,
 				97031C4F1C77B01300678712 /* UIView+FMAutolayout.m in Sources */,
+				97031C991C797FC400678712 /* Anime.m in Sources */,
 				97031C771C78E7B000678712 /* UIViewController+Loading.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

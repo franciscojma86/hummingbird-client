@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "Constants.h"
+#import "CoreDataStack.h"
+#import "FeedVC.h"
 @interface AppDelegate ()
 
 @end
@@ -28,7 +30,10 @@
 #pragma mark -Application delegate methods
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self createAppearance];
-    // Override point for customization after application launch.
+    FeedVC *mainController = [[FeedVC alloc]initWithStyle:UITableViewStyleGrouped];
+    [mainController setCoreDataStack:[[CoreDataStack alloc]init]];
+    UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:mainController];
+    self.window.rootViewController = navController;
     return YES;
 }
 
