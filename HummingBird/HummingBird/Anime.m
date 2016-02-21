@@ -24,7 +24,6 @@
 + (Anime *)animeWithInfo:(NSDictionary *)animeInfo inContext:(nonnull NSManagedObjectContext *)context {
     Anime *anime = nil;
     
-    
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"animeID == %@",animeInfo[@"id"]];
     NSFetchRequest *req = [[NSFetchRequest alloc]initWithEntityName:NSStringFromClass([self class])];
     req.predicate = pred;

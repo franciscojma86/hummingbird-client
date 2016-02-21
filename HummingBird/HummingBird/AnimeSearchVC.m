@@ -11,6 +11,7 @@
 #import "NetworkingCallsHelper.h"
 #import "CoreDataStack.h"
 #import "Anime.h"
+#import "AnimeTVCell.h"
 
 @interface AnimeSearchVC ()
 
@@ -24,6 +25,8 @@
 
 #define ANIME_CREATE_QUEUE "com.franciscojma86.animeCreateQueue"
 
+#define CELL_IDENTIFIER @"animeSearchCell"
+
 - (instancetype)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
     if (self) {
@@ -34,6 +37,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UINib *cellNib = [UINib nibWithNibName:NSStringFromClass([AnimeTVCell class])
+                                    bundle:nil];
+    [self.tableView registerNib:cellNib forCellReuseIdentifier:CELL_IDENTIFIER];
+    self.tableView.estimatedRowHeight = 120;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -61,6 +69,13 @@
     [self querySearchText:searchBar.text];
 }
 
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    if ([searchText isEqualToString:@""]) {
+        self.results = nil;
+    }
+}
+
+
 - (void)querySearchText:(NSString *)query {
     [self fm_startLoading];
     if (self.searchQueryTask) [self.searchQueryTask cancel];
@@ -70,17 +85,17 @@
                                                                      dispatch_async(self.animeCreateBackgroundQueue, ^{
                                                                          NSManagedObjectContext *backgroundContext = [self.coreDataStack concurrentContext];
                                                                          [backgroundContext performBlock:^{
-                                                                             NSArray *animes = [Anime animesWithArray:json
-                                                                                                            inContext:backgroundContext];
-                                                                             NSError *error;
-                                                                             [backgroundContext save:&error];
-                                                                             if (error) {
-                                                                                 NSLog(@"ERROR SAVING BACGKORUND %@",error.userInfo);
-                                                                             }
-                                                                             dispatch_async(dispatch_get_main_queue(), ^{
-                                                                                 self.results = animes;
+                                                                             [Anime animesWithArray:json
+                                                                                          inContext:backgroundContext];
+                                                                             [self.coreDataStack saveContext:backgroundContext];
+                                                                             
+                                                                             [self.coreDataStack.mainContext performBlock:^{
+                                                                                 [self.coreDataStack saveMainContext];
+                                                                                 [self fetchAnimeResultsWithQuery:query];
                                                                                  [self fm_stopLoading];
-                                                                             });
+ 
+                                                                             }];
+                                                                             
                                                                              
                                                                          }];
 
@@ -93,14 +108,32 @@
 
 }
 
+- (void)fetchAnimeResultsWithQuery:(NSString *)query {
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"title CONTAINS %@",query];
+    NSFetchRequest *req = [[NSFetchRequest alloc]initWithEntityName:NSStringFromClass([Anime class])];
+    req.predicate = pred;
+    NSError *error;
+    NSArray *results = [self.coreDataStack.mainContext executeFetchRequest:req error:&error];
+    if (error) {
+        NSLog(@"ERROR fetching ANIME %@",error.userInfo);
+        self.results = nil;
+    } else {
+        self.results = results;
+    }
+}
+
 #pragma mark -Tableview delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    [self hideMessageLabel:self.results.count == 0];
+    [self hideMessageLabel:self.results.count != 0];
     return self.results.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
+    AnimeTVCell *cell = (AnimeTVCell *)[tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER
+                                                                       forIndexPath:indexPath];
+    Anime *anime = self.results[indexPath.row];
+    [cell configureWithAnime:anime];
+    return cell;
 }
 
 

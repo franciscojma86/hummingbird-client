@@ -33,6 +33,8 @@
 		97031C991C797FC400678712 /* Anime.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C971C797FC400678712 /* Anime.m */; };
 		97031C9D1C7A33A900678712 /* NSDictionary+NullObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C9C1C7A33A900678712 /* NSDictionary+NullObjects.m */; };
 		97031CA01C7A354F00678712 /* FMDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C9F1C7A354F00678712 /* FMDateFormatter.m */; };
+		97031CA41C7A3E8900678712 /* AnimeTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031CA31C7A3E8900678712 /* AnimeTVCell.m */; };
+		97031CA61C7A3EBC00678712 /* AnimeTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97031CA51C7A3EBC00678712 /* AnimeTVCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +106,9 @@
 		97031C9C1C7A33A900678712 /* NSDictionary+NullObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+NullObjects.m"; sourceTree = "<group>"; };
 		97031C9E1C7A354F00678712 /* FMDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDateFormatter.h; sourceTree = "<group>"; };
 		97031C9F1C7A354F00678712 /* FMDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDateFormatter.m; sourceTree = "<group>"; };
+		97031CA21C7A3E8900678712 /* AnimeTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimeTVCell.h; sourceTree = "<group>"; };
+		97031CA31C7A3E8900678712 /* AnimeTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimeTVCell.m; sourceTree = "<group>"; };
+		97031CA51C7A3EBC00678712 /* AnimeTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnimeTVCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,6 +288,9 @@
 			isa = PBXGroup;
 			children = (
 				97031C7E1C78F80700678712 /* Search */,
+				97031CA31C7A3E8900678712 /* AnimeTVCell.m */,
+				97031CA21C7A3E8900678712 /* AnimeTVCell.h */,
+				97031CA51C7A3EBC00678712 /* AnimeTVCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -475,6 +483,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97031CA61C7A3EBC00678712 /* AnimeTVCell.xib in Resources */,
 				97031C221C77AF9F00678712 /* LaunchScreen.storyboard in Resources */,
 				97031C1F1C77AF9F00678712 /* Assets.xcassets in Resources */,
 				97031C1D1C77AF9F00678712 /* Main.storyboard in Resources */,
@@ -516,6 +525,7 @@
 				97031C931C7974A900678712 /* Model.xcdatamodeld in Sources */,
 				97031C171C77AF9F00678712 /* AppDelegate.m in Sources */,
 				97031C141C77AF9F00678712 /* main.m in Sources */,
+				97031CA41C7A3E8900678712 /* AnimeTVCell.m in Sources */,
 				97031C6D1C78D97700678712 /* AnimeSearchVC.m in Sources */,
 				97031C4B1C77AFEA00678712 /* FMNetworkingErrorMessages.m in Sources */,
 				97031C811C78F81F00678712 /* FMEmptyResultsView.m in Sources */,
