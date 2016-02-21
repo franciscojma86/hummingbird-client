@@ -8,11 +8,12 @@
 
 #import "AnimeSearchVC.h"
 #import "UIViewController+Loading.h"
-#import "FMNetworkingClient.h"
+#import "NetworkingCallsHelper.h"
 
 @interface AnimeSearchVC ()
 
 @property (nonatomic,strong) NSArray *results;
+@property (nonatomic,strong) NSURLSessionDataTask *searchQueryTask;
 
 @end
 
@@ -30,6 +31,11 @@
     [super viewDidLoad];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    if (self.searchQueryTask) [self.searchQueryTask cancel];
+}
+
 - (void)setResults:(NSArray *)results {
     if (_results != results) {
         _results = results;
@@ -45,7 +51,17 @@
 
 - (void)querySearchText:(NSString *)query {
     [self fm_startLoading];
-    [self fm_stopLoading];
+    if (self.searchQueryTask) [self.searchQueryTask cancel];
+    self.searchQueryTask = [NetworkingCallsHelper queryAnimeBySearchText:query
+                                                                 success:^(id json) {
+                                                                     [self fm_stopLoading];
+                                                                     NSLog(@"json %@",json);
+                                                                 } failure:^(NSString *errorMessage, BOOL cancelled) {
+                                                                     [self fm_stopLoading];
+                                                                     self.results = nil;
+                                                                     NSLog(@"ERROR %@",errorMessage);
+                                                                 }];
+
 }
 
 #pragma mark -Tableview delegate

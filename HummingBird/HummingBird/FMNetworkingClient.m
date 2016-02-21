@@ -18,10 +18,7 @@
 
 @implementation FMNetworkingClient
 
-#define BASE_URL @"http://hummingbird.me/api/v1"
-
-
-
+#define BASE_URL @"https://hummingbird.me/api/v1/"
 
 +(FMNetworkingClient *)sharedClient {
     static FMNetworkingClient *_sharedClient = nil;
@@ -102,7 +99,7 @@
     request = [self requestWithMethod:method
                                  path:path
                                  body:body];
-    
+    NSLog(@"URL %@",request.URL);
     NSURLSessionDataTask *dataTask = [_session dataTaskWithRequest:request
                                                  completionHandler:^(NSData *data,
                                                                      NSURLResponse *response,
