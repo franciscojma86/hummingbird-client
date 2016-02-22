@@ -8,7 +8,7 @@
 
 #import "AnimeTVCell.h"
 #import "Anime.h"
-
+#import "UIImageView+ImageDownload.h"
 @interface AnimeTVCell ()
 
 @property (weak, nonatomic) IBOutlet UILabel *animeTitleLabel;
@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *episodesCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *episodesLength;
 @property (weak, nonatomic) IBOutlet UILabel *genresLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *animeImageView;
 
 
 @end
@@ -28,6 +29,9 @@
     [self.episodesCountLabel setText:[NSString stringWithFormat:@"Episodes: %zd", [anime.episodeCount integerValue]]];
     [self.episodesLength setText:[NSString stringWithFormat:@"Length: %zdm",[anime.episodeLength integerValue]]];
     [self.genresLabel setText:anime.genres];
+    [self.animeImageView fm_setImageWithURL:[NSURL URLWithString:anime.coverImageAddress]
+                                placeholder:[UIImage imageNamed:@"placeholder"]];
+    
 }
 
 - (void)prepareForReuse {
@@ -37,6 +41,7 @@
     [self.episodesCountLabel setText:nil];
     [self.episodesLength setText:nil];
     [self.genresLabel setText:nil];
+    [self.animeImageView setImage:nil];
 }
 
 @end

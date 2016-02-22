@@ -58,14 +58,14 @@
 
 - (dispatch_queue_t)animeCreateBackgroundQueue {
     if (!_animeCreateBackgroundQueue) {
-        _animeCreateBackgroundQueue = dispatch_queue_create(ANIME_CREATE_QUEUE, DISPATCH_QUEUE_CONCURRENT);
+        _animeCreateBackgroundQueue = dispatch_queue_create(ANIME_CREATE_QUEUE,
+                                                            DISPATCH_QUEUE_CONCURRENT);
     }
     return _animeCreateBackgroundQueue;
 }
 
 #pragma mark -Search methods
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    //triggger call
     [self querySearchText:searchBar.text];
 }
 
@@ -93,12 +93,9 @@
                                                                                  [self.coreDataStack saveMainContext];
                                                                                  [self fetchAnimeResultsWithQuery:query];
                                                                                  [self fm_stopLoading];
- 
                                                                              }];
-                                                                             
-                                                                             
                                                                          }];
-
+                                                                         
                                                                      });
                                                                  } failure:^(NSString *errorMessage, BOOL cancelled) {
                                                                      [self fm_stopLoading];

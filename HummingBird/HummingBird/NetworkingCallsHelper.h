@@ -9,9 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "FMNetworkingClient.h"
 
+@import UIKit;
+
 @interface NetworkingCallsHelper : NSObject
 
 + (NSURLSessionDataTask *)queryAnimeBySearchText:(NSString *)query
                                          success:(SuccessJSONBlock)success
                                          failure:(FailMessageBlock)failure;
+
++ (NSURLSessionDataTask *)downloadImageWithURL:(NSURL *)url
+                                       success:(SuccessImageBlock)success
+                                       failure:(FailMessageBlock)failure;
 @end

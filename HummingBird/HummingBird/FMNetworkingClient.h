@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+@import UIKit;
 
 @interface FMNetworkingClient : NSObject
 
@@ -21,6 +22,7 @@
 
 //Types of response expected from the calls
 typedef void (^SuccessJSONBlock)(id json);
+typedef void (^SuccessImageBlock)(UIImage *image);
 typedef void (^SuccessDataBlock)(NSData *data);
 typedef void (^FailMessageBlock)(NSString *errorMessage, BOOL cancelled);
 

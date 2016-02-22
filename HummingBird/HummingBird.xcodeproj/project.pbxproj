@@ -35,6 +35,7 @@
 		97031CA01C7A354F00678712 /* FMDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C9F1C7A354F00678712 /* FMDateFormatter.m */; };
 		97031CA41C7A3E8900678712 /* AnimeTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031CA31C7A3E8900678712 /* AnimeTVCell.m */; };
 		97031CA61C7A3EBC00678712 /* AnimeTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97031CA51C7A3EBC00678712 /* AnimeTVCell.xib */; };
+		97031CAA1C7AE27200678712 /* UIImageView+ImageDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031CA91C7AE27200678712 /* UIImageView+ImageDownload.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,8 @@
 		97031CA21C7A3E8900678712 /* AnimeTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimeTVCell.h; sourceTree = "<group>"; };
 		97031CA31C7A3E8900678712 /* AnimeTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimeTVCell.m; sourceTree = "<group>"; };
 		97031CA51C7A3EBC00678712 /* AnimeTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnimeTVCell.xib; sourceTree = "<group>"; };
+		97031CA81C7AE27200678712 /* UIImageView+ImageDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ImageDownload.h"; sourceTree = "<group>"; };
+		97031CA91C7AE27200678712 /* UIImageView+ImageDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ImageDownload.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +224,8 @@
 				97031C491C77AFEA00678712 /* FMNetworkingErrorMessages.m */,
 				97031C9B1C7A33A900678712 /* NSDictionary+NullObjects.h */,
 				97031C9C1C7A33A900678712 /* NSDictionary+NullObjects.m */,
+				97031CA81C7AE27200678712 /* UIImageView+ImageDownload.h */,
+				97031CA91C7AE27200678712 /* UIImageView+ImageDownload.m */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -512,6 +517,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				97031C981C797FC400678712 /* Anime+CoreDataProperties.m in Sources */,
+				97031CAA1C7AE27200678712 /* UIImageView+ImageDownload.m in Sources */,
 				97031C4A1C77AFEA00678712 /* FMNetworkingClient.m in Sources */,
 				97031CA01C7A354F00678712 /* FMDateFormatter.m in Sources */,
 				97031C621C77D99700678712 /* FMSearchBarTVC.m in Sources */,

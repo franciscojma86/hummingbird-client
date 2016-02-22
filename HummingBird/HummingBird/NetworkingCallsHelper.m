@@ -27,4 +27,17 @@
     return queryTask;
 }
 
++ (NSURLSessionDataTask *)downloadImageWithURL:(NSURL *)url
+                                       success:(SuccessImageBlock)success
+                                       failure:(FailMessageBlock)failure {
+    NSURLSessionDataTask *imageDownloadTask = [[FMNetworkingClient sharedClient] dataTaskWithURL:url
+                                                                                            body:nil
+                                                                                successDataBlock:^(NSData *data) {
+                                                                                    UIImage *image = [UIImage imageWithData:data];
+                                                                                    success(image);
+                                                                                } successJSONBlock:nil
+                                                                                         failure:failure];
+    return imageDownloadTask;
+}
+
 @end
