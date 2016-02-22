@@ -64,7 +64,20 @@
     return anime;
 }
 
+#pragma mark -Formatting
 - (NSString *)formatGenres:(NSArray *)genres {
     return [[genres valueForKeyPath:@"name"] componentsJoinedByString:@", "];
+}
+
+- (NSString *)startedAiringDateString {
+    if (!self.startedAiring) return @"?";
+    FMDateFormatter *formatter = [[FMDateFormatter alloc]initWithDateFormat:DateFormatUserOurput];
+    return [formatter stringFromDate:self.startedAiring];
+}
+
+- (NSString *)finishedAiringDateString {
+    if (!self.finishedAiring) return @"?";
+    FMDateFormatter *formatter = [[FMDateFormatter alloc]initWithDateFormat:DateFormatUserOurput];
+    return [formatter stringFromDate:self.finishedAiring];
 }
 @end

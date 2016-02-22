@@ -26,8 +26,8 @@
 - (void)configureWithAnime:(Anime *)anime {
     [self.animeTitleLabel setText:anime.title];
     [self.statusLabel setText:anime.status];
-    [self.episodesCountLabel setText:[NSString stringWithFormat:@"Episodes: %zd", [anime.episodeCount integerValue]]];
-    [self.episodesLength setText:[NSString stringWithFormat:@"Length: %zdm",[anime.episodeLength integerValue]]];
+    [self.episodesCountLabel setText:[NSString stringWithFormat:@"Episodes: %@", anime.episodeCount ? anime.episodeLength : @"?"]];
+    [self.episodesLength setText:[NSString stringWithFormat:@"Length: %@m",anime.episodeLength]];
     [self.genresLabel setText:anime.genres];
     [self.animeImageView fm_setImageWithURL:[NSURL URLWithString:anime.coverImageAddress]
                                 placeholder:[UIImage imageNamed:@"placeholder"]];

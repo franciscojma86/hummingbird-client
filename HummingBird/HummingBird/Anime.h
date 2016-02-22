@@ -16,6 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSArray *)animesWithArray:(NSArray *)animesArray inContext:(NSManagedObjectContext *)context;
 + (Anime *)animeWithInfo:(NSDictionary *)animeInfo inContext:(NSManagedObjectContext *)context;
 
+- (NSString *)startedAiringDateString;
+- (NSString *)finishedAiringDateString;
+
 @end
 
 NS_ASSUME_NONNULL_END

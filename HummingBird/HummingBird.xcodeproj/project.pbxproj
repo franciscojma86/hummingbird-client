@@ -36,6 +36,7 @@
 		97031CA41C7A3E8900678712 /* AnimeTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031CA31C7A3E8900678712 /* AnimeTVCell.m */; };
 		97031CA61C7A3EBC00678712 /* AnimeTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97031CA51C7A3EBC00678712 /* AnimeTVCell.xib */; };
 		97031CAA1C7AE27200678712 /* UIImageView+ImageDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031CA91C7AE27200678712 /* UIImageView+ImageDownload.m */; };
+		978AA39D1C7B783A007334F3 /* AnimeDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 978AA39C1C7B783A007334F3 /* AnimeDetailsVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +113,8 @@
 		97031CA51C7A3EBC00678712 /* AnimeTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnimeTVCell.xib; sourceTree = "<group>"; };
 		97031CA81C7AE27200678712 /* UIImageView+ImageDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ImageDownload.h"; sourceTree = "<group>"; };
 		97031CA91C7AE27200678712 /* UIImageView+ImageDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ImageDownload.m"; sourceTree = "<group>"; };
+		978AA39B1C7B783A007334F3 /* AnimeDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimeDetailsVC.h; sourceTree = "<group>"; };
+		978AA39C1C7B783A007334F3 /* AnimeDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimeDetailsVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,9 +296,6 @@
 			isa = PBXGroup;
 			children = (
 				97031C7E1C78F80700678712 /* Search */,
-				97031CA31C7A3E8900678712 /* AnimeTVCell.m */,
-				97031CA21C7A3E8900678712 /* AnimeTVCell.h */,
-				97031CA51C7A3EBC00678712 /* AnimeTVCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -303,6 +303,9 @@
 		97031C7E1C78F80700678712 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				97031CA31C7A3E8900678712 /* AnimeTVCell.m */,
+				97031CA21C7A3E8900678712 /* AnimeTVCell.h */,
+				97031CA51C7A3EBC00678712 /* AnimeTVCell.xib */,
 				97031C7F1C78F81F00678712 /* FMEmptyResultsView.h */,
 				97031C801C78F81F00678712 /* FMEmptyResultsView.m */,
 			);
@@ -323,6 +326,8 @@
 			children = (
 				97031C6B1C78D97700678712 /* AnimeSearchVC.h */,
 				97031C6C1C78D97700678712 /* AnimeSearchVC.m */,
+				978AA39B1C7B783A007334F3 /* AnimeDetailsVC.h */,
+				978AA39C1C7B783A007334F3 /* AnimeDetailsVC.m */,
 			);
 			name = AnimeSearch;
 			sourceTree = "<group>";
@@ -528,6 +533,7 @@
 				97031C651C77DB4500678712 /* FMImageCapturing.m in Sources */,
 				97031C871C78FE5800678712 /* NetworkingCallsHelper.m in Sources */,
 				97031C691C77DB7100678712 /* UIImage+ImageEffects.m in Sources */,
+				978AA39D1C7B783A007334F3 /* AnimeDetailsVC.m in Sources */,
 				97031C931C7974A900678712 /* Model.xcdatamodeld in Sources */,
 				97031C171C77AF9F00678712 /* AppDelegate.m in Sources */,
 				97031C141C77AF9F00678712 /* main.m in Sources */,
@@ -764,6 +770,7 @@
 				97031C3E1C77AF9F00678712 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		97031C3F1C77AF9F00678712 /* Build configuration list for PBXNativeTarget "HummingBirdTests" */ = {
 			isa = XCConfigurationList;
@@ -772,6 +779,7 @@
 				97031C411C77AF9F00678712 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		97031C421C77AF9F00678712 /* Build configuration list for PBXNativeTarget "HummingBirdUITests" */ = {
 			isa = XCConfigurationList;
@@ -780,6 +788,7 @@
 				97031C441C77AF9F00678712 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

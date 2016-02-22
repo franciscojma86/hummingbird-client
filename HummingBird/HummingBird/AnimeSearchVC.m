@@ -7,11 +7,16 @@
 //
 
 #import "AnimeSearchVC.h"
+//helper
 #import "UIViewController+Loading.h"
 #import "NetworkingCallsHelper.h"
+//Views
+#import "AnimeTVCell.h"
+//Models
 #import "CoreDataStack.h"
 #import "Anime.h"
-#import "AnimeTVCell.h"
+//Controllers
+#import "AnimeDetailsVC.h"
 
 @interface AnimeSearchVC ()
 
@@ -106,7 +111,7 @@
 }
 
 - (void)fetchAnimeResultsWithQuery:(NSString *)query {
-    NSPredicate *pred = [NSPredicate predicateWithFormat:@"title CONTAINS %@",query];
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"title CONTAINS[c] %@",query];
     NSFetchRequest *req = [[NSFetchRequest alloc]initWithEntityName:NSStringFromClass([Anime class])];
     req.predicate = pred;
     NSError *error;
@@ -131,6 +136,21 @@
     Anime *anime = self.results[indexPath.row];
     [cell configureWithAnime:anime];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    Anime *anime = self.results[indexPath.row];
+    [self showAnimeDetailsVCWithAnime:anime];
+}
+
+#pragma mark -Show anime details
+- (void)showAnimeDetailsVCWithAnime:(Anime *)anime {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main"
+                                                         bundle:nil];
+    AnimeDetailsVC *controller = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([AnimeDetailsVC class])];
+    [controller setAnime:anime];
+    [self showViewController:controller sender:self];
+
 }
 
 

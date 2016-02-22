@@ -16,8 +16,8 @@
                                          failure:(FailMessageBlock)failure {
     
     NSString *queryPath = [NSString stringWithFormat:@"search/anime?query=%@",query];
-//    queryPath = [queryPath stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
-    NSLog(@"SEARCHING %@",queryPath);
+    queryPath = [queryPath stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+//    NSLog(@"SEARCHING %@",queryPath);
     NSURLSessionDataTask *queryTask = [[FMNetworkingClient sharedClient] dataTaskWithMethod:GET
                                                                                        path:queryPath
                                                                                        body:nil
