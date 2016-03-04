@@ -71,6 +71,7 @@
 
 #pragma mark -Search methods
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
     [self querySearchText:searchBar.text];
 }
 

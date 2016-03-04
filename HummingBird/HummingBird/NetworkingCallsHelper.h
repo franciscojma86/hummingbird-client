@@ -17,6 +17,10 @@
                                          success:(SuccessJSONBlock)success
                                          failure:(FailMessageBlock)failure;
 
++ (NSURLSessionDataTask *)queryActivityFeedForUsername:(NSString *)username
+                                               success:(SuccessJSONBlock)success
+                                               failure:(FailMessageBlock)failure;
+
 + (NSURLSessionDataTask *)downloadImageWithURL:(NSURL *)url
                                        success:(SuccessImageBlock)success
                                        failure:(FailMessageBlock)failure;

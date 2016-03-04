@@ -9,6 +9,7 @@
 #import "Anime.h"
 #import "FMDateFormatter.h"
 #import "NSDictionary+NullObjects.h"
+#import "CoreDataStack.h"
 
 @implementation Anime
 
@@ -22,19 +23,11 @@
 }
 
 + (Anime *)animeWithInfo:(NSDictionary *)animeInfo inContext:(nonnull NSManagedObjectContext *)context {
-    Anime *anime = nil;
+    Anime *anime = (Anime *)[CoreDataStack queryObjectWithID:animeInfo[@"id"]
+                                              propertyIDName:@"animeID"
+                                                     inClass:[self class]
+                                                   inContext:context];
     
-    NSPredicate *pred = [NSPredicate predicateWithFormat:@"animeID == %@",animeInfo[@"id"]];
-    NSFetchRequest *req = [[NSFetchRequest alloc]initWithEntityName:NSStringFromClass([self class])];
-    req.predicate = pred;
-    NSError *error;
-    anime = [[context executeFetchRequest:req error:&error] lastObject];
-    if (error) {
-        NSLog(@"ERROR CREATING ANIME %@",error.userInfo);
-        return nil;
-    }
-    if (!anime) anime = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([self class])
-                                                      inManagedObjectContext:context];
     anime.animeID = [animeInfo fm_objectForKeyNotNull:@"id"];
     anime.ageRating = [animeInfo fm_objectForKeyNotNull:@"age_rating"];
     anime.alternateTitle = [animeInfo fm_objectForKeyNotNull:@"alternative_title"];

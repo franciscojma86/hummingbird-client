@@ -12,10 +12,14 @@
 //Controllers
 #import "AnimeSearchVC.h"
 #import "UIViewController+Loading.h"
+//Model
+#import "CoreDataStack.h"
+#import "Anime.h"
+#import "Story.h"
+//Networking
+#import "NetworkingCallsHelper.h"
 
 @interface FeedVC ()
-
-//@property (nonatomic,strong) FMSearchBarTVC *searchController;
 
 @end
 
@@ -26,7 +30,16 @@
     //configure nav bar
     self.navigationItem.title = @"Humming Bird";
     [self createNavBarButtons];
+//TODO: QUERY AND SET LAST USERNAME PROPERLY
+    [[NSUserDefaults standardUserDefaults] setObject:@"franciscojma86"
+                                              forKey:LAST_USERNAME_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [self queryFeed];
+}
 
+- (NSString *)lastUsername {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:LAST_USERNAME_KEY];
 }
 
 #pragma mark -UI methods
@@ -43,6 +56,19 @@
                                                                    target:self
                                                                    action:@selector(searchPressed)];
     self.navigationItem.rightBarButtonItem = searchButton;
+}
+
+#pragma mark -Feed methods
+- (void)queryFeed {
+//TODO: REACT TO ERRORS
+    [NetworkingCallsHelper queryActivityFeedForUsername:[self lastUsername]
+                                                success:^(id json) {
+                                                    NSLog(@"REUSLTS %@",json);
+                                                    NSArray *stories = [Story storyWithArray:json inContext:self.coreDataStack.mainContext];
+                                                } failure:^(NSString *errorMessage, BOOL cancelled) {
+
+                                                    NSLog(@"ERROR %@",errorMessage);
+                                                }];
 }
 
 #pragma mark -Account methods

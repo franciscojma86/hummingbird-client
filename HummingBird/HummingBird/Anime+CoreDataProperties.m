@@ -2,7 +2,7 @@
 //  Anime+CoreDataProperties.m
 //  HummingBird
 //
-//  Created by Francisco Magdaleno on 2/20/16.
+//  Created by Francisco Magdaleno on 3/3/16.
 //  Copyright © 2016 franciscojma86. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -13,11 +13,9 @@
 
 @implementation Anime (CoreDataProperties)
 
-@dynamic status;
-@dynamic animeID;
-@dynamic title;
-@dynamic alternateTitle;
 @dynamic ageRating;
+@dynamic alternateTitle;
+@dynamic animeID;
 @dynamic communityRating;
 @dynamic coverImageAddress;
 @dynamic episodeCount;
@@ -25,8 +23,11 @@
 @dynamic finishedAiring;
 @dynamic genres;
 @dynamic showType;
-@dynamic synopsis;
-@dynamic url;
 @dynamic startedAiring;
+@dynamic status;
+@dynamic synopsis;
+@dynamic title;
+@dynamic url;
+@dynamic mediaForStory;
 
 @end

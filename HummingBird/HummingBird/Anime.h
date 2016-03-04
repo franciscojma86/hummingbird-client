@@ -9,12 +9,16 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class Story;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Anime : NSManagedObject
 
-+ (NSArray *)animesWithArray:(NSArray *)animesArray inContext:(NSManagedObjectContext *)context;
-+ (Anime *)animeWithInfo:(NSDictionary *)animeInfo inContext:(NSManagedObjectContext *)context;
++ (NSArray *)animesWithArray:(NSArray *)animesArray
+                   inContext:(NSManagedObjectContext *)context;
++ (Anime *)animeWithInfo:(NSDictionary *)animeInfo
+               inContext:(NSManagedObjectContext *)context;
 
 - (NSString *)startedAiringDateString;
 - (NSString *)finishedAiringDateString;

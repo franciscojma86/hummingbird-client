@@ -17,4 +17,8 @@
 - (void)saveContext:(NSManagedObjectContext *)context;
 - (void)saveMainContext;
 
++ (NSManagedObject *)queryObjectWithID:(NSString *)objID
+                        propertyIDName:(NSString *)propertyIDName
+                               inClass:(Class)targetClass
+                             inContext:(NSManagedObjectContext *)context;
 @end

@@ -46,13 +46,21 @@ NSString * const modelName = @"Model";
 - (NSPersistentStoreCoordinator *)psc {
     if (!_psc) {
         _psc = [[NSPersistentStoreCoordinator alloc]initWithManagedObjectModel:self.model];
-//        NSURL *url = [[self documentsURL] URLByAppendingPathComponent:modelName];
+        NSURL *url = [[self documentsURL] URLByAppendingPathComponent:modelName];
         
         NSError *error;
-//        NSDictionary *options = @{NSMigratePersistentStoresAutomaticallyOption : @YES,
-//                                  NSInferMappingModelAutomaticallyOption : @YES};
+        NSDictionary *options = @{NSMigratePersistentStoresAutomaticallyOption : @YES,
+                                  NSInferMappingModelAutomaticallyOption : @YES};
+        [_psc addPersistentStoreWithType:NSSQLiteStoreType
+                           configuration:@"Persistent"
+                                     URL:url
+                                 options:options
+                                   error:&error];
+        if (error) {
+            NSLog(@"ERROR ADDING PERSISTENT STORE %@",error.userInfo);
+        }
         [_psc addPersistentStoreWithType:NSInMemoryStoreType
-                           configuration:nil
+                           configuration:@"Temp"
                                      URL:nil
                                  options:nil
                                    error:&error];
@@ -104,5 +112,25 @@ NSString * const modelName = @"Model";
 //}
 
 
+#pragma mark -Objects query
++ (NSManagedObject *)queryObjectWithID:(NSString *)objID
+                        propertyIDName:(NSString *)propertyIDName
+                               inClass:(Class)targetClass
+                             inContext:(NSManagedObjectContext *)context {
+    NSManagedObject *obj = nil;
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"%@ == %@",propertyIDName,objID];
+    NSFetchRequest *req = [[NSFetchRequest alloc]initWithEntityName:NSStringFromClass(targetClass)];
+    req.predicate = pred;
+    NSError *error;
+    obj = [[context executeFetchRequest:req error:&error] lastObject];
+    if (error) {
+        NSLog(@"ERROR CREATING OBJECT %@\nOF TYPE %@",error.userInfo,NSStringFromClass(targetClass));
+        return nil;
+    }
+    
+    return [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass(targetClass)
+                                         inManagedObjectContext:context];
+
+}
 
 @end

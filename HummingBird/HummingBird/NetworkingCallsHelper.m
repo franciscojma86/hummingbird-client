@@ -27,6 +27,19 @@
     return queryTask;
 }
 
++ (NSURLSessionDataTask *)queryActivityFeedForUsername:(NSString *)username
+                                             success:(SuccessJSONBlock)success
+                                             failure:(FailMessageBlock)failure {
+    NSString *queryPath = [NSString stringWithFormat:@"users/%@/feed",username];
+    NSURLSessionDataTask *queryTask = [[FMNetworkingClient sharedClient] dataTaskWithMethod:GET
+                                                                                       path:queryPath
+                                                                                       body:nil
+                                                                           successDataBlock:nil
+                                                                           successJSONBlock:success
+                                                                                    failure:failure];
+    return queryTask;
+}
+
 + (NSURLSessionDataTask *)downloadImageWithURL:(NSURL *)url
                                        success:(SuccessImageBlock)success
                                        failure:(FailMessageBlock)failure {

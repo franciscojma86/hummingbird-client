@@ -29,6 +29,7 @@
 
 #pragma mark -Application delegate methods
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
     [self createAppearance];
     FeedVC *mainController = [[FeedVC alloc]initWithStyle:UITableViewStyleGrouped];
     [mainController setCoreDataStack:[[CoreDataStack alloc]init]];

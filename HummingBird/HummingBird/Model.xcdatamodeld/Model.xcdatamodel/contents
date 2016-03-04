@@ -16,8 +16,49 @@
         <attribute name="synopsis" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="mediaForStory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Story" inverseName="media" inverseEntity="Story" syncable="YES"/>
     </entity>
+    <entity name="Story" representedClassName="Story" syncable="YES">
+        <attribute name="selfPost" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="storyID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="storyType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="substoriesCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="media" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Anime" inverseName="mediaForStory" inverseEntity="Anime" syncable="YES"/>
+        <relationship name="poster" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="posterForStory" inverseEntity="User" syncable="YES"/>
+        <relationship name="substories" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Substory" inverseName="substoryForStory" inverseEntity="Substory" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="userForStory" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Substory" representedClassName="Substory" syncable="YES">
+        <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="episodeNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="newStatus" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="substoryID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="substoryType" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="followedUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="userFollowedBySubstory" inverseEntity="User" syncable="YES"/>
+        <relationship name="substoryForStory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Story" inverseName="substories" inverseEntity="Story" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="avatar" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="avatarSmall" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="posterForStory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Story" inverseName="poster" inverseEntity="Story" syncable="YES"/>
+        <relationship name="userFollowedBySubstory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Substory" inverseName="followedUser" inverseEntity="Substory" syncable="YES"/>
+        <relationship name="userForStory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Story" inverseName="user" inverseEntity="Story" syncable="YES"/>
+    </entity>
+    <configuration name="Persistent">
+        <memberEntity name="User"/>
+    </configuration>
+    <configuration name="Temp">
+        <memberEntity name="Anime"/>
+        <memberEntity name="User"/>
+        <memberEntity name="Story"/>
+    </configuration>
     <elements>
-        <element name="Anime" positionX="-63" positionY="-18" width="128" height="270"/>
+        <element name="Anime" positionX="153" positionY="-18" width="128" height="283"/>
+        <element name="User" positionX="765" positionY="23" width="128" height="133"/>
+        <element name="Story" positionX="448" positionY="-100" width="128" height="178"/>
+        <element name="Substory" positionX="540" positionY="146" width="128" height="163"/>
     </elements>
 </model>

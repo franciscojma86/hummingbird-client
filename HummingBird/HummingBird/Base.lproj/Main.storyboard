@@ -174,15 +174,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="445.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EEg-na-12L">
-                                                    <rect key="frame" x="8" y="8" width="584" height="240.5"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EEg-na-12L">
+                                                    <rect key="frame" x="8" y="8" width="584" height="429.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="EEg-na-12L" firstAttribute="bottom" secondItem="b4w-5j-xyC" secondAttribute="bottomMargin" id="HDV-NW-nM6"/>
+                                                <constraint firstItem="EEg-na-12L" firstAttribute="bottom" secondItem="b4w-5j-xyC" secondAttribute="bottomMargin" priority="750" id="HDV-NW-nM6"/>
                                                 <constraint firstItem="EEg-na-12L" firstAttribute="trailing" secondItem="b4w-5j-xyC" secondAttribute="trailingMargin" id="eXE-dd-abv"/>
                                                 <constraint firstItem="EEg-na-12L" firstAttribute="leading" secondItem="b4w-5j-xyC" secondAttribute="leadingMargin" id="pgd-9u-eZx"/>
                                                 <constraint firstItem="EEg-na-12L" firstAttribute="top" secondItem="b4w-5j-xyC" secondAttribute="topMargin" id="uyy-4I-Lk1"/>

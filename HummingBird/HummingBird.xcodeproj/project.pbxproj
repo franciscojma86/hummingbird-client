@@ -18,7 +18,6 @@
 		97031C4A1C77AFEA00678712 /* FMNetworkingClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C471C77AFEA00678712 /* FMNetworkingClient.m */; };
 		97031C4B1C77AFEA00678712 /* FMNetworkingErrorMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C491C77AFEA00678712 /* FMNetworkingErrorMessages.m */; };
 		97031C4F1C77B01300678712 /* UIView+FMAutolayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C4E1C77B01300678712 /* UIView+FMAutolayout.m */; };
-		97031C561C77B5BB00678712 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C551C77B5BB00678712 /* Constants.m */; };
 		97031C621C77D99700678712 /* FMSearchBarTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C611C77D99600678712 /* FMSearchBarTVC.m */; };
 		97031C651C77DB4500678712 /* FMImageCapturing.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C641C77DB4500678712 /* FMImageCapturing.m */; };
 		97031C691C77DB7100678712 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C681C77DB7100678712 /* UIImage+ImageEffects.m */; };
@@ -37,6 +36,13 @@
 		97031CA61C7A3EBC00678712 /* AnimeTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97031CA51C7A3EBC00678712 /* AnimeTVCell.xib */; };
 		97031CAA1C7AE27200678712 /* UIImageView+ImageDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031CA91C7AE27200678712 /* UIImageView+ImageDownload.m */; };
 		978AA39D1C7B783A007334F3 /* AnimeDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 978AA39C1C7B783A007334F3 /* AnimeDetailsVC.m */; };
+		97F894251C890BEF00F73E9C /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F894241C890BEF00F73E9C /* KeychainWrapper.m */; };
+		97F894321C891AAF00F73E9C /* Story+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F894271C891AAF00F73E9C /* Story+CoreDataProperties.m */; };
+		97F894331C891AAF00F73E9C /* Story.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F894291C891AAF00F73E9C /* Story.m */; };
+		97F894341C891AAF00F73E9C /* Substory+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F8942B1C891AAF00F73E9C /* Substory+CoreDataProperties.m */; };
+		97F894351C891AAF00F73E9C /* Substory.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F8942D1C891AAF00F73E9C /* Substory.m */; };
+		97F894361C891AAF00F73E9C /* User+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F8942F1C891AAF00F73E9C /* User+CoreDataProperties.m */; };
+		97F894371C891AAF00F73E9C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F894311C891AAF00F73E9C /* User.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,7 +86,6 @@
 		97031C4D1C77B01300678712 /* UIView+FMAutolayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FMAutolayout.h"; sourceTree = "<group>"; };
 		97031C4E1C77B01300678712 /* UIView+FMAutolayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FMAutolayout.m"; sourceTree = "<group>"; };
 		97031C541C77B5BB00678712 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		97031C551C77B5BB00678712 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		97031C601C77D99600678712 /* FMSearchBarTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMSearchBarTVC.h; sourceTree = "<group>"; };
 		97031C611C77D99600678712 /* FMSearchBarTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMSearchBarTVC.m; sourceTree = "<group>"; };
 		97031C631C77DB4500678712 /* FMImageCapturing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMImageCapturing.h; sourceTree = "<group>"; };
@@ -115,6 +120,20 @@
 		97031CA91C7AE27200678712 /* UIImageView+ImageDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ImageDownload.m"; sourceTree = "<group>"; };
 		978AA39B1C7B783A007334F3 /* AnimeDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimeDetailsVC.h; sourceTree = "<group>"; };
 		978AA39C1C7B783A007334F3 /* AnimeDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimeDetailsVC.m; sourceTree = "<group>"; };
+		97F894231C890BEF00F73E9C /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
+		97F894241C890BEF00F73E9C /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
+		97F894261C891AAF00F73E9C /* Story+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Story+CoreDataProperties.h"; sourceTree = "<group>"; };
+		97F894271C891AAF00F73E9C /* Story+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Story+CoreDataProperties.m"; sourceTree = "<group>"; };
+		97F894281C891AAF00F73E9C /* Story.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Story.h; sourceTree = "<group>"; };
+		97F894291C891AAF00F73E9C /* Story.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Story.m; sourceTree = "<group>"; };
+		97F8942A1C891AAF00F73E9C /* Substory+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Substory+CoreDataProperties.h"; sourceTree = "<group>"; };
+		97F8942B1C891AAF00F73E9C /* Substory+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Substory+CoreDataProperties.m"; sourceTree = "<group>"; };
+		97F8942C1C891AAF00F73E9C /* Substory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Substory.h; sourceTree = "<group>"; };
+		97F8942D1C891AAF00F73E9C /* Substory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Substory.m; sourceTree = "<group>"; };
+		97F8942E1C891AAF00F73E9C /* User+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "User+CoreDataProperties.h"; sourceTree = "<group>"; };
+		97F8942F1C891AAF00F73E9C /* User+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "User+CoreDataProperties.m"; sourceTree = "<group>"; };
+		97F894301C891AAF00F73E9C /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		97F894311C891AAF00F73E9C /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +226,7 @@
 		97031C451C77AFD900678712 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				97F894221C890BDC00F73E9C /* Keychain */,
 				97031C901C796D6700678712 /* Constants */,
 				97031C661C77DB4D00678712 /* ImageHandling */,
 				97031C5F1C77D95700678712 /* SearchBar */,
@@ -365,7 +385,6 @@
 			isa = PBXGroup;
 			children = (
 				97031C541C77B5BB00678712 /* Constants.h */,
-				97031C551C77B5BB00678712 /* Constants.m */,
 			);
 			name = Constants;
 			sourceTree = "<group>";
@@ -373,6 +392,18 @@
 		97031C9A1C797FCE00678712 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				97F894261C891AAF00F73E9C /* Story+CoreDataProperties.h */,
+				97F894271C891AAF00F73E9C /* Story+CoreDataProperties.m */,
+				97F894281C891AAF00F73E9C /* Story.h */,
+				97F894291C891AAF00F73E9C /* Story.m */,
+				97F8942A1C891AAF00F73E9C /* Substory+CoreDataProperties.h */,
+				97F8942B1C891AAF00F73E9C /* Substory+CoreDataProperties.m */,
+				97F8942C1C891AAF00F73E9C /* Substory.h */,
+				97F8942D1C891AAF00F73E9C /* Substory.m */,
+				97F8942E1C891AAF00F73E9C /* User+CoreDataProperties.h */,
+				97F8942F1C891AAF00F73E9C /* User+CoreDataProperties.m */,
+				97F894301C891AAF00F73E9C /* User.h */,
+				97F894311C891AAF00F73E9C /* User.m */,
 				97031C941C797FC400678712 /* Anime+CoreDataProperties.h */,
 				97031C951C797FC400678712 /* Anime+CoreDataProperties.m */,
 				97031C961C797FC400678712 /* Anime.h */,
@@ -388,6 +419,15 @@
 				97031C9F1C7A354F00678712 /* FMDateFormatter.m */,
 			);
 			name = Formatting;
+			sourceTree = "<group>";
+		};
+		97F894221C890BDC00F73E9C /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				97F894231C890BEF00F73E9C /* KeychainWrapper.h */,
+				97F894241C890BEF00F73E9C /* KeychainWrapper.m */,
+			);
+			name = Keychain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -535,16 +575,22 @@
 				97031C691C77DB7100678712 /* UIImage+ImageEffects.m in Sources */,
 				978AA39D1C7B783A007334F3 /* AnimeDetailsVC.m in Sources */,
 				97031C931C7974A900678712 /* Model.xcdatamodeld in Sources */,
+				97F894361C891AAF00F73E9C /* User+CoreDataProperties.m in Sources */,
 				97031C171C77AF9F00678712 /* AppDelegate.m in Sources */,
 				97031C141C77AF9F00678712 /* main.m in Sources */,
 				97031CA41C7A3E8900678712 /* AnimeTVCell.m in Sources */,
+				97F894331C891AAF00F73E9C /* Story.m in Sources */,
+				97F894321C891AAF00F73E9C /* Story+CoreDataProperties.m in Sources */,
+				97F894371C891AAF00F73E9C /* User.m in Sources */,
 				97031C6D1C78D97700678712 /* AnimeSearchVC.m in Sources */,
 				97031C4B1C77AFEA00678712 /* FMNetworkingErrorMessages.m in Sources */,
 				97031C811C78F81F00678712 /* FMEmptyResultsView.m in Sources */,
-				97031C561C77B5BB00678712 /* Constants.m in Sources */,
+				97F894341C891AAF00F73E9C /* Substory+CoreDataProperties.m in Sources */,
 				97031C4F1C77B01300678712 /* UIView+FMAutolayout.m in Sources */,
+				97F894351C891AAF00F73E9C /* Substory.m in Sources */,
 				97031C991C797FC400678712 /* Anime.m in Sources */,
 				97031C771C78E7B000678712 /* UIViewController+Loading.m in Sources */,
+				97F894251C890BEF00F73E9C /* KeychainWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -685,10 +731,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Francisco Magdaleno Arceo (BZ576XHWKS)";
 				INFOPLIST_FILE = HummingBird/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.franciscojma86.HummingBird;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "e77fa408-dd23-4d5f-80ec-8f2abdee30d0";
 			};
 			name = Debug;
 		};
@@ -700,6 +748,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.franciscojma86.HummingBird;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "e77fa408-dd23-4d5f-80ec-8f2abdee30d0";
 			};
 			name = Release;
 		};
