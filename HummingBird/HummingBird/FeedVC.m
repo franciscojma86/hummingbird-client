@@ -17,9 +17,12 @@
 #import "CoreDataStack.h"
 #import "Anime.h"
 #import "Story.h"
+#import "Substory.h"
 //Networking
 #import "NetworkingCallsHelper.h"
+//Views
 #import "StoryHeaderView.h"
+#import "SubstoryCell.h"
 
 //TODO: USE NSFetchedResultsController
 
@@ -40,10 +43,16 @@
     self.navigationItem.title = @"Humming Bird";
     [self createNavBarButtons];
     
+    //register cells and headers
     UINib *headerNib = [UINib nibWithNibName:NSStringFromClass([StoryHeaderView class])
                                       bundle:nil];
     [self.tableView registerNib:headerNib forHeaderFooterViewReuseIdentifier:HEADER_IDENTIFIER];
     self.tableView.estimatedSectionHeaderHeight = 110;
+    UINib *cellNib = [UINib nibWithNibName:NSStringFromClass([SubstoryCell class])
+                                    bundle:nil];
+    [self.tableView registerNib:cellNib forCellReuseIdentifier:CELL_IDENTIFIER];
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 60;
     
 //TODO: QUERY AND SET LAST USERNAME PROPERLY
     [[NSUserDefaults standardUserDefaults] setObject:@"franciscojma86"
@@ -141,16 +150,15 @@
     return self.stories.count;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 20;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.subStories[section] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [[UITableViewCell alloc] init];
+    SubstoryCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER];
+    NSArray *substories = self.subStories[indexPath.section];
+    [cell configureWithSubstory:substories[indexPath.row]];
+    return cell;
 }
 
 @end

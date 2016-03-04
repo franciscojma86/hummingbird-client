@@ -45,6 +45,8 @@
 		97F894371C891AAF00F73E9C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F894311C891AAF00F73E9C /* User.m */; };
 		97F8943B1C894A6B00F73E9C /* StoryHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F8943A1C894A6B00F73E9C /* StoryHeaderView.m */; };
 		97F8943D1C894A7D00F73E9C /* StoryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97F8943C1C894A7D00F73E9C /* StoryHeaderView.xib */; };
+		97F894401C895FBE00F73E9C /* SubstoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97F8943F1C895FBE00F73E9C /* SubstoryCell.xib */; };
+		97F894431C895FCE00F73E9C /* SubstoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F894421C895FCE00F73E9C /* SubstoryCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +141,9 @@
 		97F894391C894A6B00F73E9C /* StoryHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryHeaderView.h; sourceTree = "<group>"; };
 		97F8943A1C894A6B00F73E9C /* StoryHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryHeaderView.m; sourceTree = "<group>"; };
 		97F8943C1C894A7D00F73E9C /* StoryHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoryHeaderView.xib; sourceTree = "<group>"; };
+		97F8943F1C895FBE00F73E9C /* SubstoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubstoryCell.xib; sourceTree = "<group>"; };
+		97F894411C895FCE00F73E9C /* SubstoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubstoryCell.h; sourceTree = "<group>"; };
+		97F894421C895FCE00F73E9C /* SubstoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubstoryCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -320,6 +325,7 @@
 		97031C7D1C78F7EF00678712 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				97F8943E1C895FB000F73E9C /* SubstoryCell */,
 				97F894381C894A5200F73E9C /* StoryHeader */,
 				97031C7E1C78F80700678712 /* Search */,
 			);
@@ -446,6 +452,16 @@
 			name = StoryHeader;
 			sourceTree = "<group>";
 		};
+		97F8943E1C895FB000F73E9C /* SubstoryCell */ = {
+			isa = PBXGroup;
+			children = (
+				97F8943F1C895FBE00F73E9C /* SubstoryCell.xib */,
+				97F894411C895FCE00F73E9C /* SubstoryCell.h */,
+				97F894421C895FCE00F73E9C /* SubstoryCell.m */,
+			);
+			name = SubstoryCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -553,6 +569,7 @@
 				97031CA61C7A3EBC00678712 /* AnimeTVCell.xib in Resources */,
 				97031C221C77AF9F00678712 /* LaunchScreen.storyboard in Resources */,
 				97031C1F1C77AF9F00678712 /* Assets.xcassets in Resources */,
+				97F894401C895FBE00F73E9C /* SubstoryCell.xib in Resources */,
 				97031C1D1C77AF9F00678712 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -598,6 +615,7 @@
 				97031C141C77AF9F00678712 /* main.m in Sources */,
 				97031CA41C7A3E8900678712 /* AnimeTVCell.m in Sources */,
 				97F894331C891AAF00F73E9C /* Story.m in Sources */,
+				97F894431C895FCE00F73E9C /* SubstoryCell.m in Sources */,
 				97F894321C891AAF00F73E9C /* Story+CoreDataProperties.m in Sources */,
 				97F894371C891AAF00F73E9C /* User.m in Sources */,
 				97031C6D1C78D97700678712 /* AnimeSearchVC.m in Sources */,

@@ -92,6 +92,7 @@ NSString * const modelName = @"Model";
             NSLog(@"ERROR SAVING CONTEXT %@",error);
         }
     }
+    NSLog(@"SAVE");
 }
 //
 //-(void)mocSavedNotification:(NSNotification *)notification {
