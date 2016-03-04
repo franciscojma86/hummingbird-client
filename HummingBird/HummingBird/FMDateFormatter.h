@@ -10,7 +10,8 @@
 
 typedef NS_ENUM(NSUInteger, DateFormat){
     DateFormatServerInput,
-    DateFormatUserOurput
+    DateFormatServerInputComplete,
+    DateFormatUserOutput
 };
 
 @interface FMDateFormatter : NSDateFormatter

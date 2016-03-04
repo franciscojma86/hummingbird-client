@@ -130,7 +130,28 @@ NSString * const modelName = @"Model";
     
     return [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass(targetClass)
                                          inManagedObjectContext:context];
+}
 
++ (NSArray *)queryObjectsFromClass:(Class)targetClass
+                     withPredicate:(NSPredicate *)predicate
+                           sortKey:(NSString *)sortKey
+                         ascending:(BOOL)ascending
+                         inContext:(NSManagedObjectContext *)context {
+    
+    NSFetchRequest *req = [[NSFetchRequest alloc]initWithEntityName:NSStringFromClass(targetClass)];
+    req.predicate = predicate;
+    if (sortKey) {
+        req.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:sortKey
+                                                              ascending:ascending]];
+    }
+    NSError *error;
+    NSArray *objects = [context executeFetchRequest:req error:&error];
+    if (error) {
+        NSLog(@"ERROR FETCHING OBJECTS %@\nOF TYPE %@",error.userInfo,NSStringFromClass(targetClass));
+        return nil;
+    }
+    
+    return objects;
 }
 
 @end

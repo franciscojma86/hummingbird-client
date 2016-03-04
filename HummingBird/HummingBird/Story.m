@@ -41,7 +41,7 @@
     story.selfPost = [storyInfo fm_objectForKeyNotNull:@"self_post"];
     story.substoriesCount = [storyInfo fm_objectForKeyNotNull:@"substories_count"];
 
-    FMDateFormatter *dateFormatter = [[FMDateFormatter alloc]initWithDateFormat:DateFormatServerInput];
+    FMDateFormatter *dateFormatter = [[FMDateFormatter alloc]initWithDateFormat:DateFormatServerInputComplete];
     NSString *updatedAtString = [storyInfo fm_objectForKeyNotNull:@"updated_at"];
     story.updatedAt = [dateFormatter dateFromString:updatedAtString];
     

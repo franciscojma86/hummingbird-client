@@ -11,6 +11,7 @@
 #import "User.h"
 #import "CoreDataStack.h"
 #import "NSDictionary+NullObjects.h"
+#import "FMDateFormatter.h"
 
 @implementation Substory
 
@@ -39,6 +40,10 @@
     
     NSDictionary *userInfo = [substoryInfo fm_objectForKeyNotNull:@"followed_user"];
     if (userInfo) substory.followedUser = [User userWithInfo:userInfo inContext:context];
+    
+    FMDateFormatter *dateFormatter = [[FMDateFormatter alloc]initWithDateFormat:DateFormatServerInputComplete];
+    NSString *createdAtString = [substoryInfo fm_objectForKeyNotNull:@"created_at"];
+    substory.createdAt = [dateFormatter dateFromString:createdAtString];
     
     return substory;
 }

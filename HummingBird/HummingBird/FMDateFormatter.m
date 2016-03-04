@@ -18,8 +18,11 @@
             case DateFormatServerInput:
                 [self setDateFormat:@"yyyy-MM-dd"];
                 break;
-            case DateFormatUserOurput:
+            case DateFormatUserOutput:
                 [self setDateStyle:NSDateFormatterMediumStyle];
+                break;
+                case DateFormatServerInputComplete:
+                [self setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZ"];
                 break;
             default:
                 break;

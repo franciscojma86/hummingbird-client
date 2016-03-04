@@ -21,4 +21,10 @@
                         propertyIDName:(NSString *)propertyIDName
                                inClass:(Class)targetClass
                              inContext:(NSManagedObjectContext *)context;
+
++ (NSArray *)queryObjectsFromClass:(Class)targetClass
+                     withPredicate:(NSPredicate *)predicate
+                           sortKey:(NSString *)sortKey
+                         ascending:(BOOL)ascending
+                         inContext:(NSManagedObjectContext *)context;
 @end

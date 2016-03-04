@@ -88,21 +88,20 @@
     self.searchQueryTask = [NetworkingCallsHelper queryAnimeBySearchText:query
                                                                  success:^(id json) {
                                                                      
-                                                                     dispatch_async(self.animeCreateBackgroundQueue, ^{
-                                                                         NSManagedObjectContext *backgroundContext = [self.coreDataStack concurrentContext];
-                                                                         [backgroundContext performBlock:^{
-                                                                             [Anime animesWithArray:json
-                                                                                          inContext:backgroundContext];
-                                                                             [self.coreDataStack saveContext:backgroundContext];
-                                                                             
-                                                                             [self.coreDataStack.mainContext performBlock:^{
-                                                                                 [self.coreDataStack saveMainContext];
-                                                                                 [self fetchAnimeResultsWithQuery:query];
-                                                                                 [self fm_stopLoading];
-                                                                             }];
-                                                                         }];
+
+                                                                     NSManagedObjectContext *backgroundContext = [self.coreDataStack concurrentContext];
+                                                                     [backgroundContext performBlock:^{
+                                                                         [Anime animesWithArray:json
+                                                                                      inContext:backgroundContext];
+                                                                         [self.coreDataStack saveContext:backgroundContext];
                                                                          
-                                                                     });
+                                                                         [self.coreDataStack.mainContext performBlock:^{
+                                                                             [self.coreDataStack saveMainContext];
+                                                                             [self fetchAnimeResultsWithQuery:query];
+                                                                             [self fm_stopLoading];
+                                                                         }];
+                                                                     }];
+                                                                     
                                                                  } failure:^(NSString *errorMessage, BOOL cancelled) {
                                                                      [self fm_stopLoading];
                                                                      self.results = nil;

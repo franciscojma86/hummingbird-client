@@ -43,6 +43,8 @@
 		97F894351C891AAF00F73E9C /* Substory.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F8942D1C891AAF00F73E9C /* Substory.m */; };
 		97F894361C891AAF00F73E9C /* User+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F8942F1C891AAF00F73E9C /* User+CoreDataProperties.m */; };
 		97F894371C891AAF00F73E9C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F894311C891AAF00F73E9C /* User.m */; };
+		97F8943B1C894A6B00F73E9C /* StoryHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F8943A1C894A6B00F73E9C /* StoryHeaderView.m */; };
+		97F8943D1C894A7D00F73E9C /* StoryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97F8943C1C894A7D00F73E9C /* StoryHeaderView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +136,9 @@
 		97F8942F1C891AAF00F73E9C /* User+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "User+CoreDataProperties.m"; sourceTree = "<group>"; };
 		97F894301C891AAF00F73E9C /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		97F894311C891AAF00F73E9C /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		97F894391C894A6B00F73E9C /* StoryHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryHeaderView.h; sourceTree = "<group>"; };
+		97F8943A1C894A6B00F73E9C /* StoryHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryHeaderView.m; sourceTree = "<group>"; };
+		97F8943C1C894A7D00F73E9C /* StoryHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoryHeaderView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,6 +320,7 @@
 		97031C7D1C78F7EF00678712 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				97F894381C894A5200F73E9C /* StoryHeader */,
 				97031C7E1C78F80700678712 /* Search */,
 			);
 			name = Views;
@@ -430,6 +436,16 @@
 			name = Keychain;
 			sourceTree = "<group>";
 		};
+		97F894381C894A5200F73E9C /* StoryHeader */ = {
+			isa = PBXGroup;
+			children = (
+				97F894391C894A6B00F73E9C /* StoryHeaderView.h */,
+				97F8943A1C894A6B00F73E9C /* StoryHeaderView.m */,
+				97F8943C1C894A7D00F73E9C /* StoryHeaderView.xib */,
+			);
+			name = StoryHeader;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -533,6 +549,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97F8943D1C894A7D00F73E9C /* StoryHeaderView.xib in Resources */,
 				97031CA61C7A3EBC00678712 /* AnimeTVCell.xib in Resources */,
 				97031C221C77AF9F00678712 /* LaunchScreen.storyboard in Resources */,
 				97031C1F1C77AF9F00678712 /* Assets.xcassets in Resources */,
@@ -566,6 +583,7 @@
 				97031C4A1C77AFEA00678712 /* FMNetworkingClient.m in Sources */,
 				97031CA01C7A354F00678712 /* FMDateFormatter.m in Sources */,
 				97031C621C77D99700678712 /* FMSearchBarTVC.m in Sources */,
+				97F8943B1C894A6B00F73E9C /* StoryHeaderView.m in Sources */,
 				97031C7B1C78F10400678712 /* FMSearchTVC.m in Sources */,
 				97031C9D1C7A33A900678712 /* NSDictionary+NullObjects.m in Sources */,
 				97031C8A1C796C5100678712 /* CoreDataStack.m in Sources */,

@@ -64,13 +64,13 @@
 
 - (NSString *)startedAiringDateString {
     if (!self.startedAiring) return @"?";
-    FMDateFormatter *formatter = [[FMDateFormatter alloc]initWithDateFormat:DateFormatUserOurput];
+    FMDateFormatter *formatter = [[FMDateFormatter alloc]initWithDateFormat:DateFormatUserOutput];
     return [formatter stringFromDate:self.startedAiring];
 }
 
 - (NSString *)finishedAiringDateString {
     if (!self.finishedAiring) return @"?";
-    FMDateFormatter *formatter = [[FMDateFormatter alloc]initWithDateFormat:DateFormatUserOurput];
+    FMDateFormatter *formatter = [[FMDateFormatter alloc]initWithDateFormat:DateFormatUserOutput];
     return [formatter stringFromDate:self.finishedAiring];
 }
 @end
