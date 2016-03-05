@@ -36,9 +36,8 @@
     substory.substoryType = [substoryInfo fm_objectForKeyNotNull:@"substory_type"];
     substory.comment = [substoryInfo fm_objectForKeyNotNull:@"comment"];
     substory.episodeNumber = [substoryInfo fm_objectForKeyNotNull:@"episode_number"];
-    NSString *statusString = [substoryInfo fm_objectForKeyNotNull:@"new_status"];
-    substory.newStatus = [substory statusFormatted:statusString];
-    
+    substory.substoryStatus = [substory statusFormatted:[substoryInfo fm_objectForKeyNotNull:@"new_status"]];
+
     NSDictionary *userInfo = [substoryInfo fm_objectForKeyNotNull:@"followed_user"];
     if (userInfo) substory.followedUser = [User userWithInfo:userInfo inContext:context];
     
@@ -50,7 +49,8 @@
 }
 
 - (NSString *)statusFormatted:(NSString *)status {
-    NSString *result = [status stringByReplacingOccurrencesOfString:@"_" withString:@" "];
+    NSString *result = [status stringByReplacingOccurrencesOfString:@"_"
+                                                         withString:@" "];
     return result;
 }
 

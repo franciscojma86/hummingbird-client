@@ -58,10 +58,10 @@
             <connections>
                 <outlet property="avatarImageView" destination="lfP-mo-4aj" id="89c-Ai-ny0"/>
                 <outlet property="dateLabel" destination="ZdF-dG-TwK" id="fPh-vC-Erk"/>
-                <outlet property="statusLabel" destination="BJR-qb-fM1" id="pdW-Fp-fh4"/>
+                <outlet property="statusLabel" destination="BJR-qb-fM1" id="qqV-zL-ZlZ"/>
                 <outlet property="usernameLabel" destination="41Q-zp-wvd" id="FOb-Rc-QrL"/>
             </connections>
-            <point key="canvasLocation" x="419" y="398"/>
+            <point key="canvasLocation" x="94" y="547"/>
         </tableViewCell>
     </objects>
     <resources>

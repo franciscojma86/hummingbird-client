@@ -35,7 +35,7 @@
         [self.avatarImageView setImage:[UIImage imageNamed:@"placeholder"]];
     }
     
-    [self.statusLabel setText:substory.newStatus];
+    [self.statusLabel setText:substory.substoryStatus];
     FMDateFormatter *formatter = [[FMDateFormatter alloc]initWithDateFormat:DateFormatUserOutput];
     [self.dateLabel setText:[formatter stringFromDate:substory.createdAt]];
 }
@@ -49,3 +49,4 @@
 }
 
 @end
+//

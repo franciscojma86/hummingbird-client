@@ -30,6 +30,7 @@
 
 @property (nonatomic,strong) NSArray *stories;
 @property (nonatomic,strong) NSArray *subStories;
+
 @end
 
 @implementation FeedVC
@@ -90,7 +91,7 @@
                                                 success:^(id json) {
                                                     NSManagedObjectContext *backgroundContext = [self.coreDataStack concurrentContext];
                                                     [backgroundContext performBlock:^{
-                                                        [Story storyWithArray:json inContext:self.coreDataStack.mainContext];
+                                                        [Story storyWithArray:json inContext:backgroundContext];
                                                         [self.coreDataStack saveContext:backgroundContext];
                                                         [self.coreDataStack.mainContext performBlock:^{
                                                             [self.coreDataStack saveMainContext];
@@ -112,10 +113,17 @@
                                               ascending:NO
                                               inContext:self.coreDataStack.mainContext];
     NSMutableArray *substories = [NSMutableArray array];
-    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"createdAt"
-                                                           ascending:NO];
+//    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"createdAt"
+//                                                           ascending:NO];
     for (Story *story in self.stories) {
-        [substories addObject:[[story.substories allObjects] sortedArrayUsingDescriptors:@[sort]]];
+        NSPredicate *pred = [NSPredicate predicateWithFormat:@"substoryForStory == %@",story];
+        NSArray *ss = [CoreDataStack queryObjectsFromClass:[Substory class]
+                                             withPredicate:pred
+                                                   sortKey:@"createdAt"
+                                                 ascending:NO
+                                                 inContext:self.coreDataStack.mainContext];
+        
+        [substories addObject:ss];
     }
     self.subStories = substories;
     [self.tableView reloadData];

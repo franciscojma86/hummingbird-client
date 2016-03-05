@@ -33,8 +33,8 @@
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="episodeNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="newStatus" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="substoryID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="substoryStatus" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="substoryType" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="followedUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="userFollowedBySubstory" inverseEntity="User" syncable="YES"/>
         <relationship name="substoryForStory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Story" inverseName="substories" inverseEntity="Story" syncable="YES"/>
@@ -58,8 +58,8 @@
     </configuration>
     <elements>
         <element name="Anime" positionX="153" positionY="-18" width="128" height="283"/>
-        <element name="User" positionX="765" positionY="23" width="128" height="133"/>
+        <element name="User" positionX="844" positionY="-0" width="128" height="133"/>
         <element name="Story" positionX="448" positionY="-100" width="128" height="178"/>
-        <element name="Substory" positionX="540" positionY="146" width="128" height="163"/>
+        <element name="Substory" positionX="646" positionY="-226" width="128" height="163"/>
     </elements>
 </model>

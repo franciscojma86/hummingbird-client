@@ -29,6 +29,7 @@ NSString * const modelName = @"Model";
     if (!_mainContext) {
         _mainContext = [[NSManagedObjectContext alloc]initWithConcurrencyType:NSMainQueueConcurrencyType];
         [_mainContext setPersistentStoreCoordinator:self.psc];
+        [_mainContext setRetainsRegisteredObjects:YES];
     }
     return _mainContext;
 }
@@ -91,8 +92,9 @@ NSString * const modelName = @"Model";
         if (error) {
             NSLog(@"ERROR SAVING CONTEXT %@",error);
         }
+        NSLog(@"SAVE");
+
     }
-    NSLog(@"SAVE");
 }
 //
 //-(void)mocSavedNotification:(NSNotification *)notification {
@@ -127,6 +129,10 @@ NSString * const modelName = @"Model";
     if (error) {
         NSLog(@"ERROR CREATING OBJECT %@\nOF TYPE %@",error.userInfo,NSStringFromClass(targetClass));
         return nil;
+    } else {
+        if (obj) {
+            return obj;
+        }
     }
     
     return [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass(targetClass)
@@ -140,6 +146,7 @@ NSString * const modelName = @"Model";
                          inContext:(NSManagedObjectContext *)context {
     
     NSFetchRequest *req = [[NSFetchRequest alloc]initWithEntityName:NSStringFromClass(targetClass)];
+    [req setReturnsObjectsAsFaults:NO];
     req.predicate = predicate;
     if (sortKey) {
         req.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:sortKey

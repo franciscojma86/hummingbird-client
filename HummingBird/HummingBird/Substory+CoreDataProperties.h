@@ -2,7 +2,7 @@
 //  Substory+CoreDataProperties.h
 //  HummingBird
 //
-//  Created by Francisco Magdaleno on 3/3/16.
+//  Created by Francisco Magdaleno on 3/4/16.
 //  Copyright © 2016 franciscojma86. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSDate *createdAt;
 @property (nullable, nonatomic, retain) NSString *comment;
 @property (nullable, nonatomic, retain) NSNumber *episodeNumber;
-@property (nullable, nonatomic, retain) NSString *newStatus;
+@property (nullable, nonatomic, retain) NSString *substoryStatus;
 @property (nullable, nonatomic, retain) Story *substoryForStory;
 @property (nullable, nonatomic, retain) User *followedUser;
 
