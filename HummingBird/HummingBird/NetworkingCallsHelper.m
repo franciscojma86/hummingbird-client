@@ -39,6 +39,19 @@
     return queryTask;
 }
 
++ (NSURLSessionDataTask *)queryLibraryForUsername:(NSString *)username
+                                          success:(SuccessJSONBlock)success
+                                          failure:(FailMessageBlock)failure {
+    NSString *queryPath = [NSString stringWithFormat:@"users/%@/library",username];
+    NSURLSessionDataTask *queryTask = [[FMNetworkingClient sharedClient] dataTaskWithMethod:GET
+                                                                                       path:queryPath
+                                                                                       body:nil
+                                                                           successDataBlock:nil
+                                                                           successJSONBlock:success
+                                                                                    failure:failure];
+    return queryTask;
+}
+
 + (NSURLSessionDataTask *)authenticateUserWithUsername:(NSString *)username
                                               password:(NSString *)password
                                                success:(SuccessJSONBlock)success

@@ -83,6 +83,7 @@ static const UInt8 kKeychainItemIdentifier[] = "com.franciscojma86.HummingBird.K
     return self;
 }
 
+#warning make threadsafe
 - (void)fm_setObject:(id)inObject forKey:(id)key {
     if (inObject == nil) return;
     id currentObject = [_keychainData objectForKey:key];

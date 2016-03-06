@@ -50,6 +50,11 @@
 		97F894481C8B5F2C00F73E9C /* OfflineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F894461C8B5F2C00F73E9C /* OfflineView.m */; };
 		97F894491C8B5F2C00F73E9C /* OfflineView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97F894471C8B5F2C00F73E9C /* OfflineView.xib */; };
 		97F8944C1C8B776E00F73E9C /* LoginTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F8944B1C8B776E00F73E9C /* LoginTVC.m */; };
+		97F894501C8C1C9400F73E9C /* LibraryTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F8944F1C8C1C9400F73E9C /* LibraryTVC.m */; };
+		97F894531C8CBBC800F73E9C /* AuthenticationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F894521C8CBBC800F73E9C /* AuthenticationHelper.m */; };
+		97F894561C8CC62600F73E9C /* FMBaseTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F894551C8CC62600F73E9C /* FMBaseTVC.m */; };
+		97F8945B1C8CD27400F73E9C /* AccountVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F894591C8CD27400F73E9C /* AccountVC.m */; };
+		97F8945C1C8CD27400F73E9C /* AccountVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97F8945A1C8CD27400F73E9C /* AccountVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -152,6 +157,15 @@
 		97F894471C8B5F2C00F73E9C /* OfflineView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OfflineView.xib; sourceTree = "<group>"; };
 		97F8944A1C8B776E00F73E9C /* LoginTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginTVC.h; sourceTree = "<group>"; };
 		97F8944B1C8B776E00F73E9C /* LoginTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginTVC.m; sourceTree = "<group>"; };
+		97F8944E1C8C1C9400F73E9C /* LibraryTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryTVC.h; sourceTree = "<group>"; };
+		97F8944F1C8C1C9400F73E9C /* LibraryTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryTVC.m; sourceTree = "<group>"; };
+		97F894511C8CBBC800F73E9C /* AuthenticationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationHelper.h; sourceTree = "<group>"; };
+		97F894521C8CBBC800F73E9C /* AuthenticationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationHelper.m; sourceTree = "<group>"; };
+		97F894541C8CC62600F73E9C /* FMBaseTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMBaseTVC.h; sourceTree = "<group>"; };
+		97F894551C8CC62600F73E9C /* FMBaseTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMBaseTVC.m; sourceTree = "<group>"; };
+		97F894581C8CD27400F73E9C /* AccountVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountVC.h; sourceTree = "<group>"; };
+		97F894591C8CD27400F73E9C /* AccountVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountVC.m; sourceTree = "<group>"; };
+		97F8945A1C8CD27400F73E9C /* AccountVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,12 +317,14 @@
 		97031C6A1C78D94900678712 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				97F894571C8CD25400F73E9C /* Account */,
 				97031C151C77AF9F00678712 /* AppDelegate.h */,
 				97031C161C77AF9F00678712 /* AppDelegate.m */,
+				97031C7C1C78F7E300678712 /* Base */,
 				97F894441C8B5BDA00F73E9C /* Autentication */,
-				97031C7C1C78F7E300678712 /* Search */,
 				97031C821C78F9C100678712 /* Feed */,
 				97031C831C78F9CF00678712 /* AnimeSearch */,
+				97F8944D1C8C1C6800F73E9C /* Library */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -322,13 +338,15 @@
 			name = Loading;
 			sourceTree = "<group>";
 		};
-		97031C7C1C78F7E300678712 /* Search */ = {
+		97031C7C1C78F7E300678712 /* Base */ = {
 			isa = PBXGroup;
 			children = (
 				97031C791C78F10400678712 /* FMSearchTVC.h */,
 				97031C7A1C78F10400678712 /* FMSearchTVC.m */,
+				97F894541C8CC62600F73E9C /* FMBaseTVC.h */,
+				97F894551C8CC62600F73E9C /* FMBaseTVC.m */,
 			);
-			name = Search;
+			name = Base;
 			sourceTree = "<group>";
 		};
 		97031C7D1C78F7EF00678712 /* Views */ = {
@@ -378,6 +396,8 @@
 			children = (
 				97031C8B1C796C5A00678712 /* Networking */,
 				97031C8C1C796C6300678712 /* CoreData */,
+				97F894511C8CBBC800F73E9C /* AuthenticationHelper.h */,
+				97F894521C8CBBC800F73E9C /* AuthenticationHelper.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -481,6 +501,25 @@
 				97F8944B1C8B776E00F73E9C /* LoginTVC.m */,
 			);
 			name = Autentication;
+			sourceTree = "<group>";
+		};
+		97F8944D1C8C1C6800F73E9C /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				97F8944E1C8C1C9400F73E9C /* LibraryTVC.h */,
+				97F8944F1C8C1C9400F73E9C /* LibraryTVC.m */,
+			);
+			name = Library;
+			sourceTree = "<group>";
+		};
+		97F894571C8CD25400F73E9C /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				97F894581C8CD27400F73E9C /* AccountVC.h */,
+				97F894591C8CD27400F73E9C /* AccountVC.m */,
+				97F8945A1C8CD27400F73E9C /* AccountVC.xib */,
+			);
+			name = Account;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -590,6 +629,7 @@
 				97031CA61C7A3EBC00678712 /* AnimeTVCell.xib in Resources */,
 				97031C221C77AF9F00678712 /* LaunchScreen.storyboard in Resources */,
 				97031C1F1C77AF9F00678712 /* Assets.xcassets in Resources */,
+				97F8945C1C8CD27400F73E9C /* AccountVC.xib in Resources */,
 				97F894401C895FBE00F73E9C /* SubstoryCell.xib in Resources */,
 				97F894491C8B5F2C00F73E9C /* OfflineView.xib in Resources */,
 				97031C1D1C77AF9F00678712 /* Main.storyboard in Resources */,
@@ -622,8 +662,10 @@
 				97031C4A1C77AFEA00678712 /* FMNetworkingClient.m in Sources */,
 				97031CA01C7A354F00678712 /* FMDateFormatter.m in Sources */,
 				97031C621C77D99700678712 /* FMSearchBarTVC.m in Sources */,
+				97F894561C8CC62600F73E9C /* FMBaseTVC.m in Sources */,
 				97F8943B1C894A6B00F73E9C /* StoryHeaderView.m in Sources */,
 				97031C7B1C78F10400678712 /* FMSearchTVC.m in Sources */,
+				97F894501C8C1C9400F73E9C /* LibraryTVC.m in Sources */,
 				97031C9D1C7A33A900678712 /* NSDictionary+NullObjects.m in Sources */,
 				97031C8A1C796C5100678712 /* CoreDataStack.m in Sources */,
 				97031C1A1C77AF9F00678712 /* FeedVC.m in Sources */,
@@ -637,9 +679,11 @@
 				97031C141C77AF9F00678712 /* main.m in Sources */,
 				97031CA41C7A3E8900678712 /* AnimeTVCell.m in Sources */,
 				97F8944C1C8B776E00F73E9C /* LoginTVC.m in Sources */,
+				97F894531C8CBBC800F73E9C /* AuthenticationHelper.m in Sources */,
 				97F894331C891AAF00F73E9C /* Story.m in Sources */,
 				97F894431C895FCE00F73E9C /* SubstoryCell.m in Sources */,
 				97F894321C891AAF00F73E9C /* Story+CoreDataProperties.m in Sources */,
+				97F8945B1C8CD27400F73E9C /* AccountVC.m in Sources */,
 				97F894371C891AAF00F73E9C /* User.m in Sources */,
 				97031C6D1C78D97700678712 /* AnimeSearchVC.m in Sources */,
 				97031C4B1C77AFEA00678712 /* FMNetworkingErrorMessages.m in Sources */,

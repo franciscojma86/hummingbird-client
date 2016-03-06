@@ -7,14 +7,8 @@
 //
 
 #import "FeedVC.h"
-//Constants
-#import "Constants.h"
-//Controllers
-#import "UIViewController+Loading.h"
-#import "LoginTVC.h"
 //Model
 #import "CoreDataStack.h"
-#import "KeychainWrapper.h"
 #import "Anime.h"
 #import "Story.h"
 #import "Substory.h"
@@ -23,14 +17,11 @@
 //Views
 #import "StoryHeaderView.h"
 #import "SubstoryCell.h"
-#import "OfflineView.h"
 
-@interface FeedVC () <OfflineViewDelegate, LoginTVCDelegate>
+@interface FeedVC () 
 
 @property (nonatomic,strong) NSArray *stories;
 @property (nonatomic,strong) NSArray *subStories;
-
-@property (nonatomic,strong) NSString *activeUsername;
 
 @end
 
@@ -44,10 +35,6 @@
     //configure nav bar
     self.navigationItem.title = @"Humming Bird";
     
-    self.refreshControl = [[UIRefreshControl alloc]init];
-    [self.refreshControl addTarget:self
-                            action:@selector(queryFeed)
-                  forControlEvents:UIControlEventValueChanged];
     //register cells and headers
     UINib *headerNib = [UINib nibWithNibName:NSStringFromClass([StoryHeaderView class])
                                       bundle:nil];
@@ -62,51 +49,21 @@
     [self queryFeed];
 }
 
-#pragma mark -UI methods
-- (void)showOfflineView {
-    self.stories = nil;
-    self.subStories = nil;
-    [self.tableView reloadData];
-    self.navigationItem.leftBarButtonItem = nil;
-    OfflineView *offlineView = [[OfflineView alloc]init];
-
-    [offlineView setDelegate:self];
-    [self.tableView setBackgroundView:offlineView];
-}
-
-- (void)hideOfflineView {
-    [self.tableView setBackgroundView:nil];
-    //account button
-    UIBarButtonItem *accountButton = [[UIBarButtonItem alloc]initWithTitle:@"Log off"
-                                                                     style:UIBarButtonItemStylePlain
-                                                                    target:self
-                                                                    action:@selector(logoffPressed)];
-    self.navigationItem.leftBarButtonItem = accountButton;
-
-}
-
-#pragma mark -Authentication methods
-- (NSString *)lastUsername {
-    NSString *name = [self.keychainWrapper fm_objectForKey:USERNAME_KEY];
-    if ([name isEqualToString:@"invalid"]) {
-        self.activeUsername = nil;
-        return nil;
-    }
-    self.activeUsername = name;
-    return name;
-}
-
 #pragma mark -Feed methods
+- (void)refreshPulled {
+    [self queryFeed];
+}
+
 - (void)queryFeed {
-    NSString *lastUsername = [self lastUsername];
-    if (!lastUsername) {
+    NSString *activeUserName = [self.authenticationHelper activeUsername];
+    if (!activeUserName) {
         [self showOfflineView];
         return;
     } else {
         [self hideOfflineView];
     }
     [self fm_startLoading];
-    [NetworkingCallsHelper queryActivityFeedForUsername:lastUsername
+    [NetworkingCallsHelper queryActivityFeedForUsername:activeUserName
                                                 success:^(id json) {
                                                     NSManagedObjectContext *backgroundContext = [self.coreDataStack concurrentContext];
                                                     [backgroundContext performBlock:^{
@@ -155,12 +112,11 @@
     [self.tableView reloadData];
 }
 
-#pragma mark -Account methods
-- (void)logoffPressed {
-    
-    [self.keychainWrapper resetKeychainItem];
-    self.activeUsername = nil;
-    [self queryFeed];
+- (void)showOfflineView {
+    [super showOfflineView];
+    self.stories = nil;
+    self.subStories = nil;
+    [self.tableView reloadData];
 }
 
 #pragma mark -Tableview delegate
@@ -188,18 +144,6 @@
 }
 
 #pragma mark -Login methods
-- (void)showLoginTVC {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main"
-                                                         bundle:nil];
-    LoginTVC *controller = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([LoginTVC class])];
-    [controller setKeychainWrapper:self.keychainWrapper];
-    [controller setDelegate:self];
-    UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:controller];
-    [self presentViewController:navController
-                       animated:YES
-                     completion:nil];
-
-}
 - (void)loginTVCDidSignIn:(LoginTVC *)sender {
     [self dismissViewControllerAnimated:YES
                              completion:^{
@@ -207,9 +151,5 @@
                              }];
 }
 
-#pragma mark -Offline delegate
-- (void)offlineViewDidTapSignIn:(OfflineView *)sender {
-    [self showLoginTVC];
-}
 
 @end

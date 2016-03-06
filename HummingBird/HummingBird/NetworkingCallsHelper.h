@@ -21,6 +21,10 @@
                                                success:(SuccessJSONBlock)success
                                                failure:(FailMessageBlock)failure;
 
++ (NSURLSessionDataTask *)queryLibraryForUsername:(NSString *)username
+                                          success:(SuccessJSONBlock)success
+                                          failure:(FailMessageBlock)failure;
+
 + (NSURLSessionDataTask *)authenticateUserWithUsername:(NSString *)username
                                               password:(NSString *)password
                                                success:(SuccessJSONBlock)success

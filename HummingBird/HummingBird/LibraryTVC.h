@@ -1,8 +1,8 @@
 //
-//  ViewController.h
+//  LibraryTVC.h
 //  HummingBird
 //
-//  Created by Francisco Magdaleno on 2/19/16.
+//  Created by Francisco Magdaleno on 3/6/16.
 //  Copyright © 2016 franciscojma86. All rights reserved.
 //
 
@@ -10,11 +10,9 @@
 #import "FMBaseTVC.h"
 
 @class CoreDataStack;
-@class AuthenticationHelper;
 
-@interface FeedVC : FMBaseTVC
+@interface LibraryTVC : FMBaseTVC
 
 @property (nonatomic,strong) CoreDataStack *coreDataStack;
 
 @end
-

@@ -10,11 +10,12 @@
 #import "Constants.h"
 //helpers
 #import "CoreDataStack.h"
-#import "KeychainWrapper.h"
+#import "AuthenticationHelper.h"
 //controllers
 #import "FeedVC.h"
 #import "AnimeSearchVC.h"
-
+#import "LibraryTVC.h"
+#import "AccountVC.h"
 @interface AppDelegate ()
 
 @end
@@ -33,17 +34,14 @@
 
 }
 
-#pragma mark -Application delegate methods
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-    [self createAppearance];
+- (void)setupTabBarController {
     CoreDataStack *coreDataStack = [[CoreDataStack alloc]init];
-    KeychainWrapper *keychainWrapper = [[KeychainWrapper alloc]init];
+    AuthenticationHelper *authenticationHelper = [[AuthenticationHelper alloc]init];
     
     self.tabBarController = [[UITabBarController alloc]init];
-    FeedVC *feedController = [[FeedVC alloc]initWithStyle:UITableViewStylePlain];
+    FeedVC *feedController = [[FeedVC alloc]initWithStyle:UITableViewStyleGrouped];
     [feedController setCoreDataStack:coreDataStack];
-    [feedController setKeychainWrapper:keychainWrapper];
+    [feedController setAuthenticationHelper:authenticationHelper];
     
     UINavigationController *feedNavController = [[UINavigationController alloc]initWithRootViewController:feedController];
     feedNavController.tabBarItem.title = @"Feed";
@@ -52,32 +50,31 @@
     
     UINavigationController *animeNavController = [[UINavigationController alloc]initWithRootViewController:animeController];
     animeNavController.tabBarItem.title = @"Search";
-    self.tabBarController.viewControllers = @[feedNavController,animeNavController];
+    
+    LibraryTVC *libraryController = [[LibraryTVC alloc]initWithStyle:UITableViewStylePlain];
+    [libraryController setCoreDataStack:coreDataStack];
+    [libraryController setAuthenticationHelper:authenticationHelper];
+    UINavigationController *libraryNavController = [[UINavigationController alloc]initWithRootViewController:libraryController];
+    libraryNavController.tabBarItem.title = @"Library";
+    
+    AccountVC *accountController = [[AccountVC alloc]init];
+    [accountController setAuthenticatinHelper:authenticationHelper];
+    UINavigationController *accountNavController = [[UINavigationController alloc]initWithRootViewController:accountController];
+    accountNavController.tabBarItem.title = @"Account";
+    self.tabBarController.viewControllers = @[feedNavController,
+                                              animeNavController,
+                                              libraryNavController,
+                                              accountNavController];
+}
+
+#pragma mark -Application delegate methods
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    [self createAppearance];
+    [self setupTabBarController];
     
     self.window.rootViewController = self.tabBarController;
     return YES;
-}
-
-- (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-}
-
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-}
-
-- (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
 @end

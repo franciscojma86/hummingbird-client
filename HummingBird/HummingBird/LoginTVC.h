@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-@class KeychainWrapper;
+
 @class LoginTVC;
+@class AuthenticationHelper;
 @protocol LoginTVCDelegate <NSObject>
 
 - (void)loginTVCDidSignIn:(LoginTVC *)sender;
@@ -16,6 +17,9 @@
 @end
 
 @interface LoginTVC : UITableViewController
-@property (nonatomic,strong) KeychainWrapper *keychainWrapper;
+
+@property (nonatomic,strong) AuthenticationHelper *authenticationHelper;
+
 @property (nonatomic,weak) id<LoginTVCDelegate>delegate;
+
 @end

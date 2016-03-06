@@ -7,10 +7,9 @@
 //
 
 #import "LoginTVC.h"
-#import "KeychainWrapper.h"
 #import "NetworkingCallsHelper.h"
 #import "UIViewController+Loading.h"
-#import "Constants.h"
+#import "AuthenticationHelper.h"
 
 @interface LoginTVC () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
@@ -83,15 +82,23 @@
                                                                  password:password
                                                                   success:^(id json) {
                                                                       [self fm_stopLoading];
-                                                                      [self.keychainWrapper fm_setObject:username
-                                                                                                  forKey:USERNAME_KEY];
-                                                                      [self.keychainWrapper fm_setObject:json
-                                                                                                  forKey:TOKEN_KEY];
+                                                                      [self.authenticationHelper saveUsername:username
+                                                                                                        token:json];
                                                                       [self.delegate loginTVCDidSignIn:self];
                                                                   } failure:^(NSString *errorMessage, BOOL cancelled) {
                                                                       [self.usernameTextField becomeFirstResponder];
                                                                       [self fm_stopLoading];
-                                                                      NSLog(@"ERROR %@",errorMessage);
+                                                                      UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"An error ocurred"
+                                                                                                                                     message:errorMessage
+                                                                                                                              preferredStyle:UIAlertControllerStyleAlert];
+                                                                      UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK"
+                                                                                                                       style:UIAlertActionStyleDefault
+                                                                                                                     handler:nil];
+                                                                      [alert addAction:action];
+                                                                      [self presentViewController:alert
+                                                                                         animated:YES
+                                                                                       completion:nil];
+
                                                                   }];
     
 }

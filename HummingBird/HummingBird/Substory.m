@@ -35,7 +35,7 @@
     substory.substoryID = [substoryInfo fm_objectForKeyNotNull:@"id"];
     substory.substoryType = [substoryInfo fm_objectForKeyNotNull:@"substory_type"];
     substory.comment = [substoryInfo fm_objectForKeyNotNull:@"comment"];
-    substory.episodeNumber = [substoryInfo fm_objectForKeyNotNull:@"episode_number"];
+    substory.episodeNumber = @([[substoryInfo fm_objectForKeyNotNull:@"episode_number"]integerValue]);
     substory.substoryStatus = [substory statusFormatted:[substoryInfo fm_objectForKeyNotNull:@"new_status"]];
 
     NSDictionary *userInfo = [substoryInfo fm_objectForKeyNotNull:@"followed_user"];

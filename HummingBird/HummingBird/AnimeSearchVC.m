@@ -47,16 +47,16 @@
     [self.tableView registerNib:cellNib forCellReuseIdentifier:CELL_IDENTIFIER];
     self.tableView.estimatedRowHeight = 120;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]initWithTitle:@"Cancel"
+                                                                    style:UIBarButtonItemStyleDone
+                                                                   target:self
+                                                                   action:@selector(cancelPressed)];
+    self.navigationItem.rightBarButtonItem = cancelButton;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     if (self.searchQueryTask) [self.searchQueryTask cancel];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    [self.searchBar becomeFirstResponder];
 }
 
 - (void)setResults:(NSArray *)results {
@@ -75,6 +75,11 @@
 }
 
 #pragma mark -Search methods
+- (void)cancelPressed {
+    [self.searchBar setText:nil];
+    [self.searchBar resignFirstResponder];
+}
+
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [searchBar resignFirstResponder];
     [self querySearchText:searchBar.text];
