@@ -10,11 +10,11 @@
 //Constants
 #import "Constants.h"
 //Controllers
-#import "AnimeSearchVC.h"
 #import "UIViewController+Loading.h"
-
+#import "LoginTVC.h"
 //Model
 #import "CoreDataStack.h"
+#import "KeychainWrapper.h"
 #import "Anime.h"
 #import "Story.h"
 #import "Substory.h"
@@ -23,13 +23,14 @@
 //Views
 #import "StoryHeaderView.h"
 #import "SubstoryCell.h"
+#import "OfflineView.h"
 
-//TODO: USE NSFetchedResultsController
-
-@interface FeedVC ()
+@interface FeedVC () <OfflineViewDelegate, LoginTVCDelegate>
 
 @property (nonatomic,strong) NSArray *stories;
 @property (nonatomic,strong) NSArray *subStories;
+
+@property (nonatomic,strong) NSString *activeUsername;
 
 @end
 
@@ -42,8 +43,11 @@
     [super viewDidLoad];
     //configure nav bar
     self.navigationItem.title = @"Humming Bird";
-    [self createNavBarButtons];
     
+    self.refreshControl = [[UIRefreshControl alloc]init];
+    [self.refreshControl addTarget:self
+                            action:@selector(queryFeed)
+                  forControlEvents:UIControlEventValueChanged];
     //register cells and headers
     UINib *headerNib = [UINib nibWithNibName:NSStringFromClass([StoryHeaderView class])
                                       bundle:nil];
@@ -54,40 +58,55 @@
     [self.tableView registerNib:cellNib forCellReuseIdentifier:CELL_IDENTIFIER];
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 60;
-    
-//TODO: QUERY AND SET LAST USERNAME PROPERLY
-    [[NSUserDefaults standardUserDefaults] setObject:@"franciscojma86"
-                                              forKey:LAST_USERNAME_KEY];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
+
     [self queryFeed];
 }
 
-- (NSString *)lastUsername {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:LAST_USERNAME_KEY];
+#pragma mark -UI methods
+- (void)showOfflineView {
+    self.stories = nil;
+    self.subStories = nil;
+    [self.tableView reloadData];
+    self.navigationItem.leftBarButtonItem = nil;
+    OfflineView *offlineView = [[OfflineView alloc]init];
+
+    [offlineView setDelegate:self];
+    [self.tableView setBackgroundView:offlineView];
 }
 
-#pragma mark -UI methods
-- (void)createNavBarButtons {
+- (void)hideOfflineView {
+    [self.tableView setBackgroundView:nil];
     //account button
-    UIBarButtonItem *accountButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"account"]
+    UIBarButtonItem *accountButton = [[UIBarButtonItem alloc]initWithTitle:@"Log off"
                                                                      style:UIBarButtonItemStylePlain
                                                                     target:self
-                                                                    action:@selector(accountPressed)];
+                                                                    action:@selector(logoffPressed)];
     self.navigationItem.leftBarButtonItem = accountButton;
-    //search button
-    UIBarButtonItem *searchButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"search"]
-                                                                    style:UIBarButtonItemStylePlain
-                                                                   target:self
-                                                                   action:@selector(searchPressed)];
-    self.navigationItem.rightBarButtonItem = searchButton;
+
+}
+
+#pragma mark -Authentication methods
+- (NSString *)lastUsername {
+    NSString *name = [self.keychainWrapper fm_objectForKey:USERNAME_KEY];
+    if ([name isEqualToString:@"invalid"]) {
+        self.activeUsername = nil;
+        return nil;
+    }
+    self.activeUsername = name;
+    return name;
 }
 
 #pragma mark -Feed methods
 - (void)queryFeed {
-//TODO: REACT TO ERRORS
+    NSString *lastUsername = [self lastUsername];
+    if (!lastUsername) {
+        [self showOfflineView];
+        return;
+    } else {
+        [self hideOfflineView];
+    }
     [self fm_startLoading];
-    [NetworkingCallsHelper queryActivityFeedForUsername:[self lastUsername]
+    [NetworkingCallsHelper queryActivityFeedForUsername:lastUsername
                                                 success:^(id json) {
                                                     NSManagedObjectContext *backgroundContext = [self.coreDataStack concurrentContext];
                                                     [backgroundContext performBlock:^{
@@ -97,12 +116,21 @@
                                                             [self.coreDataStack saveMainContext];
                                                             [self queryStoriesFromDB];
                                                             [self fm_stopLoading];
+                                                            [self.refreshControl endRefreshing];
                                                         }];
                                                     }];
-
+                                                
                                                 } failure:^(NSString *errorMessage, BOOL cancelled) {
                                                     [self fm_stopLoading];
-                                                    NSLog(@"ERROR %@",errorMessage);
+                                                    [self.refreshControl endRefreshing];
+                                                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error!"
+                                                                                                                   message:errorMessage
+                                                                                                            preferredStyle:UIAlertControllerStyleAlert];
+                                                    UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK"
+                                                                                                     style:UIAlertActionStyleCancel
+                                                                                                   handler:nil];
+                                                    [alert addAction:action];
+                                                    [self presentViewController:alert animated:NO completion:nil];
                                                 }];
 }
 
@@ -113,8 +141,6 @@
                                               ascending:NO
                                               inContext:self.coreDataStack.mainContext];
     NSMutableArray *substories = [NSMutableArray array];
-//    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"createdAt"
-//                                                           ascending:NO];
     for (Story *story in self.stories) {
         NSPredicate *pred = [NSPredicate predicateWithFormat:@"substoryForStory == %@",story];
         NSArray *ss = [CoreDataStack queryObjectsFromClass:[Substory class]
@@ -130,19 +156,11 @@
 }
 
 #pragma mark -Account methods
-- (void)accountPressed {
-
-}
-
-#pragma mark -Search methods
-- (void)searchPressed {
-    [self showAnimeSearchVC];
-}
-
-- (void)showAnimeSearchVC {
-    AnimeSearchVC *controller = [[AnimeSearchVC alloc]initWithStyle:UITableViewStyleGrouped];
-    [controller setCoreDataStack:self.coreDataStack];
-    [self showViewController:controller sender:self];
+- (void)logoffPressed {
+    
+    [self.keychainWrapper resetKeychainItem];
+    self.activeUsername = nil;
+    [self queryFeed];
 }
 
 #pragma mark -Tableview delegate
@@ -167,6 +185,31 @@
     NSArray *substories = self.subStories[indexPath.section];
     [cell configureWithSubstory:substories[indexPath.row]];
     return cell;
+}
+
+#pragma mark -Login methods
+- (void)showLoginTVC {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main"
+                                                         bundle:nil];
+    LoginTVC *controller = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([LoginTVC class])];
+    [controller setKeychainWrapper:self.keychainWrapper];
+    [controller setDelegate:self];
+    UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:controller];
+    [self presentViewController:navController
+                       animated:YES
+                     completion:nil];
+
+}
+- (void)loginTVCDidSignIn:(LoginTVC *)sender {
+    [self dismissViewControllerAnimated:YES
+                             completion:^{
+                                 [self queryFeed];
+                             }];
+}
+
+#pragma mark -Offline delegate
+- (void)offlineViewDidTapSignIn:(OfflineView *)sender {
+    [self showLoginTVC];
 }
 
 @end

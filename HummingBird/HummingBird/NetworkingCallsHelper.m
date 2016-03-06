@@ -17,7 +17,6 @@
     
     NSString *queryPath = [NSString stringWithFormat:@"search/anime?query=%@",query];
     queryPath = [queryPath stringByReplacingOccurrencesOfString:@" " withString:@"+"];
-//    NSLog(@"SEARCHING %@",queryPath);
     NSURLSessionDataTask *queryTask = [[FMNetworkingClient sharedClient] dataTaskWithMethod:GET
                                                                                        path:queryPath
                                                                                        body:nil
@@ -39,6 +38,23 @@
                                                                                     failure:failure];
     return queryTask;
 }
+
++ (NSURLSessionDataTask *)authenticateUserWithUsername:(NSString *)username
+                                              password:(NSString *)password
+                                               success:(SuccessJSONBlock)success
+                                               failure:(FailMessageBlock)failure {
+    NSDictionary *params = @{@"password" : password,
+                             @"username" : username};
+    NSString *queryPath = @"users/authenticate";
+    NSURLSessionDataTask *queryTask = [[FMNetworkingClient sharedClient] dataTaskWithMethod:POST
+                                                                                       path:queryPath
+                                                                                       body:params
+                                                                           successDataBlock:nil
+                                                                           successJSONBlock:success
+                                                                                    failure:failure];
+    return queryTask;
+}
+
 
 + (NSURLSessionDataTask *)downloadImageWithURL:(NSURL *)url
                                        success:(SuccessImageBlock)success

@@ -113,8 +113,8 @@ static const UInt8 kKeychainItemIdentifier[] = "com.franciscojma86.HummingBird.K
     
     // Default generic data for Keychain Item:
     [_keychainData setObject:@"Account Password" forKey:(__bridge id)kSecAttrLabel];
-    [_keychainData setObject:@"Account" forKey:(__bridge id)kSecAttrAccount];
-    [_keychainData setObject:@"password" forKey:(__bridge id)kSecValueData];
+    [_keychainData setObject:@"invalid" forKey:(__bridge id)kSecAttrAccount];
+    [_keychainData setObject:@"invalid" forKey:(__bridge id)kSecValueData];
 }
 
 - (NSMutableDictionary *)dictionaryToSecItemFormat:(NSDictionary *)dictionaryToConvert {

@@ -8,8 +8,13 @@
 
 #import "AppDelegate.h"
 #import "Constants.h"
+//helpers
 #import "CoreDataStack.h"
+#import "KeychainWrapper.h"
+//controllers
 #import "FeedVC.h"
+#import "AnimeSearchVC.h"
+
 @interface AppDelegate ()
 
 @end
@@ -19,11 +24,12 @@
 #pragma mark -UI methods
 - (void)createAppearance {
     //Global tint
-    [self.window setTintColor:PRIMARY_COLOR];
+    [self.window setTintColor:ACCENT_COLOR];
     //Navigation bars
     NSDictionary *atts = @{NSForegroundColorAttributeName:PRIMARY_COLOR};
     [[UINavigationBar appearance] setTitleTextAttributes:atts];
     [[UINavigationBar appearance] setBarTintColor:BACKGROUND_COLOR];
+    [[UINavigationBar appearance] setTintColor:PRIMARY_COLOR];
 
 }
 
@@ -31,10 +37,24 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [self createAppearance];
-    FeedVC *mainController = [[FeedVC alloc]initWithStyle:UITableViewStyleGrouped];
-    [mainController setCoreDataStack:[[CoreDataStack alloc]init]];
-    UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:mainController];
-    self.window.rootViewController = navController;
+    CoreDataStack *coreDataStack = [[CoreDataStack alloc]init];
+    KeychainWrapper *keychainWrapper = [[KeychainWrapper alloc]init];
+    
+    self.tabBarController = [[UITabBarController alloc]init];
+    FeedVC *feedController = [[FeedVC alloc]initWithStyle:UITableViewStylePlain];
+    [feedController setCoreDataStack:coreDataStack];
+    [feedController setKeychainWrapper:keychainWrapper];
+    
+    UINavigationController *feedNavController = [[UINavigationController alloc]initWithRootViewController:feedController];
+    feedNavController.tabBarItem.title = @"Feed";
+    AnimeSearchVC *animeController = [[AnimeSearchVC alloc]initWithStyle:UITableViewStyleGrouped];
+    [animeController setCoreDataStack:coreDataStack];
+    
+    UINavigationController *animeNavController = [[UINavigationController alloc]initWithRootViewController:animeController];
+    animeNavController.tabBarItem.title = @"Search";
+    self.tabBarController.viewControllers = @[feedNavController,animeNavController];
+    
+    self.window.rootViewController = self.tabBarController;
     return YES;
 }
 

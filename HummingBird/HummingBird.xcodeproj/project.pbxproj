@@ -47,6 +47,9 @@
 		97F8943D1C894A7D00F73E9C /* StoryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97F8943C1C894A7D00F73E9C /* StoryHeaderView.xib */; };
 		97F894401C895FBE00F73E9C /* SubstoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97F8943F1C895FBE00F73E9C /* SubstoryCell.xib */; };
 		97F894431C895FCE00F73E9C /* SubstoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F894421C895FCE00F73E9C /* SubstoryCell.m */; };
+		97F894481C8B5F2C00F73E9C /* OfflineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F894461C8B5F2C00F73E9C /* OfflineView.m */; };
+		97F894491C8B5F2C00F73E9C /* OfflineView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97F894471C8B5F2C00F73E9C /* OfflineView.xib */; };
+		97F8944C1C8B776E00F73E9C /* LoginTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F8944B1C8B776E00F73E9C /* LoginTVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,6 +147,11 @@
 		97F8943F1C895FBE00F73E9C /* SubstoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubstoryCell.xib; sourceTree = "<group>"; };
 		97F894411C895FCE00F73E9C /* SubstoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubstoryCell.h; sourceTree = "<group>"; };
 		97F894421C895FCE00F73E9C /* SubstoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubstoryCell.m; sourceTree = "<group>"; };
+		97F894451C8B5F2C00F73E9C /* OfflineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineView.h; sourceTree = "<group>"; };
+		97F894461C8B5F2C00F73E9C /* OfflineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineView.m; sourceTree = "<group>"; };
+		97F894471C8B5F2C00F73E9C /* OfflineView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OfflineView.xib; sourceTree = "<group>"; };
+		97F8944A1C8B776E00F73E9C /* LoginTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginTVC.h; sourceTree = "<group>"; };
+		97F8944B1C8B776E00F73E9C /* LoginTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginTVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,6 +305,7 @@
 			children = (
 				97031C151C77AF9F00678712 /* AppDelegate.h */,
 				97031C161C77AF9F00678712 /* AppDelegate.m */,
+				97F894441C8B5BDA00F73E9C /* Autentication */,
 				97031C7C1C78F7E300678712 /* Search */,
 				97031C821C78F9C100678712 /* Feed */,
 				97031C831C78F9CF00678712 /* AnimeSearch */,
@@ -462,6 +471,18 @@
 			name = SubstoryCell;
 			sourceTree = "<group>";
 		};
+		97F894441C8B5BDA00F73E9C /* Autentication */ = {
+			isa = PBXGroup;
+			children = (
+				97F894451C8B5F2C00F73E9C /* OfflineView.h */,
+				97F894461C8B5F2C00F73E9C /* OfflineView.m */,
+				97F894471C8B5F2C00F73E9C /* OfflineView.xib */,
+				97F8944A1C8B776E00F73E9C /* LoginTVC.h */,
+				97F8944B1C8B776E00F73E9C /* LoginTVC.m */,
+			);
+			name = Autentication;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -570,6 +591,7 @@
 				97031C221C77AF9F00678712 /* LaunchScreen.storyboard in Resources */,
 				97031C1F1C77AF9F00678712 /* Assets.xcassets in Resources */,
 				97F894401C895FBE00F73E9C /* SubstoryCell.xib in Resources */,
+				97F894491C8B5F2C00F73E9C /* OfflineView.xib in Resources */,
 				97031C1D1C77AF9F00678712 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -614,6 +636,7 @@
 				97031C171C77AF9F00678712 /* AppDelegate.m in Sources */,
 				97031C141C77AF9F00678712 /* main.m in Sources */,
 				97031CA41C7A3E8900678712 /* AnimeTVCell.m in Sources */,
+				97F8944C1C8B776E00F73E9C /* LoginTVC.m in Sources */,
 				97F894331C891AAF00F73E9C /* Story.m in Sources */,
 				97F894431C895FCE00F73E9C /* SubstoryCell.m in Sources */,
 				97F894321C891AAF00F73E9C /* Story+CoreDataProperties.m in Sources */,
@@ -627,6 +650,7 @@
 				97031C991C797FC400678712 /* Anime.m in Sources */,
 				97031C771C78E7B000678712 /* UIViewController+Loading.m in Sources */,
 				97F894251C890BEF00F73E9C /* KeychainWrapper.m in Sources */,
+				97F894481C8B5F2C00F73E9C /* OfflineView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

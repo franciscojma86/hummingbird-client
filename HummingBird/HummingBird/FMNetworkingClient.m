@@ -95,10 +95,11 @@
     
     
     NSMutableURLRequest *request = nil;
+    NSString *newBody = [self stringFromDictionary:body];
     //if a request is a string we should send it to the special request method creator to make a string
     request = [self requestWithMethod:method
                                  path:path
-                                 body:body];
+                                 body:newBody];
     NSLog(@"URL %@",request.URL);
     NSURLSessionDataTask *dataTask = [_session dataTaskWithRequest:request
                                                  completionHandler:^(NSData *data,
@@ -132,15 +133,27 @@
 
 
 #pragma mark -Request creation
+- (NSString *)stringFromDictionary:(NSDictionary *)dict {
+    if (!dict) return nil;
+    NSMutableString *result = [[NSMutableString alloc]init];
+    for (NSString *key in dict.allKeys) {
+        NSString *value = [dict[key] description];
+        [result appendString:[NSString stringWithFormat:@"%@=%@&",key,value]];
+    }
+    [result deleteCharactersInRange:NSMakeRange(result.length -1, 1)];
+    return  result;
+}
+
 -(NSMutableURLRequest *)requestWithMethod:(NSString *)method
                                      path:(NSString *)path
-                                     body:(id)body {
+                                     body:(NSString *)body {
     NSURL *finalURL = [NSURL URLWithString:path
                              relativeToURL:_baseURL];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:finalURL];
     [request setHTTPMethod:method];
-    if(body)
-        [request setHTTPBody:[self parseJSONToData:body]];
+    if(body) {
+        [request setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
+    }
     
     return request;
 }

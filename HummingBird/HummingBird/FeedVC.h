@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 @class CoreDataStack;
+@class KeychainWrapper;
 
 @interface FeedVC : UITableViewController
 
 @property (nonatomic,strong) CoreDataStack *coreDataStack;
-
+@property (nonatomic,strong) KeychainWrapper *keychainWrapper;
 @end
 

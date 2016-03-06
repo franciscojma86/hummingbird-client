@@ -54,6 +54,11 @@
     if (self.searchQueryTask) [self.searchQueryTask cancel];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.searchBar becomeFirstResponder];
+}
+
 - (void)setResults:(NSArray *)results {
     if (_results != results) {
         _results = results;

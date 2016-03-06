@@ -21,6 +21,11 @@
                                                success:(SuccessJSONBlock)success
                                                failure:(FailMessageBlock)failure;
 
++ (NSURLSessionDataTask *)authenticateUserWithUsername:(NSString *)username
+                                              password:(NSString *)password
+                                               success:(SuccessJSONBlock)success
+                                               failure:(FailMessageBlock)failure;
+
 + (NSURLSessionDataTask *)downloadImageWithURL:(NSURL *)url
                                        success:(SuccessImageBlock)success
                                        failure:(FailMessageBlock)failure;

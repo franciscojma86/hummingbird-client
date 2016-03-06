@@ -13,5 +13,5 @@
 - (void)fm_setObject:(id)inObject forKey:(id)key;
 - (id)fm_objectForKey:(id)key;
 - (void)writeToKeychain;
-
+- (void)resetKeychainItem;
 @end
