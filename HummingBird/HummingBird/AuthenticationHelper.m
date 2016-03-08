@@ -42,6 +42,14 @@
     return name;
 }
 
+- (NSString *)activeUserToken {
+    NSString *token = [self.keychainWrapper fm_objectForKey:TOKEN_KEY];
+    if ([token isEqualToString:@"invalid"]) {
+        return nil;
+    }
+    return token;
+}
+
 - (void)logoutUser {
     [self.keychainWrapper resetKeychainItem];
     //TODO: Clear all core data info

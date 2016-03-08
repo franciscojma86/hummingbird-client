@@ -14,5 +14,6 @@
                token:(NSString *)token;
 - (void)logoutUser;
 - (NSString *)activeUsername;
+- (NSString *)activeUserToken;
 
 @end

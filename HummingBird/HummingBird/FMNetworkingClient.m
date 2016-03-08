@@ -96,6 +96,7 @@
     
     NSMutableURLRequest *request = nil;
     NSString *newBody = [self stringFromDictionary:body];
+    NSLog(@"BODY %@",body);
     //if a request is a string we should send it to the special request method creator to make a string
     request = [self requestWithMethod:method
                                  path:path

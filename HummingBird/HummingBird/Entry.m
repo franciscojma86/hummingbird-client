@@ -40,7 +40,7 @@
     entry.rewatching = [entryInfo fm_objectForKeyNotNull:@"rewatching"];
     
     NSString *statusString = [entryInfo fm_objectForKeyNotNull:@"status"];
-    entry.status = [entry statusFormatted:statusString];
+    entry.status = [Entry formatStatusFromServer:statusString];
     
     FMDateFormatter *formatter = [[FMDateFormatter alloc]initWithDateFormat:DateFormatServerInputComplete];
     NSString *lastWatchedString = [entryInfo fm_objectForKeyNotNull:@"last_watched"];
@@ -57,9 +57,15 @@
     return entry;
 }
 
-- (NSString *)statusFormatted:(NSString *)status {
++ (NSString *)formatStatusFromServer:(NSString *)status {
     NSString *result = [[status stringByReplacingOccurrencesOfString:@"-"
                                                           withString:@" "]capitalizedString];
+    return result;
+}
+
++ (NSString *)formatStatusForServer:(NSString *)status {
+    NSString *result = [[status stringByReplacingOccurrencesOfString:@" "
+                                                          withString:@"-"] lowercaseString];
     return result;
 }
 

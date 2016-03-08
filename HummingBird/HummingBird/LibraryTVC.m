@@ -12,8 +12,8 @@
 #import "CoreDataStack.h"
 #import "NetworkingCallsHelper.h"
 #import "EntryCell.h"
-
-@interface LibraryTVC ()
+#import "EntryEditTVC.h"
+@interface LibraryTVC () <EntryEditTVCDelegate>
 
 @property (nonatomic,strong) NSURLSessionDataTask *libraryDataTask;
 @property (nonatomic,strong) NSArray *entries;
@@ -25,7 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"All entries";
+    self.navigationItem.title = @"Library";
     UINib *nib = [UINib nibWithNibName:NSStringFromClass([EntryCell class])
                                 bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:CELL_IDENTIFIER];
@@ -83,6 +83,13 @@
                                               inContext:self.coreDataStack.mainContext];
 }
 
+#pragma mark -Login delegate 
+- (void)loginTVCDidSignIn:(LoginTVC *)sender {
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self downloadLibrary];
+    }];
+}
+
 #pragma mark -Offline methods
 - (void)showOfflineView {
     [super showOfflineView];
@@ -104,6 +111,27 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 0.0001f;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    Entry *entry = self.entries[indexPath.row];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main"
+                                                         bundle:nil];
+    EntryEditTVC *controller = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([EntryEditTVC class])];
+    [controller setEntry:entry];
+    [controller setDelegate:self];
+    [controller setAuthenticationHelper:self.authenticationHelper];
+    UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:controller];
+    [self presentViewController:navController
+                       animated:YES
+                     completion:nil];
+}
+
+#pragma mark -Entry edit delegate 
+- (void)entryEditTVC:(EntryEditTVC *)sender didSaveEntry:(Entry *)entry {
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self.tableView reloadData];
+    }];
 }
 
 @end

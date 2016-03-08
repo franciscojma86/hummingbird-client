@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
                         inContext:(NSManagedObjectContext *)context;
 + (Entry *)entryWithInfo:(NSDictionary *)entryInfo
                inContext:(NSManagedObjectContext *)context;
-
++ (NSString *)formatStatusForServer:(NSString *)status;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -124,6 +124,8 @@
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"title CONTAINS[c] %@",query];
     NSFetchRequest *req = [[NSFetchRequest alloc]initWithEntityName:NSStringFromClass([Anime class])];
     req.predicate = pred;
+    req.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"title"
+                                                          ascending:YES]];
     NSError *error;
     NSArray *results = [self.coreDataStack.mainContext executeFetchRequest:req error:&error];
     if (error) {

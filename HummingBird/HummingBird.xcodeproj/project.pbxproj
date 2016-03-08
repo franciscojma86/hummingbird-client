@@ -40,6 +40,7 @@
 		976AD6BC1C8E657F00E15863 /* EntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 976AD6BA1C8E657F00E15863 /* EntryCell.m */; };
 		976AD6BD1C8E657F00E15863 /* EntryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 976AD6BB1C8E657F00E15863 /* EntryCell.xib */; };
 		978AA39D1C7B783A007334F3 /* AnimeDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 978AA39C1C7B783A007334F3 /* AnimeDetailsVC.m */; };
+		979107B51C8F5FE600FF9357 /* EntryEditTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 979107B41C8F5FE600FF9357 /* EntryEditTVC.m */; };
 		97F894251C890BEF00F73E9C /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F894241C890BEF00F73E9C /* KeychainWrapper.m */; };
 		97F894321C891AAF00F73E9C /* Story+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F894271C891AAF00F73E9C /* Story+CoreDataProperties.m */; };
 		97F894331C891AAF00F73E9C /* Story.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F894291C891AAF00F73E9C /* Story.m */; };
@@ -143,6 +144,8 @@
 		976AD6BB1C8E657F00E15863 /* EntryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EntryCell.xib; sourceTree = "<group>"; };
 		978AA39B1C7B783A007334F3 /* AnimeDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimeDetailsVC.h; sourceTree = "<group>"; };
 		978AA39C1C7B783A007334F3 /* AnimeDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimeDetailsVC.m; sourceTree = "<group>"; };
+		979107B31C8F5FE600FF9357 /* EntryEditTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryEditTVC.h; sourceTree = "<group>"; };
+		979107B41C8F5FE600FF9357 /* EntryEditTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryEditTVC.m; sourceTree = "<group>"; };
 		97F894231C890BEF00F73E9C /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
 		97F894241C890BEF00F73E9C /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
 		97F894261C891AAF00F73E9C /* Story+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Story+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -534,6 +537,8 @@
 			children = (
 				97F8944E1C8C1C9400F73E9C /* LibraryTVC.h */,
 				97F8944F1C8C1C9400F73E9C /* LibraryTVC.m */,
+				979107B31C8F5FE600FF9357 /* EntryEditTVC.h */,
+				979107B41C8F5FE600FF9357 /* EntryEditTVC.m */,
 			);
 			name = Library;
 			sourceTree = "<group>";
@@ -698,6 +703,7 @@
 				97031C8A1C796C5100678712 /* CoreDataStack.m in Sources */,
 				97031C1A1C77AF9F00678712 /* FeedVC.m in Sources */,
 				97031C651C77DB4500678712 /* FMImageCapturing.m in Sources */,
+				979107B51C8F5FE600FF9357 /* EntryEditTVC.m in Sources */,
 				97031C871C78FE5800678712 /* NetworkingCallsHelper.m in Sources */,
 				97031C691C77DB7100678712 /* UIImage+ImageEffects.m in Sources */,
 				978AA39D1C7B783A007334F3 /* AnimeDetailsVC.m in Sources */,

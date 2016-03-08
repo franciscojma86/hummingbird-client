@@ -30,6 +30,11 @@
                                                success:(SuccessJSONBlock)success
                                                failure:(FailMessageBlock)failure;
 
++ (NSURLSessionDataTask *)updateLibraryEntry:(NSString *)entryID
+                                   entryInfo:(NSDictionary *)entryInfo
+                                     success:(SuccessJSONBlock)success
+                                     failure:(FailMessageBlock)failure;
+
 + (NSURLSessionDataTask *)downloadImageWithURL:(NSURL *)url
                                        success:(SuccessImageBlock)success
                                        failure:(FailMessageBlock)failure;
