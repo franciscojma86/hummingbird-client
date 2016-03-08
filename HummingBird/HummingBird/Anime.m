@@ -23,12 +23,13 @@
 }
 
 + (Anime *)animeWithInfo:(NSDictionary *)animeInfo inContext:(nonnull NSManagedObjectContext *)context {
-    Anime *anime = (Anime *)[CoreDataStack queryObjectWithID:animeInfo[@"id"]
+    NSString *animeID = [animeInfo[@"id"] description];
+    Anime *anime = (Anime *)[CoreDataStack queryObjectWithID:animeID
                                               propertyIDName:@"animeID"
                                                      inClass:[self class]
                                                    inContext:context];
     
-    anime.animeID = [animeInfo fm_objectForKeyNotNull:@"id"];
+    anime.animeID = animeID;
     anime.ageRating = [animeInfo fm_objectForKeyNotNull:@"age_rating"];
     anime.alternateTitle = [animeInfo fm_objectForKeyNotNull:@"alternative_title"];
     anime.communityRating = [animeInfo fm_objectForKeyNotNull:@"community_rating"];

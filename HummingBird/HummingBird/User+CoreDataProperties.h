@@ -2,7 +2,7 @@
 //  User+CoreDataProperties.h
 //  HummingBird
 //
-//  Created by Francisco Magdaleno on 3/4/16.
+//  Created by Francisco Magdaleno on 3/7/16.
 //  Copyright © 2016 franciscojma86. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -15,11 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface User (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSString *username;
 @property (nullable, nonatomic, retain) NSString *avatar;
 @property (nullable, nonatomic, retain) NSString *avatarSmall;
-@property (nullable, nonatomic, retain) Substory *userFollowedBySubstory;
+@property (nullable, nonatomic, retain) NSString *username;
 @property (nullable, nonatomic, retain) Story *posterForStory;
+@property (nullable, nonatomic, retain) Substory *userFollowedBySubstory;
 @property (nullable, nonatomic, retain) Story *userForStory;
 
 @end

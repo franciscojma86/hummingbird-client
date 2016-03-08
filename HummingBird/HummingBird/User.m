@@ -14,12 +14,12 @@
 
 + (User *)userWithInfo:(NSDictionary *)userInfo
              inContext:(NSManagedObjectContext *)context {
-    User *user = (User *)[CoreDataStack queryObjectWithID:userInfo[@"username"]
+    User *user = (User *)[CoreDataStack queryObjectWithID:userInfo[@"name"]
                                            propertyIDName:@"username"
                                                   inClass:[self class]
                                                 inContext:context];
 
-    user.username = [userInfo fm_objectForKeyNotNull:@"username"];
+    user.username = [userInfo fm_objectForKeyNotNull:@"name"];
     user.avatar = [userInfo fm_objectForKeyNotNull:@"avatar"];
     user.avatarSmall = [userInfo fm_objectForKeyNotNull:@"avatar_small"];
     

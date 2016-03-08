@@ -51,7 +51,7 @@
     UINavigationController *animeNavController = [[UINavigationController alloc]initWithRootViewController:animeController];
     animeNavController.tabBarItem.title = @"Search";
     
-    LibraryTVC *libraryController = [[LibraryTVC alloc]initWithStyle:UITableViewStylePlain];
+    LibraryTVC *libraryController = [[LibraryTVC alloc]initWithStyle:UITableViewStyleGrouped];
     [libraryController setCoreDataStack:coreDataStack];
     [libraryController setAuthenticationHelper:authenticationHelper];
     UINavigationController *libraryNavController = [[UINavigationController alloc]initWithRootViewController:libraryController];

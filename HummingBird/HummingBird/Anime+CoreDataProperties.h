@@ -2,7 +2,7 @@
 //  Anime+CoreDataProperties.h
 //  HummingBird
 //
-//  Created by Francisco Magdaleno on 3/4/16.
+//  Created by Francisco Magdaleno on 3/7/16.
 //  Copyright © 2016 franciscojma86. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -10,6 +10,7 @@
 //
 
 #import "Anime.h"
+#import "Entry.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nullable, nonatomic, retain) NSString *ageRating;
 @property (nullable, nonatomic, retain) NSString *alternateTitle;
-@property (nullable, nonatomic, retain) NSNumber *animeID;
+@property (nullable, nonatomic, retain) NSString *animeID;
 @property (nullable, nonatomic, retain) NSNumber *communityRating;
 @property (nullable, nonatomic, retain) NSString *coverImageAddress;
 @property (nullable, nonatomic, retain) NSNumber *episodeCount;
@@ -31,6 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *title;
 @property (nullable, nonatomic, retain) NSString *url;
 @property (nullable, nonatomic, retain) Story *mediaForStory;
+@property (nullable, nonatomic, retain) Entry *animeForLibraryEntry;
 
 @end
 

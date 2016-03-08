@@ -2,7 +2,7 @@
 //  User+CoreDataProperties.m
 //  HummingBird
 //
-//  Created by Francisco Magdaleno on 3/4/16.
+//  Created by Francisco Magdaleno on 3/7/16.
 //  Copyright © 2016 franciscojma86. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -13,11 +13,11 @@
 
 @implementation User (CoreDataProperties)
 
-@dynamic username;
 @dynamic avatar;
 @dynamic avatarSmall;
-@dynamic userFollowedBySubstory;
+@dynamic username;
 @dynamic posterForStory;
+@dynamic userFollowedBySubstory;
 @dynamic userForStory;
 
 @end

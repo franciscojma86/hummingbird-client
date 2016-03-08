@@ -2,7 +2,7 @@
 //  Substory+CoreDataProperties.m
 //  HummingBird
 //
-//  Created by Francisco Magdaleno on 3/4/16.
+//  Created by Francisco Magdaleno on 3/7/16.
 //  Copyright © 2016 franciscojma86. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -13,13 +13,13 @@
 
 @implementation Substory (CoreDataProperties)
 
-@dynamic substoryID;
-@dynamic substoryType;
-@dynamic createdAt;
 @dynamic comment;
+@dynamic createdAt;
 @dynamic episodeNumber;
+@dynamic substoryID;
 @dynamic substoryStatus;
-@dynamic substoryForStory;
+@dynamic substoryType;
 @dynamic followedUser;
+@dynamic substoryForStory;
 
 @end

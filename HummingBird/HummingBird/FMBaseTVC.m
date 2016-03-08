@@ -14,6 +14,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.refreshControl = [[UIRefreshControl alloc]init];
     [self.refreshControl addTarget:self
                             action:@selector(refreshPulled)
@@ -28,6 +29,11 @@
     } else {
         [self hideOfflineView];
     }
+}
+
+#pragma mark -Tableview delegate
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 0.0001f;
 }
 
 #pragma mark -UI methods

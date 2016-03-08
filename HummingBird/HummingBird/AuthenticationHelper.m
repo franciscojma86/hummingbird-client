@@ -44,6 +44,7 @@
 
 - (void)logoutUser {
     [self.keychainWrapper resetKeychainItem];
+    //TODO: Clear all core data info
 }
 
 @end

@@ -35,6 +35,10 @@
 		97031CA41C7A3E8900678712 /* AnimeTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031CA31C7A3E8900678712 /* AnimeTVCell.m */; };
 		97031CA61C7A3EBC00678712 /* AnimeTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97031CA51C7A3EBC00678712 /* AnimeTVCell.xib */; };
 		97031CAA1C7AE27200678712 /* UIImageView+ImageDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031CA91C7AE27200678712 /* UIImageView+ImageDownload.m */; };
+		976AD6B61C8E5FDA00E15863 /* Entry+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 976AD6B31C8E5FDA00E15863 /* Entry+CoreDataProperties.m */; };
+		976AD6B71C8E5FDA00E15863 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 976AD6B51C8E5FDA00E15863 /* Entry.m */; };
+		976AD6BC1C8E657F00E15863 /* EntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 976AD6BA1C8E657F00E15863 /* EntryCell.m */; };
+		976AD6BD1C8E657F00E15863 /* EntryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 976AD6BB1C8E657F00E15863 /* EntryCell.xib */; };
 		978AA39D1C7B783A007334F3 /* AnimeDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 978AA39C1C7B783A007334F3 /* AnimeDetailsVC.m */; };
 		97F894251C890BEF00F73E9C /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F894241C890BEF00F73E9C /* KeychainWrapper.m */; };
 		97F894321C891AAF00F73E9C /* Story+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F894271C891AAF00F73E9C /* Story+CoreDataProperties.m */; };
@@ -130,6 +134,13 @@
 		97031CA51C7A3EBC00678712 /* AnimeTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnimeTVCell.xib; sourceTree = "<group>"; };
 		97031CA81C7AE27200678712 /* UIImageView+ImageDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ImageDownload.h"; sourceTree = "<group>"; };
 		97031CA91C7AE27200678712 /* UIImageView+ImageDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ImageDownload.m"; sourceTree = "<group>"; };
+		976AD6B21C8E5FDA00E15863 /* Entry+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Entry+CoreDataProperties.h"; sourceTree = "<group>"; };
+		976AD6B31C8E5FDA00E15863 /* Entry+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Entry+CoreDataProperties.m"; sourceTree = "<group>"; };
+		976AD6B41C8E5FDA00E15863 /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
+		976AD6B51C8E5FDA00E15863 /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
+		976AD6B91C8E657F00E15863 /* EntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryCell.h; sourceTree = "<group>"; };
+		976AD6BA1C8E657F00E15863 /* EntryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryCell.m; sourceTree = "<group>"; };
+		976AD6BB1C8E657F00E15863 /* EntryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EntryCell.xib; sourceTree = "<group>"; };
 		978AA39B1C7B783A007334F3 /* AnimeDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimeDetailsVC.h; sourceTree = "<group>"; };
 		978AA39C1C7B783A007334F3 /* AnimeDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimeDetailsVC.m; sourceTree = "<group>"; };
 		97F894231C890BEF00F73E9C /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
@@ -352,6 +363,7 @@
 		97031C7D1C78F7EF00678712 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				976AD6B81C8E656200E15863 /* LibraryEntries */,
 				97F8943E1C895FB000F73E9C /* SubstoryCell */,
 				97F894381C894A5200F73E9C /* StoryHeader */,
 				97031C7E1C78F80700678712 /* Search */,
@@ -433,6 +445,10 @@
 		97031C9A1C797FCE00678712 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				976AD6B21C8E5FDA00E15863 /* Entry+CoreDataProperties.h */,
+				976AD6B31C8E5FDA00E15863 /* Entry+CoreDataProperties.m */,
+				976AD6B41C8E5FDA00E15863 /* Entry.h */,
+				976AD6B51C8E5FDA00E15863 /* Entry.m */,
 				97F894261C891AAF00F73E9C /* Story+CoreDataProperties.h */,
 				97F894271C891AAF00F73E9C /* Story+CoreDataProperties.m */,
 				97F894281C891AAF00F73E9C /* Story.h */,
@@ -460,6 +476,16 @@
 				97031C9F1C7A354F00678712 /* FMDateFormatter.m */,
 			);
 			name = Formatting;
+			sourceTree = "<group>";
+		};
+		976AD6B81C8E656200E15863 /* LibraryEntries */ = {
+			isa = PBXGroup;
+			children = (
+				976AD6B91C8E657F00E15863 /* EntryCell.h */,
+				976AD6BA1C8E657F00E15863 /* EntryCell.m */,
+				976AD6BB1C8E657F00E15863 /* EntryCell.xib */,
+			);
+			name = LibraryEntries;
 			sourceTree = "<group>";
 		};
 		97F894221C890BDC00F73E9C /* Keychain */ = {
@@ -628,6 +654,7 @@
 				97F8943D1C894A7D00F73E9C /* StoryHeaderView.xib in Resources */,
 				97031CA61C7A3EBC00678712 /* AnimeTVCell.xib in Resources */,
 				97031C221C77AF9F00678712 /* LaunchScreen.storyboard in Resources */,
+				976AD6BD1C8E657F00E15863 /* EntryCell.xib in Resources */,
 				97031C1F1C77AF9F00678712 /* Assets.xcassets in Resources */,
 				97F8945C1C8CD27400F73E9C /* AccountVC.xib in Resources */,
 				97F894401C895FBE00F73E9C /* SubstoryCell.xib in Resources */,
@@ -664,6 +691,7 @@
 				97031C621C77D99700678712 /* FMSearchBarTVC.m in Sources */,
 				97F894561C8CC62600F73E9C /* FMBaseTVC.m in Sources */,
 				97F8943B1C894A6B00F73E9C /* StoryHeaderView.m in Sources */,
+				976AD6BC1C8E657F00E15863 /* EntryCell.m in Sources */,
 				97031C7B1C78F10400678712 /* FMSearchTVC.m in Sources */,
 				97F894501C8C1C9400F73E9C /* LibraryTVC.m in Sources */,
 				97031C9D1C7A33A900678712 /* NSDictionary+NullObjects.m in Sources */,
@@ -686,12 +714,14 @@
 				97F8945B1C8CD27400F73E9C /* AccountVC.m in Sources */,
 				97F894371C891AAF00F73E9C /* User.m in Sources */,
 				97031C6D1C78D97700678712 /* AnimeSearchVC.m in Sources */,
+				976AD6B61C8E5FDA00E15863 /* Entry+CoreDataProperties.m in Sources */,
 				97031C4B1C77AFEA00678712 /* FMNetworkingErrorMessages.m in Sources */,
 				97031C811C78F81F00678712 /* FMEmptyResultsView.m in Sources */,
 				97F894341C891AAF00F73E9C /* Substory+CoreDataProperties.m in Sources */,
 				97031C4F1C77B01300678712 /* UIView+FMAutolayout.m in Sources */,
 				97F894351C891AAF00F73E9C /* Substory.m in Sources */,
 				97031C991C797FC400678712 /* Anime.m in Sources */,
+				976AD6B71C8E5FDA00E15863 /* Entry.m in Sources */,
 				97031C771C78E7B000678712 /* UIViewController+Loading.m in Sources */,
 				97F894251C890BEF00F73E9C /* KeychainWrapper.m in Sources */,
 				97F894481C8B5F2C00F73E9C /* OfflineView.m in Sources */,

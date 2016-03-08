@@ -43,7 +43,6 @@
     UINib *cellNib = [UINib nibWithNibName:NSStringFromClass([SubstoryCell class])
                                     bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:CELL_IDENTIFIER];
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 60;
 
     [self queryFeed];

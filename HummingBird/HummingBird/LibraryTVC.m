@@ -8,8 +8,10 @@
 
 #import "LibraryTVC.h"
 
+#import "Entry.h"
+#import "CoreDataStack.h"
 #import "NetworkingCallsHelper.h"
-
+#import "EntryCell.h"
 
 @interface LibraryTVC ()
 
@@ -19,9 +21,24 @@
 
 @implementation LibraryTVC
 
+#define CELL_IDENTIFIER @"entry_cell_identifier"
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = @"All entries";
+    UINib *nib = [UINib nibWithNibName:NSStringFromClass([EntryCell class])
+                                bundle:nil];
+    [self.tableView registerNib:nib forCellReuseIdentifier:CELL_IDENTIFIER];
+    self.tableView.estimatedRowHeight = 90;
     [self downloadLibrary];
+}
+
+- (void)setEntries:(NSArray *)entries {
+    if (_entries != entries) {
+        _entries = entries;
+        [self.refreshControl endRefreshing];
+        [self.tableView reloadData];
+    }
 }
 
 - (void)refreshPulled {
@@ -37,13 +54,33 @@
     } else {
         [self hideOfflineView];
     }
+    [self fm_startLoading];
     if (self.libraryDataTask) [self.libraryDataTask cancel];
     self.libraryDataTask = [NetworkingCallsHelper queryLibraryForUsername:activeUsername
                                                                   success:^(id json) {
-                                                                      NSLog(@"JSON %@",json);
+                                                                      NSManagedObjectContext *backgroundContext = [self.coreDataStack concurrentContext];
+                                                                      [backgroundContext performBlock:^{
+                                                                          [Entry entriesWithInfoArray:json
+                                                                                            inContext:backgroundContext];
+                                                                          [self.coreDataStack saveContext:backgroundContext];
+                                                                          [self.coreDataStack.mainContext performBlock:^{
+                                                                              [self.coreDataStack saveMainContext];
+                                                                              [self fm_stopLoading];
+                                                                              [self queryEntries];
+                                                                          }];
+                                                                      }];
                                                                   } failure:^(NSString *errorMessage, BOOL cancelled) {
+                                                                      [self fm_stopLoading];
                                                                       NSLog(@"ERROR %@",errorMessage);
                                                                   }];
+}
+
+- (void)queryEntries {
+    self.entries = [CoreDataStack queryObjectsFromClass:[Entry class]
+                                          withPredicate:nil
+                                                sortKey:@"status"
+                                              ascending:YES
+                                              inContext:self.coreDataStack.mainContext];
 }
 
 #pragma mark -Offline methods
@@ -53,5 +90,20 @@
     [self.tableView reloadData];
 }
 
+#pragma mark -Table view delegate 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.entries.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    EntryCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER];
+    Entry *entry = self.entries[indexPath.row];
+    [cell configureWithEntry:entry];
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 0.0001f;
+}
 
 @end

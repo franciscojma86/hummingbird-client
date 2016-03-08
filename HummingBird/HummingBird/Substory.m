@@ -28,11 +28,12 @@
 
 + (Substory *)substoryWithInfo:(NSDictionary *)substoryInfo
                      inContext:(NSManagedObjectContext *)context {
-    Substory *substory = (Substory *)[CoreDataStack queryObjectWithID:substoryInfo[@"id"]
+    NSString *substoryID = [substoryInfo[@"id"] description];
+    Substory *substory = (Substory *)[CoreDataStack queryObjectWithID:substoryID
                                                        propertyIDName:@"substoryID"
                                                               inClass:[self class]
                                                             inContext:context];
-    substory.substoryID = [substoryInfo fm_objectForKeyNotNull:@"id"];
+    substory.substoryID = substoryID;
     substory.substoryType = [substoryInfo fm_objectForKeyNotNull:@"substory_type"];
     substory.comment = [substoryInfo fm_objectForKeyNotNull:@"comment"];
     substory.episodeNumber = @([[substoryInfo fm_objectForKeyNotNull:@"episode_number"]integerValue]);

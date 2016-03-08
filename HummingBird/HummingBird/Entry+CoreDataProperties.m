@@ -1,5 +1,5 @@
 //
-//  Story+CoreDataProperties.m
+//  Entry+CoreDataProperties.m
 //  HummingBird
 //
 //  Created by Francisco Magdaleno on 3/7/16.
@@ -9,18 +9,20 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "Story+CoreDataProperties.h"
+#import "Entry+CoreDataProperties.h"
 
-@implementation Story (CoreDataProperties)
+@implementation Entry (CoreDataProperties)
 
-@dynamic selfPost;
-@dynamic storyType;
-@dynamic substoriesCount;
+@dynamic entryID;
+@dynamic episodesWatched;
+@dynamic lastWatched;
 @dynamic updatedAt;
-@dynamic storyID;
-@dynamic media;
-@dynamic poster;
-@dynamic substories;
-@dynamic user;
+@dynamic rewatchedTimes;
+@dynamic notes;
+@dynamic notesPresent;
+@dynamic status;
+@dynamic isPrivate;
+@dynamic rewatching;
+@dynamic anime;
 
 @end

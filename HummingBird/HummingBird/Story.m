@@ -31,12 +31,13 @@
 
 + (Story *)storyWithInfo:(NSDictionary *)storyInfo
                inContext:(NSManagedObjectContext *)context {
-    Story *story = (Story *)[CoreDataStack queryObjectWithID:storyInfo[@"id"]
+    NSString *storyID = [storyInfo[@"id"] description];
+    Story *story = (Story *)[CoreDataStack queryObjectWithID:storyID
                                               propertyIDName:@"storyID"
                                                      inClass:[self class]
                                                    inContext:context];
         
-    story.storyID = [storyInfo fm_objectForKeyNotNull:@"id"];
+    story.storyID = storyID;
     story.storyType = [storyInfo fm_objectForKeyNotNull:@"story_type"];
     story.selfPost = [storyInfo fm_objectForKeyNotNull:@"self_post"];
     story.substoriesCount = [storyInfo fm_objectForKeyNotNull:@"substories_count"];

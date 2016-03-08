@@ -120,23 +120,27 @@ NSString * const modelName = @"Model";
                         propertyIDName:(NSString *)propertyIDName
                                inClass:(Class)targetClass
                              inContext:(NSManagedObjectContext *)context {
-    NSManagedObject *obj = nil;
-    NSPredicate *pred = [NSPredicate predicateWithFormat:@"%@ == %@",propertyIDName,objID];
+    
+    NSManagedObjectContext *searchContext = context.parentContext ? context.parentContext : context;
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"self.%@ == %@",propertyIDName,objID];
     NSFetchRequest *req = [[NSFetchRequest alloc]initWithEntityName:NSStringFromClass(targetClass)];
     req.predicate = pred;
+    
     NSError *error;
-    obj = [[context executeFetchRequest:req error:&error] lastObject];
+    NSManagedObject *obj = [[searchContext executeFetchRequest:req error:&error] lastObject];
+
     if (error) {
         NSLog(@"ERROR CREATING OBJECT %@\nOF TYPE %@",error.userInfo,NSStringFromClass(targetClass));
         return nil;
     } else {
         if (obj) {
-            return obj;
+            return [context objectWithID:obj.objectID];
         }
     }
     
-    return [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass(targetClass)
+    obj = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass(targetClass)
                                          inManagedObjectContext:context];
+    return [context objectWithID:obj.objectID];
 }
 
 + (NSArray *)queryObjectsFromClass:(Class)targetClass
@@ -145,6 +149,7 @@ NSString * const modelName = @"Model";
                          ascending:(BOOL)ascending
                          inContext:(NSManagedObjectContext *)context {
     
+    NSManagedObjectContext *searchContext = context.parentContext ? context.parentContext : context;
     NSFetchRequest *req = [[NSFetchRequest alloc]initWithEntityName:NSStringFromClass(targetClass)];
     [req setReturnsObjectsAsFaults:NO];
     req.predicate = predicate;
@@ -153,7 +158,7 @@ NSString * const modelName = @"Model";
                                                               ascending:ascending]];
     }
     NSError *error;
-    NSArray *objects = [context executeFetchRequest:req error:&error];
+    NSArray *objects = [searchContext executeFetchRequest:req error:&error];
     if (error) {
         NSLog(@"ERROR FETCHING OBJECTS %@\nOF TYPE %@",error.userInfo,NSStringFromClass(targetClass));
         return nil;
