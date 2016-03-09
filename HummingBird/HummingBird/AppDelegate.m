@@ -45,22 +45,28 @@
     
     UINavigationController *feedNavController = [[UINavigationController alloc]initWithRootViewController:feedController];
     feedNavController.tabBarItem.title = @"Feed";
+    feedNavController.tabBarItem.image = [UIImage imageNamed:@"feed"];
+    
     AnimeSearchVC *animeController = [[AnimeSearchVC alloc]initWithStyle:UITableViewStyleGrouped];
     [animeController setCoreDataStack:coreDataStack];
-    
+
     UINavigationController *animeNavController = [[UINavigationController alloc]initWithRootViewController:animeController];
     animeNavController.tabBarItem.title = @"Search";
+    animeNavController.tabBarItem.image = [UIImage imageNamed:@"search"];
     
     LibraryTVC *libraryController = [[LibraryTVC alloc]initWithStyle:UITableViewStyleGrouped];
     [libraryController setCoreDataStack:coreDataStack];
     [libraryController setAuthenticationHelper:authenticationHelper];
     UINavigationController *libraryNavController = [[UINavigationController alloc]initWithRootViewController:libraryController];
     libraryNavController.tabBarItem.title = @"Library";
+    libraryNavController.tabBarItem.image = [UIImage imageNamed:@"library"];
     
     AccountVC *accountController = [[AccountVC alloc]init];
     [accountController setAuthenticatinHelper:authenticationHelper];
     UINavigationController *accountNavController = [[UINavigationController alloc]initWithRootViewController:accountController];
     accountNavController.tabBarItem.title = @"Account";
+    accountNavController.tabBarItem.image = [UIImage imageNamed:@"account"];
+
     self.tabBarController.viewControllers = @[feedNavController,
                                               animeNavController,
                                               libraryNavController,
