@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AccountVC">
             <connections>
+                <outlet property="avatarImageView" destination="cjy-Ve-QmJ" id="9QY-zw-mI5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,12 +23,24 @@
                         <action selector="logoutPressed:" destination="-1" eventType="touchUpInside" id="xXm-TQ-yz3"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="cjy-Ve-QmJ">
+                    <rect key="frame" x="225" y="80" width="150" height="150"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="6JB-FM-K9a"/>
+                        <constraint firstAttribute="width" constant="150" id="iRB-Yw-fBy"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="aBu-rO-ws9" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="NJ0-ar-Tih"/>
+                <constraint firstItem="cjy-Ve-QmJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="PHp-Zm-NYL"/>
                 <constraint firstItem="aBu-rO-ws9" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="nKm-Um-2Nr"/>
+                <constraint firstItem="cjy-Ve-QmJ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="xNz-9e-RqM"/>
             </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="placeholder" width="80" height="80"/>
+    </resources>
 </document>

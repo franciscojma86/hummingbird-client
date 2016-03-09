@@ -34,7 +34,7 @@
     [super viewDidLoad];
     //configure nav bar
     self.navigationItem.title = @"Humming Bird";
-    
+    [self.tableView setBackgroundColor:[UIColor whiteColor]];
     //register cells and headers
     UINib *headerNib = [UINib nibWithNibName:NSStringFromClass([StoryHeaderView class])
                                       bundle:nil];
@@ -140,6 +140,9 @@
     NSArray *substories = self.subStories[indexPath.section];
     [cell configureWithSubstory:substories[indexPath.row]];
     return cell;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 20;
 }
 
 #pragma mark -Login methods

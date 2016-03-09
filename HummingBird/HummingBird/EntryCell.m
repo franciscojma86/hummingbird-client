@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *progressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *animeTypeLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *animeImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *rewatchingImageView;
 
 @end
 
@@ -30,6 +31,7 @@
     [self.animeTypeLabel setText:entry.anime.showType];
     [self.animeImageView fm_setImageWithURL:[NSURL URLWithString:entry.anime.coverImageAddress]
                                 placeholder:[UIImage imageNamed:@"placeholder"]];
+    [self.rewatchingImageView setHidden:![entry.rewatching boolValue]];
 }
 
 - (void)prepareForReuse {

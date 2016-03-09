@@ -35,8 +35,7 @@
     if (self) {
         _baseURL = baseURL;
         NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-//        [config setHTTPAdditionalHeaders:@{@"Accept":@"application/json"}];
-        
+
         //set delegate as self if you are thinking of showing progress bars
         //otherwise I suggest using the callback blocks
         _session = [NSURLSession sessionWithConfiguration:config
@@ -69,8 +68,8 @@
                                                          dispatch_async(dispatch_get_main_queue(), ^{
                                                            //responds to any server or system error
                                                              NSString *errorMessage = [FMNetworkingErrorMessages networkingErrorMessageWithError:error
-                                                                                                                                      response:httpResponse
-                                                                                                                                          data:data];
+                                                                                                                                        response:httpResponse
+                                                                                                                                            data:data];
                                                              BOOL cancelled = [error.localizedDescription isEqualToString:@"cancelled"];
                                                              failure(errorMessage,cancelled);
 
@@ -96,7 +95,6 @@
     
     NSMutableURLRequest *request = nil;
     NSString *newBody = [self stringFromDictionary:body];
-    NSLog(@"BODY %@",body);
     //if a request is a string we should send it to the special request method creator to make a string
     request = [self requestWithMethod:method
                                  path:path

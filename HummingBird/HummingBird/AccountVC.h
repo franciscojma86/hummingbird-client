@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 @class AuthenticationHelper;
+@class CoreDataStack;
 
 @interface AccountVC : UIViewController
+
+@property (nonatomic,strong) CoreDataStack *coreDataStack;
 @property (nonatomic,strong) AuthenticationHelper *authenticatinHelper;
 @end

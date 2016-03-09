@@ -65,7 +65,7 @@
              @"status" : [Entry formatStatusForServer:self.entryStatusLabel.text],
              @"rewatching" : self.rewatchingSwitch.on ? @"true" : @"false",
              @"rewatched_times" : self.rewatchingTextField.text ? @([self.rewatchingTextField.text integerValue]) : @0};
-
+    
 }
 
 

@@ -63,6 +63,7 @@
     
     AccountVC *accountController = [[AccountVC alloc]init];
     [accountController setAuthenticatinHelper:authenticationHelper];
+    [accountController setCoreDataStack:coreDataStack];
     UINavigationController *accountNavController = [[UINavigationController alloc]initWithRootViewController:accountController];
     accountNavController.tabBarItem.title = @"Account";
     accountNavController.tabBarItem.image = [UIImage imageNamed:@"account"];

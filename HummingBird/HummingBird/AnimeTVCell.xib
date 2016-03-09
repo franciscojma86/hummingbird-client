@@ -18,7 +18,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1I0-U4-4ZH">
                         <rect key="frame" x="88" y="8" width="224" height="20"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Episodes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ULF-yK-ZMR">
@@ -46,7 +46,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="250" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="aC7-jo-0Sm">
-                        <rect key="frame" x="0.0" y="8" width="80" height="105.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="80" height="105.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="80" id="1bg-ZS-42l"/>
                             <constraint firstAttribute="height" constant="105" id="7tJ-fK-f6y"/>
@@ -71,7 +71,7 @@
                     <constraint firstAttribute="trailingMargin" secondItem="W9L-vX-iv1" secondAttribute="trailing" id="wUO-4R-yhc"/>
                     <constraint firstItem="O7Z-Fh-5kj" firstAttribute="leading" secondItem="1I0-U4-4ZH" secondAttribute="leading" id="xqa-aW-IkA"/>
                     <constraint firstAttribute="trailingMargin" secondItem="O7Z-Fh-5kj" secondAttribute="trailing" id="yB8-XR-Mod"/>
-                    <constraint firstItem="aC7-jo-0Sm" firstAttribute="top" secondItem="1C9-50-uyJ" secondAttribute="top" constant="8" id="zat-Sc-sCH"/>
+                    <constraint firstItem="aC7-jo-0Sm" firstAttribute="top" secondItem="1C9-50-uyJ" secondAttribute="top" id="zat-Sc-sCH"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
