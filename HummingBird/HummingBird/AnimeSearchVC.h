@@ -10,8 +10,9 @@
 #import "FMSearchTVC.h"
 
 @class CoreDataStack;
+@class AuthenticationHelper;
 @interface AnimeSearchVC : FMSearchTVC
 
 @property (nonatomic,strong) CoreDataStack *coreDataStack;
-
+@property (nonatomic,strong) AuthenticationHelper *authenticationHelper;
 @end

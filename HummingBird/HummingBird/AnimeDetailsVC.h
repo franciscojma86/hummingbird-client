@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @class Anime;
-
+@class AuthenticationHelper;
 @interface AnimeDetailsVC : UITableViewController
 
 @property (nonatomic,strong) Anime *anime;
-
+@property (nonatomic,strong) AuthenticationHelper *authenticationHelper;
 @end

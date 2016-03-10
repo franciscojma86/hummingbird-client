@@ -58,6 +58,7 @@
     
     AnimeSearchVC *animeController = [[AnimeSearchVC alloc]initWithStyle:UITableViewStyleGrouped];
     [animeController setCoreDataStack:coreDataStack];
+    [animeController setAuthenticationHelper:authenticationHelper];
 
     UINavigationController *animeNavController = [[UINavigationController alloc]initWithRootViewController:animeController];
     animeNavController.tabBarItem.title = @"Search";
@@ -82,7 +83,6 @@
     
     [self createAppearance];
     [self setupTabBarController];
-    
     self.window.rootViewController = self.tabBarController;
     return YES;
 }

@@ -10,6 +10,7 @@
 //helper
 #import "UIViewController+Loading.h"
 #import "NetworkingCallsHelper.h"
+#import "AuthenticationHelper.h"
 //Views
 #import "AnimeTVCell.h"
 //Models
@@ -45,8 +46,8 @@
     UINib *cellNib = [UINib nibWithNibName:NSStringFromClass([AnimeTVCell class])
                                     bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:CELL_IDENTIFIER];
-    self.tableView.estimatedRowHeight = 120;
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 90;
+    self.tableView.rowHeight = 90.0f;
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]initWithTitle:@"Cancel"
                                                                     style:UIBarButtonItemStyleDone
                                                                    target:self
@@ -161,6 +162,7 @@
                                                          bundle:nil];
     AnimeDetailsVC *controller = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([AnimeDetailsVC class])];
     [controller setAnime:anime];
+    [controller setAuthenticationHelper:self.authenticationHelper];
     [self showViewController:controller sender:self];
 
 }
