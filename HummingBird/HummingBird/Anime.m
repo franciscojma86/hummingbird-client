@@ -60,7 +60,7 @@
 
 #pragma mark -Formatting
 - (NSString *)formatGenres:(NSArray *)genres {
-    return [[genres valueForKeyPath:@"name"] componentsJoinedByString:@", "];
+    return [[genres valueForKeyPath:@"name"] componentsJoinedByString:@"・"];
 }
 
 - (NSString *)startedAiringDateString {

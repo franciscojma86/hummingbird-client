@@ -9,6 +9,7 @@
 #import "SubstoryCell.h"
 #import "Substory.h"
 #import "User.h"
+#import "Story.h"
 #import "UIImageView+ImageDownload.h"
 #import "FMDateFormatter.h"
 
@@ -24,6 +25,13 @@
 
 @implementation SubstoryCell
 
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    [self.avatarImageView.layer setCornerRadius:3.0f];
+    self.avatarImageView.clipsToBounds = YES;
+}
+
 - (void)configureWithSubstory:(Substory *)substory {
 
     if (substory.followedUser) {
@@ -31,8 +39,9 @@
         [self.avatarImageView fm_setImageWithURL:[NSURL URLWithString:substory.followedUser.avatarSmall]
                                      placeholder:[UIImage imageNamed:@"placeholder"]];
     } else {
-        [self.usernameLabel setText:@"Yourself"];
-        [self.avatarImageView setImage:[UIImage imageNamed:@"placeholder"]];
+        [self.usernameLabel setText:substory.substoryForStory.user.username];
+        [self.avatarImageView fm_setImageWithURL:[NSURL URLWithString:substory.substoryForStory.user.avatarSmall]
+                                     placeholder:[UIImage imageNamed:@"placeholder"]];
     }
     
     [self.statusLabel setText:substory.substoryStatus];

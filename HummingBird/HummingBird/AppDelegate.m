@@ -29,8 +29,9 @@
     //Navigation bars
     NSDictionary *atts = @{NSForegroundColorAttributeName:PRIMARY_COLOR};
     [[UINavigationBar appearance] setTitleTextAttributes:atts];
-    [[UINavigationBar appearance] setBarTintColor:BACKGROUND_COLOR];
+    [[UINavigationBar appearance] setBarTintColor:BAR_COLOR];
     [[UINavigationBar appearance] setTintColor:PRIMARY_COLOR];
+    [[UITableView appearance] setBackgroundColor:BACKGROUND_COLOR];
 
 }
 
@@ -47,12 +48,6 @@
     feedNavController.tabBarItem.title = @"Feed";
     feedNavController.tabBarItem.image = [UIImage imageNamed:@"feed"];
     
-    AnimeSearchVC *animeController = [[AnimeSearchVC alloc]initWithStyle:UITableViewStyleGrouped];
-    [animeController setCoreDataStack:coreDataStack];
-
-    UINavigationController *animeNavController = [[UINavigationController alloc]initWithRootViewController:animeController];
-    animeNavController.tabBarItem.title = @"Search";
-    animeNavController.tabBarItem.image = [UIImage imageNamed:@"search"];
     
     LibraryTVC *libraryController = [[LibraryTVC alloc]initWithStyle:UITableViewStyleGrouped];
     [libraryController setCoreDataStack:coreDataStack];
@@ -61,6 +56,14 @@
     libraryNavController.tabBarItem.title = @"Library";
     libraryNavController.tabBarItem.image = [UIImage imageNamed:@"library"];
     
+    AnimeSearchVC *animeController = [[AnimeSearchVC alloc]initWithStyle:UITableViewStyleGrouped];
+    [animeController setCoreDataStack:coreDataStack];
+
+    UINavigationController *animeNavController = [[UINavigationController alloc]initWithRootViewController:animeController];
+    animeNavController.tabBarItem.title = @"Search";
+    animeNavController.tabBarItem.image = [UIImage imageNamed:@"search"];
+    
+   
     AccountVC *accountController = [[AccountVC alloc]init];
     [accountController setAuthenticatinHelper:authenticationHelper];
     [accountController setCoreDataStack:coreDataStack];
@@ -69,8 +72,8 @@
     accountNavController.tabBarItem.image = [UIImage imageNamed:@"account"];
 
     self.tabBarController.viewControllers = @[feedNavController,
-                                              animeNavController,
                                               libraryNavController,
+                                              animeNavController,
                                               accountNavController];
 }
 

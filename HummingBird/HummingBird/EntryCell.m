@@ -14,9 +14,10 @@
 @interface EntryCell ()
 @property (weak, nonatomic) IBOutlet UILabel *animeNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *progressLabel;
-@property (weak, nonatomic) IBOutlet UILabel *animeTypeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *animeImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *rewatchingImageView;
+@property (weak, nonatomic) IBOutlet UILabel *rewatchingLabel;
 
 @end
 
@@ -24,11 +25,12 @@
 
 - (void)configureWithEntry:(Entry *)entry {
     [self.animeNameLabel setText:entry.anime.title];
-    [self.progressLabel setText:[NSString stringWithFormat:@"%@ %@ / %@",
-                                 entry.status,
+    [self.statusLabel setText:entry.status];
+    [self.progressLabel setText:[NSString stringWithFormat:@"Episodes watched: %@ / %@",
                                  entry.episodesWatched,
                                  entry.anime.episodeCount]];
-    [self.animeTypeLabel setText:entry.anime.showType];
+    [self.statusLabel setText:entry.anime.showType];
+    [self.rewatchingLabel setText:[NSString stringWithFormat:@"Rewatched %@ times",entry.rewatchedTimes]];
     [self.animeImageView fm_setImageWithURL:[NSURL URLWithString:entry.anime.coverImageAddress]
                                 placeholder:[UIImage imageNamed:@"placeholder"]];
     [self.rewatchingImageView setHidden:![entry.rewatching boolValue]];
@@ -36,9 +38,8 @@
 
 - (void)prepareForReuse {
     [super prepareForReuse];
-    [self.animeTypeLabel setText:nil];
+    [self.statusLabel setText:nil];
     [self.progressLabel setText:nil];
-    [self.animeTypeLabel setText:nil];
     [self.animeImageView setImage:nil];
 }
 @end

@@ -92,8 +92,6 @@ NSString * const modelName = @"Model";
         if (error) {
             NSLog(@"ERROR SAVING CONTEXT %@",error);
         }
-        NSLog(@"SAVE");
-
     }
 }
 //
