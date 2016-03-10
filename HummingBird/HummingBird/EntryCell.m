@@ -29,7 +29,6 @@
     [self.progressLabel setText:[NSString stringWithFormat:@"Episodes watched: %@ / %@",
                                  entry.episodesWatched,
                                  entry.anime.episodeCount]];
-    [self.statusLabel setText:entry.anime.showType];
     [self.rewatchingLabel setText:[NSString stringWithFormat:@"Rewatched %@ times",entry.rewatchedTimes]];
     [self.animeImageView fm_setImageWithURL:[NSURL URLWithString:entry.anime.coverImageAddress]
                                 placeholder:[UIImage imageNamed:@"placeholder"]];

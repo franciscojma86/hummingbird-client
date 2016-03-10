@@ -14,7 +14,7 @@
 #import "NetworkingCallsHelper.h"
 #import "UIViewController+Loading.h"
 #import "StatusFilterTVC.h"
-
+#import "AnimeDetailsVC.h"
 @interface EntryEditTVC () <StatusFilterTVCDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *entryStatusLabel;
@@ -104,9 +104,25 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 1) {
-        [self showStatusFilter];
+    switch (indexPath.row) {
+        case 0: 
+            [self showAnimeDetails:self.entry.anime];
+            break;
+        case 1:
+            [self showStatusFilter];
+            break;
+        default:
+            break;
     }
+}
+
+#pragma mark -Anime detiails
+- (void)showAnimeDetails:(Anime *)anime {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main"
+                                                         bundle:nil];
+    AnimeDetailsVC *controller = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([AnimeDetailsVC class])];
+    [controller setAnime:anime];
+    [self showViewController:controller sender:self];
 }
 
 #pragma mark -Status filter delegate

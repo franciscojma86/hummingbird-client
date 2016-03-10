@@ -2,7 +2,7 @@
 //  Anime+CoreDataProperties.h
 //  HummingBird
 //
-//  Created by Francisco Magdaleno on 3/7/16.
+//  Created by Francisco Magdaleno on 3/9/16.
 //  Copyright © 2016 franciscojma86. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -11,7 +11,6 @@
 
 #import "Anime.h"
 #import "Entry.h"
-
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Anime (CoreDataProperties)
@@ -31,8 +30,22 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *synopsis;
 @property (nullable, nonatomic, retain) NSString *title;
 @property (nullable, nonatomic, retain) NSString *url;
-@property (nullable, nonatomic, retain) Story *mediaForStory;
-@property (nullable, nonatomic, retain) Entry *animeForLibraryEntry;
+@property (nullable, nonatomic, retain) NSSet<Entry *> *animeForLibraryEntry;
+@property (nullable, nonatomic, retain) NSSet<Story *> *mediaForStory;
+
+@end
+
+@interface Anime (CoreDataGeneratedAccessors)
+
+- (void)addAnimeForLibraryEntryObject:(Entry *)value;
+- (void)removeAnimeForLibraryEntryObject:(Entry *)value;
+- (void)addAnimeForLibraryEntry:(NSSet<Entry *> *)values;
+- (void)removeAnimeForLibraryEntry:(NSSet<Entry *> *)values;
+
+- (void)addMediaForStoryObject:(Story *)value;
+- (void)removeMediaForStoryObject:(Story *)value;
+- (void)addMediaForStory:(NSSet<Story *> *)values;
+- (void)removeMediaForStory:(NSSet<Story *> *)values;
 
 @end
 

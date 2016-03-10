@@ -52,11 +52,11 @@
     return queryTask;
 }
 
-+ (NSURLSessionDataTask *)updateLibraryEntry:(NSString *)entryID
++ (NSURLSessionDataTask *)updateLibraryEntry:(NSString *)animeID
                                    entryInfo:(NSDictionary *)entryInfo
                                      success:(SuccessJSONBlock)success
                                      failure:(FailMessageBlock)failure {
-    NSString *queryPath = [NSString stringWithFormat:@"libraries/%@",entryID];
+    NSString *queryPath = [NSString stringWithFormat:@"libraries/%@",animeID];
     NSURLSessionDataTask *queryTask = [[FMNetworkingClient sharedClient] dataTaskWithMethod:POST
                                                                                        path:queryPath
                                                                                        body:entryInfo
@@ -65,6 +65,21 @@
                                                                                     failure:failure];
     return queryTask;
 }
+
++ (NSURLSessionDataTask *)deleteLibraryEntry:(NSString *)animeID
+                                   entryInfo:(NSDictionary *)entryInfo
+                                     success:(SuccessJSONBlock)success
+                                     failure:(FailMessageBlock)failure {
+    NSString *queryPath = [NSString stringWithFormat:@"libraries/%@/remove",animeID];
+    NSURLSessionDataTask *queryTask = [[FMNetworkingClient sharedClient] dataTaskWithMethod:POST
+                                                                                       path:queryPath
+                                                                                       body:entryInfo
+                                                                           successDataBlock:nil
+                                                                           successJSONBlock:success
+                                                                                    failure:failure];
+    return queryTask;
+}
+
 
 + (NSURLSessionDataTask *)authenticateUserWithUsername:(NSString *)username
                                               password:(NSString *)password

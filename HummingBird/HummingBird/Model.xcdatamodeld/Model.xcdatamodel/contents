@@ -16,8 +16,8 @@
         <attribute name="synopsis" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="animeForLibraryEntry" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Entry" inverseName="anime" inverseEntity="Entry" syncable="YES"/>
-        <relationship name="mediaForStory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Story" inverseName="media" inverseEntity="Story" syncable="YES"/>
+        <relationship name="animeForLibraryEntry" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Entry" inverseName="anime" inverseEntity="Entry" syncable="YES"/>
+        <relationship name="mediaForStory" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Story" inverseName="media" inverseEntity="Story" syncable="YES"/>
     </entity>
     <entity name="Entry" representedClassName="Entry" syncable="YES">
         <attribute name="entryID" optional="YES" attributeType="String" syncable="YES"/>
@@ -57,9 +57,9 @@
         <attribute name="avatar" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="avatarSmall" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="posterForStory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Story" inverseName="poster" inverseEntity="Story" syncable="YES"/>
-        <relationship name="userFollowedBySubstory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Substory" inverseName="followedUser" inverseEntity="Substory" syncable="YES"/>
-        <relationship name="userForStory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Story" inverseName="user" inverseEntity="Story" syncable="YES"/>
+        <relationship name="posterForStory" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Story" inverseName="poster" inverseEntity="Story" syncable="YES"/>
+        <relationship name="userFollowedBySubstory" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Substory" inverseName="followedUser" inverseEntity="Substory" syncable="YES"/>
+        <relationship name="userForStory" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Story" inverseName="user" inverseEntity="Story" syncable="YES"/>
     </entity>
     <configuration name="Persistent">
         <memberEntity name="User"/>
@@ -73,9 +73,9 @@
     </configuration>
     <elements>
         <element name="Anime" positionX="153" positionY="-18" width="128" height="298"/>
+        <element name="Entry" positionX="252" positionY="-288" width="128" height="208"/>
         <element name="Story" positionX="448" positionY="-100" width="128" height="178"/>
         <element name="Substory" positionX="646" positionY="-226" width="128" height="163"/>
         <element name="User" positionX="844" positionY="-0" width="128" height="133"/>
-        <element name="Entry" positionX="252" positionY="-288" width="128" height="208"/>
     </elements>
 </model>

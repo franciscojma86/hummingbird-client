@@ -30,7 +30,12 @@
                                                success:(SuccessJSONBlock)success
                                                failure:(FailMessageBlock)failure;
 
-+ (NSURLSessionDataTask *)updateLibraryEntry:(NSString *)entryID
++ (NSURLSessionDataTask *)updateLibraryEntry:(NSString *)animeID
+                                   entryInfo:(NSDictionary *)entryInfo
+                                     success:(SuccessJSONBlock)success
+                                     failure:(FailMessageBlock)failure;
+
++ (NSURLSessionDataTask *)deleteLibraryEntry:(NSString *)animeID
                                    entryInfo:(NSDictionary *)entryInfo
                                      success:(SuccessJSONBlock)success
                                      failure:(FailMessageBlock)failure;

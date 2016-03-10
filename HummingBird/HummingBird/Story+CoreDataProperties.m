@@ -2,7 +2,7 @@
 //  Story+CoreDataProperties.m
 //  HummingBird
 //
-//  Created by Francisco Magdaleno on 3/7/16.
+//  Created by Francisco Magdaleno on 3/9/16.
 //  Copyright © 2016 franciscojma86. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,10 +14,10 @@
 @implementation Story (CoreDataProperties)
 
 @dynamic selfPost;
+@dynamic storyID;
 @dynamic storyType;
 @dynamic substoriesCount;
 @dynamic updatedAt;
-@dynamic storyID;
 @dynamic media;
 @dynamic poster;
 @dynamic substories;
