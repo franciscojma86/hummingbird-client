@@ -9,7 +9,7 @@
 #import "AuthenticationHelper.h"
 #import "KeychainWrapper.h"
 #import "Constants.h"
-
+#import "CoreDataStack.h"
 @interface AuthenticationHelper ()
 
 @property (nonatomic,readonly) KeychainWrapper *keychainWrapper;
@@ -52,7 +52,7 @@
 
 - (void)logoutUser {
     [self.keychainWrapper resetKeychainItem];
-    //TODO: Clear all core data info
+    [self.coreDataStack.mainContext reset];
 }
 
 @end

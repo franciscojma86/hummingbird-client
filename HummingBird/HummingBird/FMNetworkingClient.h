@@ -11,8 +11,6 @@
 
 @interface FMNetworkingClient : NSObject
 
-//TODO: Implement download delegate methods
-//TODO: Implement image upload methods
 //HTTP call methods
 #define GET @"GET"
 #define POST @"POST"

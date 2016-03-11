@@ -14,6 +14,7 @@
 #import "EntryCell.h"
 #import "EntryEditTVC.h"
 #import "Anime.h"
+#import "UIViewController+Alerts.h"
 @interface LibraryTVC () <EntryEditTVCDelegate>
 
 @property (nonatomic,strong) NSURLSessionDataTask *libraryDataTask;
@@ -79,7 +80,8 @@
                                                                       }];
                                                                   } failure:^(NSString *errorMessage, BOOL cancelled) {
                                                                       [self fm_stopLoading];
-                                                                      NSLog(@"ERROR %@",errorMessage);
+                                                                      [self fm_showNetworkingErrorMessageAlertWithTitle:nil
+                                                                                                                message:errorMessage];
                                                                   }];
 }
 
@@ -160,13 +162,17 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
                                                               entryInfo:@{@"auth_token" : [self.authenticationHelper activeUserToken],
                                                                           @"id":entry.anime.animeID}
                                                                 success:^(id json) {
+                                                                    Entry *entry = self.entries[indexPath.row];
                                                                     [self.entries removeObjectAtIndex:indexPath.row];
+                                                                    [CoreDataStack removeManagedObject:entry inContext:self.coreDataStack.mainContext];
                                                                     [self.tableView deleteRowsAtIndexPaths:@[indexPath]
                                                                                           withRowAnimation:UITableViewRowAnimationAutomatic];
                                                                     [self fm_stopLoading];
                                                                 } failure:^(NSString *errorMessage, BOOL cancelled) {
-                                                                    NSLog(@"error %@",errorMessage);
+                                                                    if (cancelled) return;
                                                                     [self fm_stopLoading];
+                                                                    [self fm_showNetworkingErrorMessageAlertWithTitle:nil
+                                                                                                              message:errorMessage];
                                                                 }];
         [self.tableView setEditing:NO animated:YES];
     }

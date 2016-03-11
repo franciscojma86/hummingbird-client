@@ -27,7 +27,10 @@
     if (![self.authenticationHelper activeUsername]) {
         [self showOfflineView];
     } else {
-        [self hideOfflineView];
+        if (self.offlineViewShown) {
+            [self hideOfflineView];
+            [self refreshPulled];
+        }
     }
 }
 
@@ -44,11 +47,13 @@
     [offlineView setDelegate:self];
     [self.tableView setBackgroundView:offlineView];
     [self.tableView reloadData];
+    self.offlineViewShown = YES;
 }
 
 - (void)hideOfflineView {
     if (!self.tableView.backgroundView) return;
     [self.tableView setBackgroundView:nil];
+    self.offlineViewShown = NO;
 }
 
 - (void)refreshPulled {

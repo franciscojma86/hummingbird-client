@@ -17,7 +17,8 @@
 //Views
 #import "StoryHeaderView.h"
 #import "SubstoryCell.h"
-
+//Helpers
+#import "UIViewController+Alerts.h"
 @interface FeedVC () 
 
 @property (nonatomic,strong) NSArray *stories;
@@ -78,14 +79,8 @@
                                                 } failure:^(NSString *errorMessage, BOOL cancelled) {
                                                     [self fm_stopLoading];
                                                     [self.refreshControl endRefreshing];
-                                                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error!"
-                                                                                                                   message:errorMessage
-                                                                                                            preferredStyle:UIAlertControllerStyleAlert];
-                                                    UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK"
-                                                                                                     style:UIAlertActionStyleCancel
-                                                                                                   handler:nil];
-                                                    [alert addAction:action];
-                                                    [self presentViewController:alert animated:NO completion:nil];
+                                                    [self fm_showNetworkingErrorMessageAlertWithTitle:nil
+                                                                                              message:errorMessage];
                                                 }];
 }
 
@@ -148,7 +143,7 @@
 - (void)loginTVCDidSignIn:(LoginTVC *)sender {
     [self dismissViewControllerAnimated:YES
                              completion:^{
-                                 [self queryFeed];
+//                                 [self queryFeed];
                              }];
 }
 

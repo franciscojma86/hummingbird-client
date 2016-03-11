@@ -13,6 +13,7 @@
 #import "UIImageView+ImageDownload.h"
 #import "NetworkingCallsHelper.h"
 #import "UIViewController+Loading.h"
+#import "UIViewController+Alerts.h"
 #import "StatusFilterTVC.h"
 #import "AnimeDetailsVC.h"
 @interface EntryEditTVC () <StatusFilterTVCDelegate>
@@ -32,6 +33,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.animeImageView.layer setCornerRadius:3.0f];
+    self.animeImageView.clipsToBounds = YES;
     self.navigationItem.title = @"Edit";
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]initWithTitle:@"Cancel"
                                                                     style:UIBarButtonItemStyleDone
@@ -83,8 +86,11 @@
                                                             [self.delegate entryEditTVC:self
                                                                            didSaveEntry:self.entry];
                                                         } failure:^(NSString *errorMessage, BOOL cancelled) {
+                                                            if (cancelled) return;
                                                             [self fm_stopLoading];
-                                                            NSLog(@"ERROR %@",errorMessage);
+                                                            [self fm_showNetworkingErrorMessageAlertWithTitle:nil
+                                                                                                      message:errorMessage];
+
                                                         }];
 }
 
@@ -122,6 +128,7 @@
                                                          bundle:nil];
     AnimeDetailsVC *controller = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([AnimeDetailsVC class])];
     [controller setAnime:anime];
+    [controller setShouldShowAddButton:NO];
     [self showViewController:controller sender:self];
 }
 

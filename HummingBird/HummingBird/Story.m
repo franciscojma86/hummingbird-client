@@ -15,12 +15,18 @@
 #import "User.h"
 #import "Anime.h"
 #import "Substory.h"
+//Categories
+#import "NSManagedObject+DeleteOperations.h"
 
 @implementation Story
 
 + (NSArray *)storyWithArray:(NSArray *)storiesArray
                   inContext:(NSManagedObjectContext *)context {
     NSMutableArray *stories = [NSMutableArray array];
+    [NSManagedObject fm_deleteUnusedObjectsFromInfoArray:storiesArray
+                                           inTargetClass:[self class]
+                                             forProperty:@"id"
+                                               inContext:context];
     for (NSDictionary *storyInfo in storiesArray) {
         Story *story = [Story storyWithInfo:storyInfo
                                   inContext:context];

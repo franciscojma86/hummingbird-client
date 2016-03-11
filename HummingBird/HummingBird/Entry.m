@@ -11,18 +11,23 @@
 #import "CoreDataStack.h"
 #import "FMDateFormatter.h"
 #import "NSDictionary+NullObjects.h"
-
+#import "NSManagedObject+DeleteOperations.h"
 @implementation Entry
 
 + (NSArray *)entriesWithInfoArray:(NSArray *)infoArray
                         inContext:(nonnull NSManagedObjectContext *)context {
     NSMutableArray *result = [NSMutableArray array];
+    [NSManagedObject fm_deleteUnusedObjectsFromInfoArray:infoArray
+                                           inTargetClass:[self class]
+                                             forProperty:@"id"
+                                               inContext:context];
     for (NSDictionary *entryInfo in infoArray) {
         Entry *entry = [Entry entryWithInfo:entryInfo inContext:context];
         [result addObject:entry];
     }
     return result;
 }
+
 
 + (Entry *)entryWithInfo:(NSDictionary *)entryInfo
                inContext:(nonnull NSManagedObjectContext *)context{

@@ -7,8 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+@class CoreDataStack;
 
 @interface AuthenticationHelper : NSObject
+
+@property (nonatomic,strong) CoreDataStack *coreDataStack;
 
 - (void)saveUsername:(NSString *)username
                token:(NSString *)token;

@@ -15,6 +15,7 @@
 @interface FMBaseTVC : UITableViewController <OfflineViewDelegate,LoginTVCDelegate>
 
 @property (nonatomic,strong) AuthenticationHelper *authenticationHelper;
+@property (nonatomic) BOOL offlineViewShown;
 
 - (void)refreshPulled;
 - (void)showOfflineView;

@@ -14,6 +14,7 @@
 #import "NetworkingCallsHelper.h"
 #import "AuthenticationHelper.h"
 #import "Entry.h"
+#import "UIViewController+Alerts.h"
 
 @interface AnimeDetailsVC () <StatusFilterTVCDelegate>
 
@@ -38,15 +39,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc]initWithTitle:@"Add to library"
-                                                                 style:UIBarButtonItemStyleDone
-                                                                target:self
-                                                                action:@selector(addPressed)];
-    self.navigationItem.rightBarButtonItem = addButton;
+    [self.animeImageView.layer setCornerRadius:3.0];
+    self.animeImageView.clipsToBounds = YES;
+    if (self.shouldShowAddButton) {
+        UIBarButtonItem *addButton = [[UIBarButtonItem alloc]initWithTitle:@"Add to library"
+                                                                     style:UIBarButtonItemStyleDone
+                                                                    target:self
+                                                                    action:@selector(addPressed)];
+        self.navigationItem.rightBarButtonItem = addButton;        
+    }
     [self displayAnimeInfo];
 }
 
 - (void)displayAnimeInfo {
+    self.navigationItem.title = self.anime.title;
     [self.animeImageView fm_setImageWithURL:[NSURL URLWithString:self.anime.coverImageAddress]
                                 placeholder:[UIImage imageNamed:@"placeholder"]];
     [self.animeTitleLabel setText:self.anime.title];
@@ -58,11 +64,11 @@
     NSString *started = [self.anime startedAiringDateString];
     NSString *finished = [self.anime finishedAiringDateString];
     [self.airingPeriod setText:[NSString stringWithFormat:@"%@ - %@",started,finished]];
-    [self.episodeCountLabel setText:[NSString stringWithFormat:@"Episodes: %@",self.anime.episodeCount ? self.anime.episodeCount : @"?"]];
-    [self.episodeLengthLabel setText:[NSString stringWithFormat:@"%@m",self.anime.episodeLength]];
+    [self.episodeCountLabel setText:[NSString stringWithFormat:@"%@ episodes",self.anime.episodeCount ? self.anime.episodeCount : @"?"]];
+    [self.episodeLengthLabel setText:[NSString stringWithFormat:@"%@ min long",self.anime.episodeLength]];
     
     NSAttributedString *synopsis = [[NSAttributedString alloc]initWithString:self.anime.synopsis
-                                                                  attributes:@{NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue" size:15]}];
+                                                                  attributes:@{NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue" size:12]}];
     [self.synopsisTextView setAttributedText:synopsis];
 }
 
@@ -79,6 +85,7 @@
 
 - (void)statusFilterTV:(StatusFilterTVC *)sender
        didSelectStatus:(NSString *)status {
+    //TODO: respond to logged out user
     [self fm_startLoading];
     if (self.updateAnimeDataTask) [self.updateAnimeDataTask cancel];
     self.updateAnimeDataTask = [NetworkingCallsHelper updateLibraryEntry:self.anime.animeID
@@ -86,13 +93,22 @@
                                                                            @"auth_token" : [self.authenticationHelper activeUserToken],
                                                                            @"status" : [Entry formatStatusForServer:status]}
                                                                  success:^(id json) {
-                                                                     [self.statusLabel setText:status];
                                                                      [self fm_stopLoading];
+                                                                     NSString *message = [NSString stringWithFormat:@"%@ - %@",self.anime.title,status];
+                                                                     [self fm_showAlertWithTitle:@"Success!"
+                                                                                         message:message];
                                                                  } failure:^(NSString *errorMessage, BOOL cancelled) {
-                                                                     NSLog(@"ERROR %@",errorMessage);
+                                                                     if (cancelled) return;
                                                                      [self fm_stopLoading];
+                                                                     [self fm_showNetworkingErrorMessageAlertWithTitle:nil
+                                                                                                               message:errorMessage];
                                                                  }];
     
+}
+
+#pragma mark -Table view delegate
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 0.001f;
 }
 
 

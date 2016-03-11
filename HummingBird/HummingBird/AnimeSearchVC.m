@@ -9,6 +9,7 @@
 #import "AnimeSearchVC.h"
 //helper
 #import "UIViewController+Loading.h"
+#import "UIViewController+Alerts.h"
 #import "NetworkingCallsHelper.h"
 #import "AuthenticationHelper.h"
 //Views
@@ -18,6 +19,7 @@
 #import "Anime.h"
 //Controllers
 #import "AnimeDetailsVC.h"
+
 
 @interface AnimeSearchVC ()
 
@@ -98,8 +100,7 @@
     if (self.searchQueryTask) [self.searchQueryTask cancel];
     self.searchQueryTask = [NetworkingCallsHelper queryAnimeBySearchText:query
                                                                  success:^(id json) {
-                                                                     
-
+                                                                    
                                                                      NSManagedObjectContext *backgroundContext = [self.coreDataStack concurrentContext];
                                                                      [backgroundContext performBlock:^{
                                                                          [Anime animesWithArray:json
@@ -114,9 +115,12 @@
                                                                      }];
                                                                      
                                                                  } failure:^(NSString *errorMessage, BOOL cancelled) {
+                                                                     if (cancelled) return;
                                                                      [self fm_stopLoading];
                                                                      self.results = nil;
-                                                                     NSLog(@"ERROR %@",errorMessage);
+                                                                     [self fm_showNetworkingErrorMessageAlertWithTitle:nil
+                                                                                                               message:errorMessage];
+
                                                                  }];
 
 }
@@ -162,6 +166,7 @@
                                                          bundle:nil];
     AnimeDetailsVC *controller = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([AnimeDetailsVC class])];
     [controller setAnime:anime];
+    [controller setShouldShowAddButton:YES];
     [controller setAuthenticationHelper:self.authenticationHelper];
     [self showViewController:controller sender:self];
 

@@ -112,20 +112,62 @@ NSString * const modelName = @"Model";
 //    });
 //}
 
++ (void)removeManagedObjectsBatchWithIDS:(NSArray *)objectsID
+                               fromClass:(Class)targetClass
+                             forProperty:(NSString *)property
+                               inContext:(NSManagedObjectContext *)context {
+    if (objectsID.count == 0 || !objectsID) return;
+    NSFetchRequest *req = [[NSFetchRequest alloc]initWithEntityName:NSStringFromClass(targetClass)];;
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"%@ IN %@",property,objectsID];
+    req.predicate = pred;
+    NSError *error;
+    NSArray *objectsToDelete = [context executeFetchRequest:req error:&error];
+    if (error) {
+        NSLog(@"ERROR deleting %@",error.userInfo);
+        return;
+    }
+    for (NSManagedObject *obj in objectsToDelete) {
+        [CoreDataStack removeManagedObject:obj inContext:context];
+    }
+    [context save:&error];
+    if (error) {
+        NSLog(@"ERROR deleting %@",error.userInfo);
+        return;
+    }
+}
+
++ (void)removeManagedObject:(NSManagedObject *)object
+                  inContext:(NSManagedObjectContext *)context {
+    [context deleteObject:object];
+}
 
 #pragma mark -Objects query
++ (NSArray *)queryAllIDPropertiesFromClass:(Class)targetClass
+                                 inContext:(NSManagedObjectContext *)context {
+    NSFetchRequest *req = [[NSFetchRequest alloc]initWithEntityName:NSStringFromClass(targetClass)];
+    NSString *propertytoFetch = [NSString stringWithFormat:@"%@ID",[NSStringFromClass(targetClass) lowercaseString]];
+    [req setResultType:NSDictionaryResultType];
+    [req setPropertiesToFetch:@[propertytoFetch]];
+    NSError *error;
+    NSArray *objects = [context executeFetchRequest:req error:&error];
+    if (error) {
+        NSLog(@"ERROR loading ids from entity %@",targetClass);
+        return nil;
+    }
+    return objects;
+}
+
 + (NSManagedObject *)queryObjectWithID:(NSString *)objID
                         propertyIDName:(NSString *)propertyIDName
                                inClass:(Class)targetClass
                              inContext:(NSManagedObjectContext *)context {
     
-    NSManagedObjectContext *searchContext = context.parentContext ? context.parentContext : context;
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"self.%@ == %@",propertyIDName,objID];
     NSFetchRequest *req = [[NSFetchRequest alloc]initWithEntityName:NSStringFromClass(targetClass)];
     req.predicate = pred;
     
     NSError *error;
-    NSManagedObject *obj = [[searchContext executeFetchRequest:req error:&error] lastObject];
+    NSManagedObject *obj = [[context executeFetchRequest:req error:&error] lastObject];
 
     if (error) {
         NSLog(@"ERROR CREATING OBJECT %@\nOF TYPE %@",error.userInfo,NSStringFromClass(targetClass));
@@ -147,7 +189,6 @@ NSString * const modelName = @"Model";
                          ascending:(BOOL)ascending
                          inContext:(NSManagedObjectContext *)context {
     
-    NSManagedObjectContext *searchContext = context.parentContext ? context.parentContext : context;
     NSFetchRequest *req = [[NSFetchRequest alloc]initWithEntityName:NSStringFromClass(targetClass)];
     [req setReturnsObjectsAsFaults:NO];
     req.predicate = predicate;
@@ -156,7 +197,7 @@ NSString * const modelName = @"Model";
                                                               ascending:ascending]];
     }
     NSError *error;
-    NSArray *objects = [searchContext executeFetchRequest:req error:&error];
+    NSArray *objects = [context executeFetchRequest:req error:&error];
     if (error) {
         NSLog(@"ERROR FETCHING OBJECTS %@\nOF TYPE %@",error.userInfo,NSStringFromClass(targetClass));
         return nil;

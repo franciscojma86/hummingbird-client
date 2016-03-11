@@ -94,7 +94,7 @@ static const UInt8 kKeychainItemIdentifier[] = "com.franciscojma86.HummingBird.K
 }
 
 - (id)fm_objectForKey:(id)key {
-    return [_keychainData objectForKey:key];
+    return [_keychainData objectForKey: key];
 }
 
 // Reset the values in the keychain item, or create a new item if it

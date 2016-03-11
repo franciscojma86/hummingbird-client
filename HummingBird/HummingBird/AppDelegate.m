@@ -38,6 +38,7 @@
 - (void)setupTabBarController {
     CoreDataStack *coreDataStack = [[CoreDataStack alloc]init];
     AuthenticationHelper *authenticationHelper = [[AuthenticationHelper alloc]init];
+    [authenticationHelper setCoreDataStack:coreDataStack];
     
     self.tabBarController = [[UITabBarController alloc]init];
     FeedVC *feedController = [[FeedVC alloc]initWithStyle:UITableViewStyleGrouped];

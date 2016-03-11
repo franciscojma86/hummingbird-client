@@ -14,4 +14,6 @@
 
 @property (nonatomic,strong) Anime *anime;
 @property (nonatomic,strong) AuthenticationHelper *authenticationHelper;
+@property (nonatomic) BOOL shouldShowAddButton;
+
 @end

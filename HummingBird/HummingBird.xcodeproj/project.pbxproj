@@ -42,6 +42,8 @@
 		978AA39D1C7B783A007334F3 /* AnimeDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 978AA39C1C7B783A007334F3 /* AnimeDetailsVC.m */; };
 		979107B51C8F5FE600FF9357 /* EntryEditTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 979107B41C8F5FE600FF9357 /* EntryEditTVC.m */; };
 		979107B81C8FD79F00FF9357 /* StatusFilterTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 979107B71C8FD79F00FF9357 /* StatusFilterTVC.m */; };
+		9797F6121C92481C00376F84 /* NSManagedObject+DeleteOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9797F6111C92481C00376F84 /* NSManagedObject+DeleteOperations.m */; };
+		9797F6171C9284F500376F84 /* UIViewController+Alerts.m in Sources */ = {isa = PBXBuildFile; fileRef = 9797F6161C9284F500376F84 /* UIViewController+Alerts.m */; };
 		97F894251C890BEF00F73E9C /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F894241C890BEF00F73E9C /* KeychainWrapper.m */; };
 		97F894321C891AAF00F73E9C /* Story+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F894271C891AAF00F73E9C /* Story+CoreDataProperties.m */; };
 		97F894331C891AAF00F73E9C /* Story.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F894291C891AAF00F73E9C /* Story.m */; };
@@ -149,6 +151,10 @@
 		979107B41C8F5FE600FF9357 /* EntryEditTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryEditTVC.m; sourceTree = "<group>"; };
 		979107B61C8FD79F00FF9357 /* StatusFilterTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusFilterTVC.h; sourceTree = "<group>"; };
 		979107B71C8FD79F00FF9357 /* StatusFilterTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusFilterTVC.m; sourceTree = "<group>"; };
+		9797F6101C92481C00376F84 /* NSManagedObject+DeleteOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+DeleteOperations.h"; sourceTree = "<group>"; };
+		9797F6111C92481C00376F84 /* NSManagedObject+DeleteOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+DeleteOperations.m"; sourceTree = "<group>"; };
+		9797F6151C9284F500376F84 /* UIViewController+Alerts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Alerts.h"; sourceTree = "<group>"; };
+		9797F6161C9284F500376F84 /* UIViewController+Alerts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Alerts.m"; sourceTree = "<group>"; };
 		97F894231C890BEF00F73E9C /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
 		97F894241C890BEF00F73E9C /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
 		97F894261C891AAF00F73E9C /* Story+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Story+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -275,6 +281,7 @@
 		97031C451C77AFD900678712 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				9797F6141C9284E800376F84 /* Alerts */,
 				97F894221C890BDC00F73E9C /* Keychain */,
 				97031C901C796D6700678712 /* Constants */,
 				97031C661C77DB4D00678712 /* ImageHandling */,
@@ -471,6 +478,8 @@
 				97031C951C797FC400678712 /* Anime+CoreDataProperties.m */,
 				97031C961C797FC400678712 /* Anime.h */,
 				97031C971C797FC400678712 /* Anime.m */,
+				9797F6101C92481C00376F84 /* NSManagedObject+DeleteOperations.h */,
+				9797F6111C92481C00376F84 /* NSManagedObject+DeleteOperations.m */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -492,6 +501,15 @@
 				976AD6BB1C8E657F00E15863 /* EntryCell.xib */,
 			);
 			name = LibraryEntries;
+			sourceTree = "<group>";
+		};
+		9797F6141C9284E800376F84 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				9797F6151C9284F500376F84 /* UIViewController+Alerts.h */,
+				9797F6161C9284F500376F84 /* UIViewController+Alerts.m */,
+			);
+			name = Alerts;
 			sourceTree = "<group>";
 		};
 		97F894221C890BDC00F73E9C /* Keychain */ = {
@@ -700,6 +718,7 @@
 				97031CA01C7A354F00678712 /* FMDateFormatter.m in Sources */,
 				97031C621C77D99700678712 /* FMSearchBarTVC.m in Sources */,
 				97F894561C8CC62600F73E9C /* FMBaseTVC.m in Sources */,
+				9797F6171C9284F500376F84 /* UIViewController+Alerts.m in Sources */,
 				97F8943B1C894A6B00F73E9C /* StoryHeaderView.m in Sources */,
 				976AD6BC1C8E657F00E15863 /* EntryCell.m in Sources */,
 				97031C7B1C78F10400678712 /* FMSearchTVC.m in Sources */,
@@ -726,6 +745,7 @@
 				97F8945B1C8CD27400F73E9C /* AccountVC.m in Sources */,
 				97F894371C891AAF00F73E9C /* User.m in Sources */,
 				97031C6D1C78D97700678712 /* AnimeSearchVC.m in Sources */,
+				9797F6121C92481C00376F84 /* NSManagedObject+DeleteOperations.m in Sources */,
 				976AD6B61C8E5FDA00E15863 /* Entry+CoreDataProperties.m in Sources */,
 				97031C4B1C77AFEA00678712 /* FMNetworkingErrorMessages.m in Sources */,
 				97031C811C78F81F00678712 /* FMEmptyResultsView.m in Sources */,

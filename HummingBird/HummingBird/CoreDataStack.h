@@ -16,7 +16,14 @@
 - (NSManagedObjectContext *)concurrentContext;
 - (void)saveContext:(NSManagedObjectContext *)context;
 - (void)saveMainContext;
-
++ (void)removeManagedObjectsBatchWithIDS:(NSArray *)objectsID
+                               fromClass:(Class)targetClass
+                             forProperty:(NSString *)property
+                               inContext:(NSManagedObjectContext *)context;
++ (void)removeManagedObject:(NSManagedObject *)object
+                  inContext:(NSManagedObjectContext *)context;
++ (NSArray *)queryAllIDPropertiesFromClass:(Class)targetClass
+                                 inContext:(NSManagedObjectContext *)context;
 + (NSManagedObject *)queryObjectWithID:(NSString *)objID
                         propertyIDName:(NSString *)propertyIDName
                                inClass:(Class)targetClass
