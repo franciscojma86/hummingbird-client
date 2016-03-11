@@ -17,6 +17,8 @@ static const UInt8 kKeychainItemIdentifier[] = "com.franciscojma86.HummingBird.K
 @property (nonatomic, strong) NSMutableDictionary *keychainData;
 @property (nonatomic, strong) NSMutableDictionary *genericPasswordQuery;
 
+@property (nonatomic,strong) dispatch_queue_t queryQueue;
+
 @end
 
 @interface KeychainWrapper (PrivateMethods)
@@ -83,18 +85,30 @@ static const UInt8 kKeychainItemIdentifier[] = "com.franciscojma86.HummingBird.K
     return self;
 }
 
-#warning make threadsafe
+- (dispatch_queue_t)queryQueue {
+    if (!_queryQueue) {
+        _queryQueue = dispatch_queue_create("com.franciscojma86.humminh-bird.queryQueue", DISPATCH_QUEUE_CONCURRENT);
+    }
+    return _queryQueue;
+}
+
 - (void)fm_setObject:(id)inObject forKey:(id)key {
     if (inObject == nil) return;
-    id currentObject = [_keychainData objectForKey:key];
-    if (![currentObject isEqual:inObject]) {
-        [_keychainData setObject:inObject forKey:key];
-        [self writeToKeychain];
-    }
+    dispatch_barrier_async(self.queryQueue, ^{
+        id currentObject = [_keychainData objectForKey:key];
+        if (![currentObject isEqual:inObject]) {
+            [_keychainData setObject:inObject forKey:key];
+            [self writeToKeychain];
+        }
+    });
 }
 
 - (id)fm_objectForKey:(id)key {
-    return [_keychainData objectForKey: key];
+    __block id result = nil;
+    dispatch_sync(self.queryQueue, ^{
+        result = [_keychainData objectForKey:key];
+    });
+    return result;
 }
 
 // Reset the values in the keychain item, or create a new item if it
@@ -109,7 +123,8 @@ static const UInt8 kKeychainItemIdentifier[] = "com.franciscojma86.HummingBird.K
         [self dictionaryToSecItemFormat:_keychainData];
         // Delete the keychain item in preparation for resetting the values:
         OSStatus errorcode = SecItemDelete((__bridge CFDictionaryRef)tmpDictionary);
-        NSAssert(errorcode == noErr, @"Problem deleting current keychain item." );
+        NSLog(@"Coudln't find keychain item %zd",errorcode);
+
     }
     
     // Default generic data for Keychain Item:

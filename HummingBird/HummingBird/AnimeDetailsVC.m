@@ -85,12 +85,17 @@
 
 - (void)statusFilterTV:(StatusFilterTVC *)sender
        didSelectStatus:(NSString *)status {
-    //TODO: respond to logged out user
+    NSString *token  = [self.authenticationHelper activeUserToken];
+    if (!token) {
+        [self fm_showAlertWithTitle:@"Authentication error!"
+                            message:@"Please log in to your account."];
+        return;
+    }
     [self fm_startLoading];
     if (self.updateAnimeDataTask) [self.updateAnimeDataTask cancel];
     self.updateAnimeDataTask = [NetworkingCallsHelper updateLibraryEntry:self.anime.animeID
                                                                entryInfo:@{@"id" : self.anime.animeID,
-                                                                           @"auth_token" : [self.authenticationHelper activeUserToken],
+                                                                           @"auth_token" : token,
                                                                            @"status" : [Entry formatStatusForServer:status]}
                                                                  success:^(id json) {
                                                                      [self fm_stopLoading];

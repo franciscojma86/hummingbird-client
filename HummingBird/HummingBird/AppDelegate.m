@@ -67,7 +67,7 @@
     
    
     AccountVC *accountController = [[AccountVC alloc]init];
-    [accountController setAuthenticatinHelper:authenticationHelper];
+    [accountController setAuthenticationHelper:authenticationHelper];
     [accountController setCoreDataStack:coreDataStack];
     UINavigationController *accountNavController = [[UINavigationController alloc]initWithRootViewController:accountController];
     accountNavController.tabBarItem.title = @"Account";

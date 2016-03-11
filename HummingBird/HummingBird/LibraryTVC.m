@@ -20,6 +20,7 @@
 @property (nonatomic,strong) NSURLSessionDataTask *libraryDataTask;
 @property (nonatomic,strong) NSURLSessionDataTask *deleteDataTask;
 @property (nonatomic,strong) NSMutableArray *entries;
+@property (nonatomic,strong) NSArray *entriesStatus;;
 @end
 
 @implementation LibraryTVC
@@ -87,11 +88,28 @@
 
 - (void)queryEntries {
     NSArray *entries = [CoreDataStack queryObjectsFromClass:[Entry class]
-                                          withPredicate:nil
-                                                sortKey:@"status"
-                                              ascending:YES
-                                              inContext:self.coreDataStack.mainContext];
-    self.entries = [NSMutableArray arrayWithArray:entries];
+                                              withPredicate:nil
+                                                    sortKey:@"status"
+                                                  ascending:YES
+                                                  inContext:self.coreDataStack.mainContext];
+    NSMutableArray *result = [NSMutableArray array];
+    NSArray *statusKeys = [self removeDuplicateStatus:[entries valueForKeyPath:@"status"]];
+    for (NSString *key in statusKeys) {
+        NSPredicate *pred = [NSPredicate predicateWithFormat:@"status == %@",key];
+        [result addObject:[entries filteredArrayUsingPredicate:pred]];
+    }
+    self.entriesStatus = statusKeys;
+    self.entries = [NSMutableArray arrayWithArray:result];
+}
+
+- (NSArray *)removeDuplicateStatus:(NSArray *)statusArray {
+    NSMutableArray *result = [NSMutableArray array];
+    for (NSString *key in statusArray) {
+        if (![result containsObject:key]) {
+            [result addObject:key];
+        }
+    }
+    return result;
 }
 
 - (void)editPressed {
@@ -114,28 +132,34 @@
 }
 
 #pragma mark -Table view delegate 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return self.entriesStatus[section];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return self.entriesStatus.count;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.entries.count;
+    return [self.entries[section] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     EntryCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER];
-    Entry *entry = self.entries[indexPath.row];
+    Entry *entry = self.entries[indexPath.section][indexPath.row];
     [cell configureWithEntry:entry];
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 0.0001f;
-}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    Entry *entry = self.entries[indexPath.row];
+    Entry *entry = self.entries[indexPath.section][indexPath.row];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main"
                                                          bundle:nil];
     EntryEditTVC *controller = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([EntryEditTVC class])];
     [controller setEntry:entry];
     [controller setDelegate:self];
+    [controller setEditingIndexPath:indexPath];
     [controller setAuthenticationHelper:self.authenticationHelper];
     UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:controller];
     [self presentViewController:navController
@@ -156,14 +180,16 @@
 forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self fm_startLoading];
-        Entry *entry = self.entries[indexPath.row];
+        Entry *entry = self.entries[indexPath.section][indexPath.row];
         if (self.deleteDataTask) [self.deleteDataTask cancel];
         self.deleteDataTask = [NetworkingCallsHelper deleteLibraryEntry:entry.anime.animeID
                                                               entryInfo:@{@"auth_token" : [self.authenticationHelper activeUserToken],
                                                                           @"id":entry.anime.animeID}
                                                                 success:^(id json) {
-                                                                    Entry *entry = self.entries[indexPath.row];
-                                                                    [self.entries removeObjectAtIndex:indexPath.row];
+                                                                    Entry *entry = self.entries[indexPath.section][indexPath.row];
+                                                                    NSMutableArray *mutableSection = [NSMutableArray arrayWithArray:self.entries[indexPath.section]];
+                                                                    [mutableSection removeObjectAtIndex:indexPath.row];
+                                                                    self.entries[indexPath.section] = mutableSection;
                                                                     [CoreDataStack removeManagedObject:entry inContext:self.coreDataStack.mainContext];
                                                                     [self.tableView deleteRowsAtIndexPaths:@[indexPath]
                                                                                           withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -179,11 +205,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 #pragma mark -Entry edit delegate 
-- (void)entryEditTVC:(EntryEditTVC *)sender didSaveEntry:(Entry *)entry {
+- (void)entryEditTVC:(EntryEditTVC *)sender
+        didSaveEntry:(Entry *)entry
+ forEditingIndexPath:(NSIndexPath *)indexPath {
     [self dismissViewControllerAnimated:YES completion:^{
-
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.entries indexOfObject:entry]
-                                                    inSection:0];
         [self.tableView reloadRowsAtIndexPaths:@[indexPath]
                               withRowAnimation:UITableViewRowAnimationAutomatic];
     }];

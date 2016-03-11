@@ -13,5 +13,5 @@
 @interface AccountVC : UIViewController
 
 @property (nonatomic,strong) CoreDataStack *coreDataStack;
-@property (nonatomic,strong) AuthenticationHelper *authenticatinHelper;
+@property (nonatomic,strong) AuthenticationHelper *authenticationHelper;
 @end

@@ -84,7 +84,8 @@
                                                             self.entry = [Entry entryWithInfo:json
                                                                                     inContext:self.entry.managedObjectContext];
                                                             [self.delegate entryEditTVC:self
-                                                                           didSaveEntry:self.entry];
+                                                                           didSaveEntry:self.entry
+                                                                    forEditingIndexPath:self.editingIndexPath];
                                                         } failure:^(NSString *errorMessage, BOOL cancelled) {
                                                             if (cancelled) return;
                                                             [self fm_stopLoading];

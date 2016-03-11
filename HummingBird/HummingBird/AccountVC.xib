@@ -3,11 +3,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AccountVC">
             <connections>
-                <outlet property="avatarImageView" destination="cjy-Ve-QmJ" id="9QY-zw-mI5"/>
+                <outlet property="avatarImageView" destination="cF7-R6-sbf" id="Y9M-jP-W2f"/>
+                <outlet property="backgroundImageView" destination="723-zt-vgv" id="eem-SI-iYV"/>
+                <outlet property="sessionButton" destination="2eX-Uo-4kW" id="2sC-yU-Kbx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,31 +19,79 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aBu-rO-ws9">
-                    <rect key="frame" x="276" y="285" width="48" height="30"/>
-                    <state key="normal" title="Logout"/>
-                    <connections>
-                        <action selector="logoutPressed:" destination="-1" eventType="touchUpInside" id="xXm-TQ-yz3"/>
-                    </connections>
-                </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="cjy-Ve-QmJ">
-                    <rect key="frame" x="225" y="80" width="150" height="150"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="150" id="6JB-FM-K9a"/>
-                        <constraint firstAttribute="width" constant="150" id="iRB-Yw-fBy"/>
-                    </constraints>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accountBackground" translatesAutoresizingMaskIntoConstraints="NO" id="723-zt-vgv">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                 </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="okd-6T-M7C">
+                    <rect key="frame" x="60" y="156.5" width="480" height="227"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Hummingbird" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gA0-LE-2xC">
+                            <rect key="frame" x="160" y="0.0" width="160.5" height="35"/>
+                            <fontDescription key="fontDescription" name="KohinoorDevanagari-Semibold" family="Kohinoor Devanagari" pointSize="25"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="cF7-R6-sbf">
+                            <rect key="frame" x="200" y="47" width="80" height="80"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="80" id="9ht-Jb-CHr"/>
+                                <constraint firstAttribute="width" constant="80" id="yYV-Lm-Ddf"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2eX-Uo-4kW">
+                            <rect key="frame" x="48" y="183" width="384" height="44"/>
+                            <color key="backgroundColor" red="1" green="0.39703217390000001" blue="0.07326191739" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="C4c-gY-gL2"/>
+                            </constraints>
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Sign in"/>
+                            <connections>
+                                <action selector="sessionButtonPressed:" destination="-1" eventType="touchUpInside" id="Sz8-UO-BIb"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Share anime and manga experiences, get recommendations and see what friends are watching or reading." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="RQ0-Kz-0b5">
+                            <rect key="frame" x="20" y="139" width="440" height="36"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="RQ0-Kz-0b5" firstAttribute="leading" secondItem="okd-6T-M7C" secondAttribute="leading" constant="20" id="6Xc-mY-ZDY"/>
+                        <constraint firstItem="RQ0-Kz-0b5" firstAttribute="top" secondItem="cF7-R6-sbf" secondAttribute="bottom" constant="12" id="Abf-VZ-mXF"/>
+                        <constraint firstAttribute="bottom" secondItem="2eX-Uo-4kW" secondAttribute="bottom" id="Kc2-Fg-Urv"/>
+                        <constraint firstItem="2eX-Uo-4kW" firstAttribute="top" secondItem="RQ0-Kz-0b5" secondAttribute="bottom" constant="8" id="KjW-ic-Fqc"/>
+                        <constraint firstAttribute="height" priority="999" constant="100" id="PXS-I6-plk"/>
+                        <constraint firstItem="gA0-LE-2xC" firstAttribute="top" secondItem="okd-6T-M7C" secondAttribute="top" id="Pg8-m7-Rr4"/>
+                        <constraint firstItem="2eX-Uo-4kW" firstAttribute="centerX" secondItem="okd-6T-M7C" secondAttribute="centerX" id="ZHp-wk-1kL"/>
+                        <constraint firstItem="2eX-Uo-4kW" firstAttribute="width" secondItem="okd-6T-M7C" secondAttribute="width" multiplier="0.8" id="bun-Ar-k2h"/>
+                        <constraint firstItem="gA0-LE-2xC" firstAttribute="centerX" secondItem="okd-6T-M7C" secondAttribute="centerX" id="ePL-dt-Z9F"/>
+                        <constraint firstItem="cF7-R6-sbf" firstAttribute="top" secondItem="gA0-LE-2xC" secondAttribute="bottom" constant="12" id="gjc-cG-mLA"/>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="500" id="laf-2c-ABQ"/>
+                        <constraint firstItem="cF7-R6-sbf" firstAttribute="centerX" secondItem="okd-6T-M7C" secondAttribute="centerX" id="oQJ-V8-55c"/>
+                        <constraint firstAttribute="trailing" secondItem="RQ0-Kz-0b5" secondAttribute="trailing" constant="20" id="zOI-YQ-6QO"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="aBu-rO-ws9" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="NJ0-ar-Tih"/>
-                <constraint firstItem="cjy-Ve-QmJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="PHp-Zm-NYL"/>
-                <constraint firstItem="aBu-rO-ws9" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="nKm-Um-2Nr"/>
-                <constraint firstItem="cjy-Ve-QmJ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="xNz-9e-RqM"/>
+                <constraint firstAttribute="trailing" secondItem="723-zt-vgv" secondAttribute="trailing" id="8Zr-P5-CF5"/>
+                <constraint firstAttribute="bottom" secondItem="723-zt-vgv" secondAttribute="bottom" id="CDA-tA-Ds0"/>
+                <constraint firstItem="okd-6T-M7C" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="H3z-j9-Lt8"/>
+                <constraint firstItem="723-zt-vgv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="PTg-lL-ixC"/>
+                <constraint firstItem="723-zt-vgv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="PwG-eg-xif"/>
+                <constraint firstItem="okd-6T-M7C" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-30" id="Wfa-rd-F03"/>
+                <constraint firstItem="okd-6T-M7C" firstAttribute="top" relation="greaterThanOrEqual" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="e1x-fj-6Ih"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="okd-6T-M7C" secondAttribute="bottom" constant="40" id="kE0-jz-VTl"/>
+                <constraint firstItem="okd-6T-M7C" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.8" priority="999" id="nfW-8b-F4t"/>
             </constraints>
+            <point key="canvasLocation" x="30" y="390"/>
         </view>
     </objects>
     <resources>
+        <image name="accountBackground" width="960" height="600"/>
         <image name="placeholder" width="80" height="80"/>
     </resources>
 </document>
