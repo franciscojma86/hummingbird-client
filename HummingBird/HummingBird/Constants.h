@@ -4,6 +4,7 @@
 #define ACCENT_COLOR [UIColor colorWithRed:238.0 / 255.0 green:138.0 / 255.0 blue:18.0 / 255.0 alpha:1]
 #define BACKGROUND_COLOR [UIColor colorWithRed:242.0 / 255.0 green:242.0 / 255.0 blue:242.0 / 255.0 alpha:1]
 
+#define LOGGED_OUT_NOTIFICATION @"logged_out_notification"
 
 #define USERNAME_KEY (__bridge id)kSecAttrAccount
 #define TOKEN_KEY (__bridge id)kSecValueData

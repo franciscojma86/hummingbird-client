@@ -7,7 +7,7 @@
 //
 
 #import "FMBaseTVC.h"
-
+#import "Constants.h"
 
 
 @implementation FMBaseTVC
@@ -19,6 +19,10 @@
     [self.refreshControl addTarget:self
                             action:@selector(refreshPulled)
                   forControlEvents:UIControlEventValueChanged];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(userLoggedOut)
+                                                 name:LOGGED_OUT_NOTIFICATION
+                                               object:nil];
 
 }
 
@@ -32,6 +36,10 @@
             [self refreshPulled];
         }
     }
+}
+
+- (void)userLoggedOut {
+    //to be overriden
 }
 
 #pragma mark -Tableview delegate
@@ -82,6 +90,12 @@
 #pragma mark -OfflineView delegate
 - (void)offlineViewDidTapSignIn:(OfflineView *)sender {
     [self showLoginTVC];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:LOGGED_OUT_NOTIFICATION
+                                                  object:nil];
 }
 
 

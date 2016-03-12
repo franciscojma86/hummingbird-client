@@ -146,5 +146,8 @@
                              }];
 }
 
+- (void)userLoggedOut {
+    [self showOfflineView];
+}
 
 @end

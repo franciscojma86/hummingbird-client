@@ -18,9 +18,11 @@
 @property (nonatomic,strong) CoreDataStack *coreDataStack;
 @property (nonatomic,strong) AuthenticationHelper *authenticationHelper;
 @property (nonatomic) BOOL offlineViewShown;
+@property (nonatomic) BOOL shouldReload;
 
 - (void)refreshPulled;
 - (void)showOfflineView;
 - (void)hideOfflineView;
 - (void)showLoginTVC;
+- (void)userLoggedOut;
 @end

@@ -19,11 +19,11 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accountBackground" translatesAutoresizingMaskIntoConstraints="NO" id="723-zt-vgv">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="offlineBackground" translatesAutoresizingMaskIntoConstraints="NO" id="723-zt-vgv">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="okd-6T-M7C">
-                    <rect key="frame" x="60" y="156.5" width="480" height="227"/>
+                    <rect key="frame" x="60" y="158.5" width="480" height="223"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Hummingbird" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gA0-LE-2xC">
                             <rect key="frame" x="160" y="0.0" width="160.5" height="35"/>
@@ -39,10 +39,10 @@
                             </constraints>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2eX-Uo-4kW">
-                            <rect key="frame" x="48" y="183" width="384" height="44"/>
+                            <rect key="frame" x="48" y="183" width="384" height="40"/>
                             <color key="backgroundColor" red="1" green="0.39703217390000001" blue="0.07326191739" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="44" id="C4c-gY-gL2"/>
+                                <constraint firstAttribute="height" constant="40" id="C4c-gY-gL2"/>
                             </constraints>
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <state key="normal" title="Sign in"/>
@@ -91,7 +91,7 @@
         </view>
     </objects>
     <resources>
-        <image name="accountBackground" width="960" height="600"/>
+        <image name="offlineBackground" width="1500" height="833"/>
         <image name="placeholder" width="80" height="80"/>
     </resources>
 </document>

@@ -17,6 +17,8 @@
 
 @interface OfflineView : UIView
 
+@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
+@property (weak, nonatomic) IBOutlet UIButton *signinButton;
 @property (nonatomic,weak) id<OfflineViewDelegate>delegate;
 
 @end

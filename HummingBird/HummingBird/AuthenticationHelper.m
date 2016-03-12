@@ -53,6 +53,8 @@
 - (void)logoutUser {
     [self.keychainWrapper resetKeychainItem];
     [self.coreDataStack.mainContext reset];
+    [[NSNotificationCenter defaultCenter] postNotificationName:LOGGED_OUT_NOTIFICATION
+                                                        object:nil];
 }
 
 @end

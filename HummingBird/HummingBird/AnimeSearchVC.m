@@ -12,6 +12,7 @@
 #import "UIViewController+Alerts.h"
 #import "NetworkingCallsHelper.h"
 #import "AuthenticationHelper.h"
+#import "Constants.h"
 //Views
 #import "AnimeTVCell.h"
 //Models
@@ -55,6 +56,10 @@
                                                                    target:self
                                                                    action:@selector(cancelPressed)];
     self.navigationItem.rightBarButtonItem = cancelButton;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(userLoggedOut)
+                                                 name:LOGGED_OUT_NOTIFICATION
+                                               object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -172,5 +177,14 @@
 
 }
 
+- (void)userLoggedOut {
+    self.results = nil;
+    [self.searchBar setText:@""];
+}
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:LOGGED_OUT_NOTIFICATION
+                                                  object:nil];
+}
 @end

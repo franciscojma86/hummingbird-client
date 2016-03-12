@@ -21,7 +21,10 @@
         view.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:view];
         [self fitSubview:view active:YES];
-
+        [self.signinButton.layer setCornerRadius:3.0f];
+        self.signinButton.clipsToBounds = YES;
+        [self.logoImageView.layer setCornerRadius:3.0f];
+        self.logoImageView.clipsToBounds = YES;
     }
     return self;
 }

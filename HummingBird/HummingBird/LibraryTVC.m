@@ -127,6 +127,7 @@
 - (void)showOfflineView {
     [super showOfflineView];
     self.entries = nil;
+    self.entriesStatus = nil;
     [self.tableView reloadData];
 }
 
@@ -211,6 +212,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         [self.tableView reloadRowsAtIndexPaths:@[indexPath]
                               withRowAnimation:UITableViewRowAnimationAutomatic];
     }];
+}
+
+- (void)userLoggedOut {
+    [self showOfflineView];
 }
 
 @end
