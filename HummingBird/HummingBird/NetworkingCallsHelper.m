@@ -11,6 +11,19 @@
 
 @implementation NetworkingCallsHelper
 
++ (NSURLSessionDataTask *)queryUserInformationForUsername:(NSString *)username
+                                                  success:(SuccessJSONBlock)success
+                                                  failure:(FailMessageBlock)failure {
+    NSString *queryPath = [NSString stringWithFormat:@"users/%@",username];
+    NSURLSessionDataTask *queryTask = [[FMNetworkingClient sharedClient] dataTaskWithMethod:GET
+                                                                                       path:queryPath
+                                                                                       body:nil
+                                                                           successDataBlock:nil
+                                                                           successJSONBlock:success
+                                                                                    failure:failure];
+    return queryTask;
+}
+
 + (NSURLSessionDataTask *)queryAnimeBySearchText:(NSString *)query
                                          success:(SuccessJSONBlock)success
                                          failure:(FailMessageBlock)failure {

@@ -11,9 +11,11 @@
 #import "LoginTVC.h"
 #import "AuthenticationHelper.h"
 #import "UIViewController+Loading.h"
+#import "CoreDataStack.h"
 
 @interface FMBaseTVC : UITableViewController <OfflineViewDelegate,LoginTVCDelegate>
 
+@property (nonatomic,strong) CoreDataStack *coreDataStack;
 @property (nonatomic,strong) AuthenticationHelper *authenticationHelper;
 @property (nonatomic) BOOL offlineViewShown;
 

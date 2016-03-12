@@ -13,6 +13,10 @@
 
 @interface NetworkingCallsHelper : NSObject
 
++ (NSURLSessionDataTask *)queryUserInformationForUsername:(NSString *)username
+                                                  success:(SuccessJSONBlock)success
+                                                  failure:(FailMessageBlock)failure;
+
 + (NSURLSessionDataTask *)queryAnimeBySearchText:(NSString *)query
                                          success:(SuccessJSONBlock)success
                                          failure:(FailMessageBlock)failure;

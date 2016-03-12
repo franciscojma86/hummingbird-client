@@ -9,7 +9,6 @@
 #import "LibraryTVC.h"
 
 #import "Entry.h"
-#import "CoreDataStack.h"
 #import "NetworkingCallsHelper.h"
 #import "EntryCell.h"
 #import "EntryEditTVC.h"

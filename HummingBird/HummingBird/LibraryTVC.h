@@ -9,10 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FMBaseTVC.h"
 
-@class CoreDataStack;
-
 @interface LibraryTVC : FMBaseTVC
 
-@property (nonatomic,strong) CoreDataStack *coreDataStack;
 
 @end

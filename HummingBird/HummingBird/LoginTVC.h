@@ -10,6 +10,8 @@
 
 @class LoginTVC;
 @class AuthenticationHelper;
+@class CoreDataStack;
+
 @protocol LoginTVCDelegate <NSObject>
 
 - (void)loginTVCDidSignIn:(LoginTVC *)sender;
@@ -18,6 +20,7 @@
 
 @interface LoginTVC : UITableViewController
 
+@property (nonatomic,strong) CoreDataStack *coreDataStack;
 @property (nonatomic,strong) AuthenticationHelper *authenticationHelper;
 
 @property (nonatomic,weak) id<LoginTVCDelegate>delegate;

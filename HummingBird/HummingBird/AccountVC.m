@@ -84,6 +84,7 @@
     LoginTVC *controller = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([LoginTVC class])];
     [controller setDelegate:self];
     [controller setAuthenticationHelper:self.authenticationHelper];
+    [controller setCoreDataStack:self.coreDataStack];
     UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:controller];
     [self presentViewController:navController
                        animated:YES

@@ -9,12 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "FMBaseTVC.h"
 
-@class CoreDataStack;
 @class AuthenticationHelper;
 
 @interface FeedVC : FMBaseTVC
 
-@property (nonatomic,strong) CoreDataStack *coreDataStack;
 
 @end
 

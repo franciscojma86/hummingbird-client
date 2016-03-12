@@ -10,6 +10,9 @@
 #import "NetworkingCallsHelper.h"
 #import "UIViewController+Loading.h"
 #import "AuthenticationHelper.h"
+#import "UIViewController+Alerts.h"
+#import "User.h"
+#import "CoreDataStack.h"
 
 @interface LoginTVC () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
@@ -81,26 +84,34 @@
     self.signinTask = [NetworkingCallsHelper authenticateUserWithUsername:username
                                                                  password:password
                                                                   success:^(id json) {
-                                                                      [self fm_stopLoading];
+
                                                                       [self.authenticationHelper saveUsername:username
                                                                                                         token:json];
-                                                                      [self.delegate loginTVCDidSignIn:self];
+                                                                      [self downloadUserInfoWithUsername:username];
                                                                   } failure:^(NSString *errorMessage, BOOL cancelled) {
                                                                       [self.usernameTextField becomeFirstResponder];
+                                                                      if (cancelled) return;
                                                                       [self fm_stopLoading];
-                                                                      UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"An error ocurred"
-                                                                                                                                     message:errorMessage
-                                                                                                                              preferredStyle:UIAlertControllerStyleAlert];
-                                                                      UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK"
-                                                                                                                       style:UIAlertActionStyleDefault
-                                                                                                                     handler:nil];
-                                                                      [alert addAction:action];
-                                                                      [self presentViewController:alert
-                                                                                         animated:YES
-                                                                                       completion:nil];
-
+                                                                      [self fm_showNetworkingErrorMessageAlertWithTitle:nil
+                                                                                                                message:errorMessage];
                                                                   }];
     
+}
+
+- (void)downloadUserInfoWithUsername:(NSString *)username {
+    [NetworkingCallsHelper queryUserInformationForUsername:username
+                                                   success:^(id json) {
+                                                       [User userWithInfo:json
+                                                                inContext:self.coreDataStack.mainContext];
+                                                       [self fm_stopLoading];
+                                                       [self.delegate loginTVCDidSignIn:self];
+                                                   } failure:^(NSString *errorMessage, BOOL cancelled) {
+                                                       if (cancelled) return;
+                                                       [self fm_stopLoading];
+                                                       [self fm_showNetworkingErrorMessageAlertWithTitle:nil
+                                                                                                 message:errorMessage];
+                                                   }];
+
 }
 
 - (void)showEmptyFieldsAlert {

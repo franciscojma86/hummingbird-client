@@ -8,7 +8,6 @@
 
 #import "FeedVC.h"
 //Model
-#import "CoreDataStack.h"
 #import "Anime.h"
 #import "Story.h"
 #import "Substory.h"
