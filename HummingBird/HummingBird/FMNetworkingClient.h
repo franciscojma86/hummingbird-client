@@ -22,7 +22,9 @@
 typedef void (^SuccessJSONBlock)(id json);
 typedef void (^SuccessImageBlock)(UIImage *image);
 typedef void (^SuccessDataBlock)(NSData *data);
-typedef void (^FailMessageBlock)(NSString *errorMessage, BOOL cancelled);
+typedef void (^FailMessageBlock)(NSString *errorMessage,
+                                 BOOL cancelled,
+                                 NSError *error);
 
 
 +(FMNetworkingClient *)sharedClient;
@@ -33,14 +35,14 @@ typedef void (^FailMessageBlock)(NSString *errorMessage, BOOL cancelled);
  * @param method HTTP method for the call
  * @param path The relative URL for the api you are calling
  * @param body Any parameters for the HTTP body
- * @param sucessDataBlock Block with an NSData object as response.
+ * @param successDataBlock Block with an NSData object as response.
  * @param sucessJSONBlock Block with an NSDictionary or NSArray object as response.
  * @param failure Block executed when the call was unsuccessful. It returns a parsed error message and a flag indicated if the user cancelled the operation.
  */
 -(NSURLSessionDataTask *)dataTaskWithMethod:(NSString *)method
                                        path:(NSString *)path
                                        body:(id)body
-                           successDataBlock:(SuccessDataBlock)sucessDataBlock
+                           successDataBlock:(SuccessDataBlock)successDataBlock
                            successJSONBlock:(SuccessJSONBlock)successJSONDataBlock
                                     failure:(FailMessageBlock)failure;
 
@@ -49,13 +51,13 @@ typedef void (^FailMessageBlock)(NSString *errorMessage, BOOL cancelled);
  *
  * @param method URL for the call
  * @param body Any parameters for the HTTP body
- * @param sucessDataBlock Block with an NSData object as response.
+ * @param successDataBlock Block with an NSData object as response.
  * @param sucessJSONBlock Block with an NSDictionary or NSArray object as response.
  * @param failure Block executed when the call was unsuccessful. It returns a parsed error message and a flag indicated if the user cancelled the operation.
  */
 -(NSURLSessionDataTask *)dataTaskWithURL:(NSURL *)url
                                     body:(id)body
-                        successDataBlock:(SuccessDataBlock)sucessDataBlock
+                        successDataBlock:(SuccessDataBlock)successDataBlock
                         successJSONBlock:(SuccessJSONBlock)successJSONDataBlock
                                  failure:(FailMessageBlock)failure;
 

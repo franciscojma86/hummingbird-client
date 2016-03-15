@@ -8,6 +8,7 @@
 
 #import "NetworkingCallsHelper.h"
 #import "FMNetworkingClient.h"
+#import "FlurryManager.h"
 
 @implementation NetworkingCallsHelper
 
@@ -15,12 +16,12 @@
                                                   success:(SuccessJSONBlock)success
                                                   failure:(FailMessageBlock)failure {
     NSString *queryPath = [NSString stringWithFormat:@"users/%@",username];
-    NSURLSessionDataTask *queryTask = [[FMNetworkingClient sharedClient] dataTaskWithMethod:GET
-                                                                                       path:queryPath
-                                                                                       body:nil
-                                                                           successDataBlock:nil
-                                                                           successJSONBlock:success
-                                                                                    failure:failure];
+    NSURLSessionDataTask *queryTask = [NetworkingCallsHelper basicWithMethod:GET
+                                                                        path:queryPath
+                                                                        body:nil
+                                                            successDataBlock:nil
+                                                            successJSONBlock:success
+                                                                     failure:failure];
     return queryTask;
 }
 
@@ -30,12 +31,12 @@
     
     NSString *queryPath = [NSString stringWithFormat:@"search/anime?query=%@",query];
     queryPath = [queryPath stringByReplacingOccurrencesOfString:@" " withString:@"+"];
-    NSURLSessionDataTask *queryTask = [[FMNetworkingClient sharedClient] dataTaskWithMethod:GET
-                                                                                       path:queryPath
-                                                                                       body:nil
-                                                                           successDataBlock:nil
-                                                                           successJSONBlock:success
-                                                                                    failure:failure];
+    NSURLSessionDataTask *queryTask = [NetworkingCallsHelper basicWithMethod:GET
+                                                                        path:queryPath
+                                                                        body:nil
+                                                            successDataBlock:nil
+                                                            successJSONBlock:success
+                                                                     failure:failure];
     return queryTask;
 }
 
@@ -43,12 +44,12 @@
                                              success:(SuccessJSONBlock)success
                                              failure:(FailMessageBlock)failure {
     NSString *queryPath = [NSString stringWithFormat:@"users/%@/feed",username];
-    NSURLSessionDataTask *queryTask = [[FMNetworkingClient sharedClient] dataTaskWithMethod:GET
-                                                                                       path:queryPath
-                                                                                       body:nil
-                                                                           successDataBlock:nil
-                                                                           successJSONBlock:success
-                                                                                    failure:failure];
+    NSURLSessionDataTask *queryTask = [NetworkingCallsHelper basicWithMethod:GET
+                                                                        path:queryPath
+                                                                        body:nil
+                                                            successDataBlock:nil
+                                                            successJSONBlock:success
+                                                                     failure:failure];
     return queryTask;
 }
 
@@ -56,12 +57,12 @@
                                           success:(SuccessJSONBlock)success
                                           failure:(FailMessageBlock)failure {
     NSString *queryPath = [NSString stringWithFormat:@"users/%@/library",username];
-    NSURLSessionDataTask *queryTask = [[FMNetworkingClient sharedClient] dataTaskWithMethod:GET
-                                                                                       path:queryPath
-                                                                                       body:nil
-                                                                           successDataBlock:nil
-                                                                           successJSONBlock:success
-                                                                                    failure:failure];
+    NSURLSessionDataTask *queryTask = [NetworkingCallsHelper basicWithMethod:GET
+                                                                        path:queryPath
+                                                                        body:nil
+                                                            successDataBlock:nil
+                                                            successJSONBlock:success
+                                                                     failure:failure];
     return queryTask;
 }
 
@@ -70,12 +71,12 @@
                                      success:(SuccessJSONBlock)success
                                      failure:(FailMessageBlock)failure {
     NSString *queryPath = [NSString stringWithFormat:@"libraries/%@",animeID];
-    NSURLSessionDataTask *queryTask = [[FMNetworkingClient sharedClient] dataTaskWithMethod:POST
-                                                                                       path:queryPath
-                                                                                       body:entryInfo
-                                                                           successDataBlock:nil
-                                                                           successJSONBlock:success
-                                                                                    failure:failure];
+    NSURLSessionDataTask *queryTask = [NetworkingCallsHelper basicWithMethod:POST
+                                                                        path:queryPath
+                                                                        body:entryInfo
+                                                            successDataBlock:nil
+                                                            successJSONBlock:success
+                                                                     failure:failure];
     return queryTask;
 }
 
@@ -84,12 +85,12 @@
                                      success:(SuccessJSONBlock)success
                                      failure:(FailMessageBlock)failure {
     NSString *queryPath = [NSString stringWithFormat:@"libraries/%@/remove",animeID];
-    NSURLSessionDataTask *queryTask = [[FMNetworkingClient sharedClient] dataTaskWithMethod:POST
-                                                                                       path:queryPath
-                                                                                       body:entryInfo
-                                                                           successDataBlock:nil
-                                                                           successJSONBlock:success
-                                                                                    failure:failure];
+    NSURLSessionDataTask *queryTask = [NetworkingCallsHelper basicWithMethod:POST
+                                                                        path:queryPath
+                                                                        body:entryInfo
+                                                            successDataBlock:nil
+                                                            successJSONBlock:success
+                                                                     failure:failure];
     return queryTask;
 }
 
@@ -101,13 +102,33 @@
     NSDictionary *params = @{@"password" : password,
                              @"username" : username};
     NSString *queryPath = @"users/authenticate";
-    NSURLSessionDataTask *queryTask = [[FMNetworkingClient sharedClient] dataTaskWithMethod:POST
-                                                                                       path:queryPath
-                                                                                       body:params
-                                                                           successDataBlock:nil
-                                                                           successJSONBlock:success
-                                                                                    failure:failure];
-    return queryTask;
+    NSURLSessionDataTask *queryTask = [NetworkingCallsHelper basicWithMethod:POST
+                                                                        path:queryPath
+                                                                        body:params
+                                                            successDataBlock:nil
+                                                            successJSONBlock:success
+                                                                     failure:failure];
+        return queryTask;
+}
+
++ (NSURLSessionDataTask *)basicWithMethod:(NSString *)method
+                                     path:(NSString *)path
+                                     body:(id)body
+                         successDataBlock:(SuccessDataBlock)successDataBlock
+                         successJSONBlock:(SuccessJSONBlock)successJSONDataBlock
+                                  failure:(FailMessageBlock)failure {
+    return [[FMNetworkingClient sharedClient] dataTaskWithMethod:method
+                                                            path:path
+                                                            body:body
+                                                successDataBlock:successDataBlock
+                                                successJSONBlock:successJSONDataBlock
+                                                         failure:^(NSString *errorMessage, BOOL cancelled, NSError *error) {
+                                                             [FlurryManager logErrorWithType:FlurryErrorLogNetworking
+                                                                                     message:errorMessage
+                                                                                       error:error];
+                                                             failure(errorMessage,cancelled,error);
+                                                         }];
+    
 }
 
 
@@ -123,5 +144,7 @@
                                                                                          failure:failure];
     return imageDownloadTask;
 }
+
+
 
 @end

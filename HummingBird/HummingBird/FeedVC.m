@@ -18,6 +18,7 @@
 #import "SubstoryCell.h"
 //Helpers
 #import "UIViewController+Alerts.h"
+#import <Flurry.h>
 @interface FeedVC () 
 
 @property (nonatomic,strong) NSArray *stories;
@@ -49,6 +50,7 @@
 
 #pragma mark -Feed methods
 - (void)refreshPulled {
+    [Flurry logEvent:@"REFRESHED"];
     [self queryFeed];
 }
 
@@ -75,7 +77,7 @@
                                                         }];
                                                     }];
                                                 
-                                                } failure:^(NSString *errorMessage, BOOL cancelled) {
+                                                } failure:^(NSString *errorMessage, BOOL cancelled, NSError *error) {
                                                     [self fm_stopLoading];
                                                     [self.refreshControl endRefreshing];
                                                     [self fm_showNetworkingErrorMessageAlertWithTitle:nil

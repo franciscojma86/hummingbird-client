@@ -7,7 +7,7 @@
 //
 
 #import "CoreDataStack.h"
-
+#import "FlurryManager.h"
 @interface CoreDataStack ()
 
 @property (nonatomic,strong) NSPersistentStoreCoordinator *psc;
@@ -58,7 +58,9 @@ NSString * const modelName = @"Model";
                                  options:options
                                    error:&error];
         if (error) {
-            NSLog(@"ERROR ADDING PERSISTENT STORE %@",error.userInfo);
+            [FlurryManager logErrorWithType:FlurryErrorLogCoreData
+                                    message:@"Error adding persistent store"
+                                      error:error];
         }
         [_psc addPersistentStoreWithType:NSInMemoryStoreType
                            configuration:@"Temp"
@@ -66,7 +68,9 @@ NSString * const modelName = @"Model";
                                  options:nil
                                    error:&error];
         if (error) {
-            NSLog(@"ERROR ADDING PERSISTENT STORE %@",error.userInfo);
+            [FlurryManager logErrorWithType:FlurryErrorLogCoreData
+                                    message:@"Error adding persistent store"
+                                      error:error];
         }
     }
     return _psc;
@@ -90,7 +94,9 @@ NSString * const modelName = @"Model";
         NSError *error;
         [context save:&error];
         if (error) {
-            NSLog(@"ERROR SAVING CONTEXT %@",error);
+            [FlurryManager logErrorWithType:FlurryErrorLogCoreData
+                                    message:@"Error saving context"
+                                      error:error];
         }
     }
 }
@@ -123,7 +129,9 @@ NSString * const modelName = @"Model";
     NSError *error;
     NSArray *objectsToDelete = [context executeFetchRequest:req error:&error];
     if (error) {
-        NSLog(@"ERROR deleting %@",error.userInfo);
+        [FlurryManager logErrorWithType:FlurryErrorLogCoreData
+                                message:@"Error deleting object"
+                                  error:error];
         return;
     }
     for (NSManagedObject *obj in objectsToDelete) {
@@ -131,7 +139,9 @@ NSString * const modelName = @"Model";
     }
     [context save:&error];
     if (error) {
-        NSLog(@"ERROR deleting %@",error.userInfo);
+        [FlurryManager logErrorWithType:FlurryErrorLogCoreData
+                                message:@"Error saving context"
+                                  error:error];
         return;
     }
 }
@@ -151,7 +161,9 @@ NSString * const modelName = @"Model";
     NSError *error;
     NSArray *objects = [context executeFetchRequest:req error:&error];
     if (error) {
-        NSLog(@"ERROR loading ids from entity %@",targetClass);
+        [FlurryManager logErrorWithType:FlurryErrorLogCoreData
+                                message:[NSString stringWithFormat:@"Error loading ids with entity %@",targetClass]
+                                  error:error];
         return nil;
     }
     return objects;

@@ -15,6 +15,7 @@
 #import "AuthenticationHelper.h"
 #import "Entry.h"
 #import "UIViewController+Alerts.h"
+#import "FlurryManager.h"
 
 @interface AnimeDetailsVC () <StatusFilterTVCDelegate>
 
@@ -102,7 +103,7 @@
                                                                      NSString *message = [NSString stringWithFormat:@"%@ - %@",self.anime.title,status];
                                                                      [self fm_showAlertWithTitle:@"Success!"
                                                                                          message:message];
-                                                                 } failure:^(NSString *errorMessage, BOOL cancelled) {
+                                                                 } failure:^(NSString *errorMessage, BOOL cancelled, NSError *error) {
                                                                      if (cancelled) return;
                                                                      [self fm_stopLoading];
                                                                      [self fm_showNetworkingErrorMessageAlertWithTitle:nil

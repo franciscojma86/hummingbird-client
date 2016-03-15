@@ -61,9 +61,7 @@
         <relationship name="userFollowedBySubstory" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Substory" inverseName="followedUser" inverseEntity="Substory" syncable="YES"/>
         <relationship name="userForStory" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Story" inverseName="user" inverseEntity="Story" syncable="YES"/>
     </entity>
-    <configuration name="Persistent">
-        <memberEntity name="User"/>
-    </configuration>
+    <configuration name="Persistent"/>
     <configuration name="Temp">
         <memberEntity name="Anime"/>
         <memberEntity name="User"/>

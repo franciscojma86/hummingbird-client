@@ -11,11 +11,13 @@
 //helpers
 #import "CoreDataStack.h"
 #import "AuthenticationHelper.h"
+#import "FlurryManager.h"
 //controllers
 #import "FeedVC.h"
 #import "AnimeSearchVC.h"
 #import "LibraryTVC.h"
 #import "AccountVC.h"
+
 @interface AppDelegate ()
 
 @end
@@ -83,6 +85,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [self createAppearance];
+    [FlurryManager startFlurry];
     [self setupTabBarController];
     self.window.rootViewController = self.tabBarController;
     return YES;

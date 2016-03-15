@@ -86,7 +86,7 @@
                                                             [self.delegate entryEditTVC:self
                                                                            didSaveEntry:self.entry
                                                                     forEditingIndexPath:self.editingIndexPath];
-                                                        } failure:^(NSString *errorMessage, BOOL cancelled) {
+                                                        } failure:^(NSString *errorMessage, BOOL cancelled, NSError *error) {
                                                             if (cancelled) return;
                                                             [self fm_stopLoading];
                                                             [self fm_showNetworkingErrorMessageAlertWithTitle:nil

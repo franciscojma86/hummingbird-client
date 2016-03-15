@@ -88,7 +88,7 @@
                                                                       [self.authenticationHelper saveUsername:username
                                                                                                         token:json];
                                                                       [self downloadUserInfoWithUsername:username];
-                                                                  } failure:^(NSString *errorMessage, BOOL cancelled) {
+                                                                  } failure:^(NSString *errorMessage, BOOL cancelled, NSError *error) {
                                                                       [self.usernameTextField becomeFirstResponder];
                                                                       if (cancelled) return;
                                                                       [self fm_stopLoading];
@@ -105,7 +105,7 @@
                                                                 inContext:self.coreDataStack.mainContext];
                                                        [self fm_stopLoading];
                                                        [self.delegate loginTVCDidSignIn:self];
-                                                   } failure:^(NSString *errorMessage, BOOL cancelled) {
+                                                   } failure:^(NSString *errorMessage, BOOL cancelled, NSError *error) {
                                                        if (cancelled) return;
                                                        [self fm_stopLoading];
                                                        [self fm_showNetworkingErrorMessageAlertWithTitle:nil

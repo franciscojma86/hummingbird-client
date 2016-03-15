@@ -48,7 +48,7 @@
 //Better used for downloading images
 -(NSURLSessionDataTask *)dataTaskWithURL:(NSURL *)url
                                     body:(id)body
-                        successDataBlock:(SuccessDataBlock)sucessDataBlock
+                        successDataBlock:(SuccessDataBlock)successDataBlock
                         successJSONBlock:(SuccessJSONBlock)successJSONDataBlock
                                  failure:(FailMessageBlock)failure {
     
@@ -62,7 +62,7 @@
                                                          dispatch_async(dispatch_get_main_queue(), ^{
                                                              if (successJSONDataBlock)
                                                                  successJSONDataBlock([self parseDataToJSON:data]);
-                                                             if (sucessDataBlock)sucessDataBlock(data);
+                                                             if (successDataBlock)successDataBlock(data);
                                                          });
                                                      } else {
                                                          dispatch_async(dispatch_get_main_queue(), ^{
@@ -71,7 +71,7 @@
                                                                                                                                         response:httpResponse
                                                                                                                                             data:data];
                                                              BOOL cancelled = [error.localizedDescription isEqualToString:@"cancelled"];
-                                                             failure(errorMessage,cancelled);
+                                                             failure(errorMessage,cancelled,error);
 
                                                          });
                                                          
@@ -88,7 +88,7 @@
 -(NSURLSessionDataTask *)dataTaskWithMethod:(NSString *)method
                                        path:(NSString *)path
                                        body:(id)body
-                           successDataBlock:(SuccessDataBlock)sucessDataBlock
+                           successDataBlock:(SuccessDataBlock)successDataBlock
                            successJSONBlock:(SuccessJSONBlock)successJSONDataBlock
                                     failure:(FailMessageBlock)failure {
     
@@ -109,7 +109,7 @@
                                                      if (httpResponse.statusCode == 201 || httpResponse.statusCode == 200 ) {
                                                          dispatch_async(dispatch_get_main_queue(), ^{
                                                              if (successJSONDataBlock) successJSONDataBlock([self parseDataToJSON:data]);
-                                                             if (sucessDataBlock)sucessDataBlock(data);
+                                                             if (successDataBlock)successDataBlock(data);
                                                          });
                                                      } else {
                                                          dispatch_async(dispatch_get_main_queue(), ^{
@@ -118,7 +118,7 @@
                                                                                                                                       response:httpResponse
                                                                                                                                           data:data];
                                                              BOOL cancelled = [error.localizedDescription isEqualToString:@"cancelled"];
-                                                             failure(errorMessage,cancelled);
+                                                             failure(errorMessage,cancelled,error);
                                                              
                                                          });
                                                          

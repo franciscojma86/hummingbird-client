@@ -78,7 +78,7 @@
                                                                               [self queryEntries];
                                                                           }];
                                                                       }];
-                                                                  } failure:^(NSString *errorMessage, BOOL cancelled) {
+                                                                  } failure:^(NSString *errorMessage, BOOL cancelled, NSError *error) {
                                                                       [self fm_stopLoading];
                                                                       [self fm_showNetworkingErrorMessageAlertWithTitle:nil
                                                                                                                 message:errorMessage];
@@ -119,7 +119,6 @@
 #pragma mark -Login delegate 
 - (void)loginTVCDidSignIn:(LoginTVC *)sender {
     [self dismissViewControllerAnimated:YES completion:^{
-        [self downloadLibrary];
     }];
 }
 
@@ -194,7 +193,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
                                                                     [self.tableView deleteRowsAtIndexPaths:@[indexPath]
                                                                                           withRowAnimation:UITableViewRowAnimationAutomatic];
                                                                     [self fm_stopLoading];
-                                                                } failure:^(NSString *errorMessage, BOOL cancelled) {
+                                                                } failure:^(NSString *errorMessage, BOOL cancelled, NSError *error) {
                                                                     if (cancelled) return;
                                                                     [self fm_stopLoading];
                                                                     [self fm_showNetworkingErrorMessageAlertWithTitle:nil

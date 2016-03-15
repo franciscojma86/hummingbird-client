@@ -30,7 +30,7 @@
     self.fm_imageDownloadTask = [NetworkingCallsHelper downloadImageWithURL:imageURL
                                  success:^(UIImage *image) {
                                      [self setImage:image];
-                                 } failure:^(NSString *errorMessage, BOOL cancelled) {
+                                 } failure:^(NSString *errorMessage, BOOL cancelled, NSError *error) {
                                      if (!cancelled) {
                                          NSLog(@"ERROR DOWNLOADING IMAGE %@\n%@",imageURL,errorMessage);
                                      }

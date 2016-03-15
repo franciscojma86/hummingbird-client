@@ -20,7 +20,7 @@
 #import "Anime.h"
 //Controllers
 #import "AnimeDetailsVC.h"
-
+#import "FlurryManager.h"
 
 @interface AnimeSearchVC ()
 
@@ -119,7 +119,7 @@
                                                                          }];
                                                                      }];
                                                                      
-                                                                 } failure:^(NSString *errorMessage, BOOL cancelled) {
+                                                                 } failure:^(NSString *errorMessage, BOOL cancelled, NSError *error) {
                                                                      if (cancelled) return;
                                                                      [self fm_stopLoading];
                                                                      self.results = nil;
@@ -139,7 +139,9 @@
     NSError *error;
     NSArray *results = [self.coreDataStack.mainContext executeFetchRequest:req error:&error];
     if (error) {
-        NSLog(@"ERROR fetching ANIME %@",error.userInfo);
+        [FlurryManager logErrorWithType:FlurryErrorLogCoreData
+                                message:@"Error fetching anime"
+                                  error:error];
         self.results = nil;
     } else {
         self.results = results;
