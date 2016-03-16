@@ -14,6 +14,7 @@
 #import "EntryEditTVC.h"
 #import "Anime.h"
 #import "UIViewController+Alerts.h"
+
 @interface LibraryTVC () <EntryEditTVCDelegate>
 
 @property (nonatomic,strong) NSURLSessionDataTask *libraryDataTask;
@@ -181,6 +182,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         [self fm_startLoading];
         Entry *entry = self.entries[indexPath.section][indexPath.row];
         if (self.deleteDataTask) [self.deleteDataTask cancel];
+        self.tableView.userInteractionEnabled = NO;
         self.deleteDataTask = [NetworkingCallsHelper deleteLibraryEntry:entry.anime.animeID
                                                               entryInfo:@{@"auth_token" : [self.authenticationHelper activeUserToken],
                                                                           @"id":entry.anime.animeID}
@@ -193,11 +195,13 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
                                                                     [self.tableView deleteRowsAtIndexPaths:@[indexPath]
                                                                                           withRowAnimation:UITableViewRowAnimationAutomatic];
                                                                     [self fm_stopLoading];
+                                                                    self.tableView.userInteractionEnabled = YES;
                                                                 } failure:^(NSString *errorMessage, BOOL cancelled, NSError *error) {
                                                                     if (cancelled) return;
                                                                     [self fm_stopLoading];
                                                                     [self fm_showNetworkingErrorMessageAlertWithTitle:nil
                                                                                                               message:errorMessage];
+                                                                    self.tableView.userInteractionEnabled = YES;
                                                                 }];
         [self.tableView setEditing:NO animated:YES];
     }

@@ -18,7 +18,6 @@
 		97031C381C77AF9F00678712 /* HummingBirdUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C371C77AF9F00678712 /* HummingBirdUITests.m */; };
 		97031C4A1C77AFEA00678712 /* FMNetworkingClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C471C77AFEA00678712 /* FMNetworkingClient.m */; };
 		97031C4B1C77AFEA00678712 /* FMNetworkingErrorMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C491C77AFEA00678712 /* FMNetworkingErrorMessages.m */; };
-		97031C4F1C77B01300678712 /* UIView+FMAutolayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C4E1C77B01300678712 /* UIView+FMAutolayout.m */; };
 		97031C621C77D99700678712 /* FMSearchBarTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C611C77D99600678712 /* FMSearchBarTVC.m */; };
 		97031C651C77DB4500678712 /* FMImageCapturing.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C641C77DB4500678712 /* FMImageCapturing.m */; };
 		97031C691C77DB7100678712 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 97031C681C77DB7100678712 /* UIImage+ImageEffects.m */; };
@@ -107,8 +106,6 @@
 		97031C471C77AFEA00678712 /* FMNetworkingClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMNetworkingClient.m; sourceTree = "<group>"; };
 		97031C481C77AFEA00678712 /* FMNetworkingErrorMessages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMNetworkingErrorMessages.h; sourceTree = "<group>"; };
 		97031C491C77AFEA00678712 /* FMNetworkingErrorMessages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMNetworkingErrorMessages.m; sourceTree = "<group>"; };
-		97031C4D1C77B01300678712 /* UIView+FMAutolayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FMAutolayout.h"; sourceTree = "<group>"; };
-		97031C4E1C77B01300678712 /* UIView+FMAutolayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FMAutolayout.m"; sourceTree = "<group>"; };
 		97031C541C77B5BB00678712 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		97031C601C77D99600678712 /* FMSearchBarTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMSearchBarTVC.h; sourceTree = "<group>"; };
 		97031C611C77D99600678712 /* FMSearchBarTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMSearchBarTVC.m; sourceTree = "<group>"; };
@@ -306,7 +303,6 @@
 				97031C901C796D6700678712 /* Constants */,
 				97031C661C77DB4D00678712 /* ImageHandling */,
 				97031C5F1C77D95700678712 /* SearchBar */,
-				97031C501C77B01900678712 /* AutoLayout */,
 				97031C4C1C77AFEF00678712 /* Networking */,
 				97031C781C78E7B400678712 /* Loading */,
 				97031CA11C7A35B600678712 /* Formatting */,
@@ -327,15 +323,6 @@
 				97031CA91C7AE27200678712 /* UIImageView+ImageDownload.m */,
 			);
 			name = Networking;
-			sourceTree = "<group>";
-		};
-		97031C501C77B01900678712 /* AutoLayout */ = {
-			isa = PBXGroup;
-			children = (
-				97031C4D1C77B01300678712 /* UIView+FMAutolayout.h */,
-				97031C4E1C77B01300678712 /* UIView+FMAutolayout.m */,
-			);
-			name = AutoLayout;
 			sourceTree = "<group>";
 		};
 		97031C5F1C77D95700678712 /* SearchBar */ = {
@@ -838,7 +825,6 @@
 				97031C4B1C77AFEA00678712 /* FMNetworkingErrorMessages.m in Sources */,
 				97031C811C78F81F00678712 /* FMEmptyResultsView.m in Sources */,
 				97F894341C891AAF00F73E9C /* Substory+CoreDataProperties.m in Sources */,
-				97031C4F1C77B01300678712 /* UIView+FMAutolayout.m in Sources */,
 				97F894351C891AAF00F73E9C /* Substory.m in Sources */,
 				97031C991C797FC400678712 /* Anime.m in Sources */,
 				976AD6B71C8E5FDA00E15863 /* Entry.m in Sources */,
