@@ -1,0 +1,13 @@
+PODS:
+  - Flurry-iOS-SDK/FlurrySDK (7.5.2)
+  - FMAutolayout (0.1.0)
+
+DEPENDENCIES:
+  - Flurry-iOS-SDK/FlurrySDK
+  - FMAutolayout
+
+SPEC CHECKSUMS:
+  Flurry-iOS-SDK: 8c87c4eab6008184ad9f63afabd79ec0d109c82e
+  FMAutolayout: 73c9a490a7a59ad2f26d00a34643eb41498bd3fe
+
+COCOAPODS: 0.39.0
