@@ -1,0 +1,98 @@
+ 
+  {
+  "id": 6983167,
+  "story_type": "media_story",
+  "user": {
+  "name": "matthewdias",
+  "url": "https://hummingbird.me/users/matthewdias",
+  "avatar": "https://static.hummingbird.me/users/avatars/000/078/332/thumb/Screenshot_2015-10-22_02.49.34.png?1453068805",
+  "avatar_small": "https://static.hummingbird.me/users/avatars/000/078/332/thumb_small/Screenshot_2015-10-22_02.49.34.jpg?1453068805",
+  "nb": false
+  },
+  "updated_at": "2016-03-27T03:43:30.756Z",
+  "media": {
+  "id": 11737,
+  "mal_id": 32491,
+  "slug": "kanojo-to-kanojo-no-neko-everything-flows",
+  "status": "Finished Airing",
+  "url": "https://hummingbird.me/anime/kanojo-to-kanojo-no-neko-everything-flows",
+  "title": "Kanojo to Kanojo no Neko: Everything Flows",
+  "alternate_title": "She and Her Cat: Everything Flows",
+  "episode_count": 4,
+  "episode_length": 8,
+  "cover_image": "https://static.hummingbird.me/anime/poster_images/000/011/737/large/sxnqec_kanojotokanojononekoeverythingflowsv2.jpg?1458501284",
+  "synopsis": "A junior college student is job hunting while living alone with her pet black cat.\r\n\r\n(Source: ANN)",
+  "show_type": "TV",
+  "started_airing": "2016-03-04",
+  "finished_airing": "2016-03-25",
+  "community_rating": 3.95565543731657,
+  "age_rating": "G",
+  "genres": [
+             {
+             "name": "Drama"
+             },
+             {
+             "name": "Romance"
+             },
+             {
+             "name": "Slice of Life"
+             },
+             {
+             "name": "Psychological"
+             }
+             ]
+  },
+  "substories_count": 6,
+  "substories": [
+                 {
+                 "id": 23542206,
+                 "substory_type": "watchlist_status_update",
+                 "created_at": "2016-03-27T03:43:30.668Z",
+                 "new_status": "completed",
+                 "permissions": {}
+                 },
+                 {
+                 "id": 23542205,
+                 "substory_type": "watched_episode",
+                 "created_at": "2016-03-27T03:43:30.644Z",
+                 "episode_number": "4",
+                 "service": null,
+                 "permissions": {}
+                 },
+                 {
+                 "id": 23542103,
+                 "substory_type": "watched_episode",
+                 "created_at": "2016-03-27T03:36:31.371Z",
+                 "episode_number": "3",
+                 "service": null,
+                 "permissions": {}
+                 },
+                 {
+                 "id": 23541980,
+                 "substory_type": "watched_episode",
+                 "created_at": "2016-03-27T03:28:28.343Z",
+                 "episode_number": "2",
+                 "service": null,
+                 "permissions": {}
+                 },
+                 {
+                 "id": 23103582,
+                 "substory_type": "watched_episode",
+                 "created_at": "2016-03-05T12:33:17.458Z",
+                 "episode_number": "1",
+                 "service": null,
+                 "permissions": {}
+                 },
+                 {
+                 "id": 21889809,
+                 "substory_type": "watchlist_status_update",
+                 "created_at": "2016-01-08T22:56:53.917Z",
+                 "new_status": "currently_watching",
+                 "permissions": {}
+                 }
+                 ]
+  }
+
+
+
+

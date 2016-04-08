@@ -13,6 +13,8 @@
 
 @property (nonatomic,strong) NSManagedObjectContext *mainContext;
 
++ (CoreDataStack *)testStack;
+
 - (NSManagedObjectContext *)concurrentContext;
 - (void)saveContext:(NSManagedObjectContext *)context;
 - (void)saveMainContext;
