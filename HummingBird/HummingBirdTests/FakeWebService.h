@@ -19,4 +19,5 @@
 + (NSDictionary *)mediaFakeData;
 + (NSArray *)mediaFakeDataArray;
 
++ (NSDictionary *)userFakeData;
 @end

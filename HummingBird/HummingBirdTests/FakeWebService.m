@@ -49,4 +49,9 @@
     return [FakeWebService fakeJSONDataWithName:@"MediaArrayFakeData"];
 }
 
+
++ (NSDictionary *)userFakeData {
+    return [FakeWebService fakeJSONDataWithName:@"UserFakeData"];
+}
+
 @end

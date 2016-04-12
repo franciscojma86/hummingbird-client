@@ -27,6 +27,13 @@
     [super tearDown];
 }
 
+- (void)test_CreateUser {
+    NSManagedObjectContext *context = [self.testStack mainContext];
+    User *user = [User userWithInfo:[FakeWebService userFakeData]
+                          inContext:context];
+    XCTAssertNotNil(user.username);
+    XCTAssertNotNil(user.avatar);
+}
 
 
 @end
