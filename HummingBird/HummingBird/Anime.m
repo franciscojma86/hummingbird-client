@@ -13,7 +13,8 @@
 
 @implementation Anime
 
-+ (NSArray *)animesWithArray:(NSArray *)animesArray inContext:(nonnull NSManagedObjectContext *)context {
++ (NSArray *)animesWithArray:(NSArray *)animesArray
+                   inContext:(nonnull NSManagedObjectContext *)context {
     NSMutableArray *mutableAnimes = [NSMutableArray array];
     for (NSDictionary *animeInfo in animesArray) {
         Anime *anime = [Anime animeWithInfo:animeInfo inContext:context];
@@ -22,7 +23,8 @@
     return mutableAnimes;
 }
 
-+ (Anime *)animeWithInfo:(NSDictionary *)animeInfo inContext:(nonnull NSManagedObjectContext *)context {
++ (Anime *)animeWithInfo:(NSDictionary *)animeInfo
+               inContext:(nonnull NSManagedObjectContext *)context {
     NSString *animeID = [animeInfo[@"id"] description];
     Anime *anime = (Anime *)[CoreDataStack queryObjectWithID:animeID
                                               propertyIDName:@"animeID"

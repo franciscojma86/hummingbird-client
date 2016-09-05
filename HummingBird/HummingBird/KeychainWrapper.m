@@ -216,6 +216,7 @@ static const UInt8 kKeychainItemIdentifier[] = "com.franciscojma86.HummingBird.K
                                            (__bridge CFDictionaryRef)updateItem,
                                            (__bridge CFDictionaryRef)tempCheck);
         NSAssert(errorcode == noErr, @"Couldn't update the Keychain Item." );
+        NSLog(@"Couldn't update the Keychain Item. %zd",errorcode);
     } else {
         // No previous item found; add the new item.
         // The new value was added to the keychainData dictionary in the mySetObject routine,
@@ -225,6 +226,7 @@ static const UInt8 kKeychainItemIdentifier[] = "com.franciscojma86.HummingBird.K
                                         (__bridge CFDictionaryRef)[self dictionaryToSecItemFormat:_keychainData],
                                         NULL);
         NSAssert(errorcode == noErr, @"Couldn't add the Keychain Item." );
+        NSLog(@"Couldn't update the Keychain Item. %zd",errorcode);
         if (attributes) CFRelease(attributes);
     }
     

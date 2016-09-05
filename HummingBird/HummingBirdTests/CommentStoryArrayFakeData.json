@@ -1,0 +1,86 @@
+[
+{
+    "id": 7354020,
+    "story_type": "comment",
+    "user": {
+        "name": "matthewdias",
+        "url": "https://hummingbird.me/users/matthewdias",
+        "avatar": "https://static.hummingbird.me/users/avatars/000/078/332/thumb/Screenshot_2015-10-22_02.49.34.png?1453068805",
+        "avatar_small": "https://static.hummingbird.me/users/avatars/000/078/332/thumb_small/Screenshot_2015-10-22_02.49.34.jpg?1453068805",
+        "nb": false
+    },
+    "updated_at": "2016-03-18T09:14:02.556Z",
+    "self_post": true,
+    "poster": {
+        "name": "matthewdias",
+        "url": "https://hummingbird.me/users/matthewdias",
+        "avatar": "https://static.hummingbird.me/users/avatars/000/078/332/thumb/Screenshot_2015-10-22_02.49.34.png?1453068805",
+        "avatar_small": "https://static.hummingbird.me/users/avatars/000/078/332/thumb_small/Screenshot_2015-10-22_02.49.34.jpg?1453068805",
+        "nb": false
+    },
+    "substories_count": 10,
+    "substories": [
+                   {
+                   "id": 23345201,
+                   "substory_type": "reply",
+                   "created_at": "2016-03-18T09:14:02.556Z",
+                   "permissions": {}
+                   },
+                   {
+                   "id": 23325524,
+                   "substory_type": "reply",
+                   "created_at": "2016-03-17T08:18:23.085Z",
+                   "permissions": {}
+                   },
+                   {
+                   "id": 23324964,
+                   "substory_type": "reply",
+                   "created_at": "2016-03-17T07:17:20.646Z",
+                   "permissions": {}
+                   },
+                   {
+                   "id": 23324891,
+                   "substory_type": "reply",
+                   "created_at": "2016-03-17T07:11:07.639Z",
+                   "permissions": {}
+                   },
+                   {
+                   "id": 23324523,
+                   "substory_type": "reply",
+                   "created_at": "2016-03-17T06:32:31.375Z",
+                   "permissions": {}
+                   },
+                   {
+                   "id": 23313631,
+                   "substory_type": "reply",
+                   "created_at": "2016-03-16T19:30:55.056Z",
+                   "permissions": {}
+                   },
+                   {
+                   "id": 23313285,
+                   "substory_type": "reply",
+                   "created_at": "2016-03-16T19:15:14.666Z",
+                   "permissions": {}
+                   },
+                   {
+                   "id": 23313069,
+                   "substory_type": "reply",
+                   "created_at": "2016-03-16T19:06:26.938Z",
+                   "permissions": {}
+                   },
+                   {
+                   "id": 23310063,
+                   "substory_type": "reply",
+                   "created_at": "2016-03-16T15:31:07.910Z",
+                   "permissions": {}
+                   },
+                   {
+                   "id": 23302730,
+                   "substory_type": "comment",
+                   "created_at": "2016-03-16T02:40:10.040Z",
+                   "comment": "giving away hack n slash, spacebase df9, and dungeon defenders collection (includes dlc) fcfs<br><br>1. add me on steam <a href=\"https://steamcommunity.com/id/mattdias\" target=\"_blank\">https://steamcommunity.com/id/mattdias</a><br>2. message me what game you want on steam<br><br>check the comments first to see if the game you want is gone already",
+                   "permissions": {}
+                   }
+                   ]
+}
+]

@@ -30,7 +30,10 @@
     for (NSDictionary *storyInfo in storiesArray) {
         Story *story = [Story storyWithInfo:storyInfo
                                   inContext:context];
-        [stories addObject:story];
+        if (story) {
+            [stories addObject:story];
+        }
+
     }
     return stories;
 }

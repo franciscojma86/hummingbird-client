@@ -34,7 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //configure nav bar
-    self.navigationItem.title = @"Humming Bird";
+    self.navigationItem.title = @"Hummingbird";
     //register cells and headers
     UINib *headerNib = [UINib nibWithNibName:NSStringFromClass([StoryHeaderView class])
                                       bundle:nil];
@@ -56,6 +56,7 @@
 
 - (void)queryFeed {
     NSString *activeUserName = [self.authenticationHelper activeUsername];
+    activeUserName = @"matthewdias";
     if (!activeUserName) {
         [self showOfflineView];
         return;

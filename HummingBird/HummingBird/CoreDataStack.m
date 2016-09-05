@@ -22,7 +22,27 @@
 
 NSString * const modelName = @"Model";
 
-- (NSURL *)documentsURL {
+
++ (CoreDataStack *)testStack {
+    CoreDataStack *stack = [[CoreDataStack alloc]init];
+    stack.psc = [[NSPersistentStoreCoordinator alloc]initWithManagedObjectModel:stack.model];
+    NSURL *url = [[CoreDataStack documentsURL] URLByAppendingPathComponent:modelName];
+    
+    NSError *error;
+    NSDictionary *options = @{NSMigratePersistentStoresAutomaticallyOption : @YES,
+                              NSInferMappingModelAutomaticallyOption : @YES};
+    [stack.psc addPersistentStoreWithType:NSSQLiteStoreType
+                       configuration:nil
+                                 URL:url
+                             options:options
+                               error:&error];
+    if (error) {
+        NSLog(@"Error adding persistent store");
+    }
+    return stack;
+}
+
++ (NSURL *)documentsURL {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory
                                                   inDomains:NSUserDomainMask] lastObject];
 }
@@ -49,7 +69,7 @@ NSString * const modelName = @"Model";
 - (NSPersistentStoreCoordinator *)psc {
     if (!_psc) {
         _psc = [[NSPersistentStoreCoordinator alloc]initWithManagedObjectModel:self.model];
-        NSURL *url = [[self documentsURL] URLByAppendingPathComponent:modelName];
+        NSURL *url = [[CoreDataStack documentsURL] URLByAppendingPathComponent:modelName];
         
         NSError *error;
         NSDictionary *options = @{NSMigratePersistentStoresAutomaticallyOption : @YES,
