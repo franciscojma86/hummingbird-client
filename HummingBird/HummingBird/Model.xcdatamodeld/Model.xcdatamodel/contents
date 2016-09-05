@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15D21" minimumToolsVersion="Xcode 7.0">
+    <entity name="Anime" representedClassName="Anime" syncable="YES">
+        <attribute name="ageRating" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="alternateTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="animeID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="communityRating" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="coverImageAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="episodeCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="episodeLength" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="finishedAiring" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="genres" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="showType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startedAiring" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="synopsis" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="animeForLibraryEntry" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Entry" inverseName="anime" inverseEntity="Entry" syncable="YES"/>
+        <relationship name="mediaForStory" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Story" inverseName="media" inverseEntity="Story" syncable="YES"/>
+    </entity>
+    <entity name="Entry" representedClassName="Entry" syncable="YES">
+        <attribute name="entryID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="episodesWatched" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="isPrivate" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="lastWatched" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notesPresent" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="rewatchedTimes" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="rewatching" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="anime" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Anime" inverseName="animeForLibraryEntry" inverseEntity="Anime" syncable="YES"/>
+    </entity>
+    <entity name="Story" representedClassName="Story" syncable="YES">
+        <attribute name="selfPost" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="storyID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="storyType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="substoriesCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="media" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Anime" inverseName="mediaForStory" inverseEntity="Anime" syncable="YES"/>
+        <relationship name="poster" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="posterForStory" inverseEntity="User" syncable="YES"/>
+        <relationship name="substories" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Substory" inverseName="substoryForStory" inverseEntity="Substory" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="userForStory" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Substory" representedClassName="Substory" syncable="YES">
+        <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="episodeNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="substoryID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="substoryStatus" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="substoryType" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="followedUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="userFollowedBySubstory" inverseEntity="User" syncable="YES"/>
+        <relationship name="substoryForStory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Story" inverseName="substories" inverseEntity="Story" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="avatar" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="avatarSmall" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="posterForStory" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Story" inverseName="poster" inverseEntity="Story" syncable="YES"/>
+        <relationship name="userFollowedBySubstory" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Substory" inverseName="followedUser" inverseEntity="Substory" syncable="YES"/>
+        <relationship name="userForStory" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Story" inverseName="user" inverseEntity="Story" syncable="YES"/>
+    </entity>
+    <configuration name="Persistent"/>
+    <configuration name="Temp">
+        <memberEntity name="Anime"/>
+        <memberEntity name="User"/>
+        <memberEntity name="Story"/>
+        <memberEntity name="Substory"/>
+        <memberEntity name="Entry"/>
+    </configuration>
+    <elements>
+        <element name="Anime" positionX="153" positionY="-18" width="128" height="298"/>
+        <element name="Entry" positionX="252" positionY="-288" width="128" height="208"/>
+        <element name="Story" positionX="448" positionY="-100" width="128" height="178"/>
+        <element name="Substory" positionX="646" positionY="-226" width="128" height="163"/>
+        <element name="User" positionX="844" positionY="-0" width="128" height="133"/>
+    </elements>
+</model>
