@@ -177,7 +177,10 @@
     return data;
 }
 
-
+- (void)dealloc {
+    [_session finishTasksAndInvalidate];
+    _session = nil;
+}
 
 
 @end

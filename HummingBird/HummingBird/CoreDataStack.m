@@ -8,6 +8,8 @@
 
 #import "CoreDataStack.h"
 #import "FlurryManager.h"
+#import "FMLogger.h"
+
 @interface CoreDataStack ()
 
 @property (nonatomic,strong) NSPersistentStoreCoordinator *psc;
@@ -182,7 +184,7 @@ NSString * const modelName = @"Model";
     NSManagedObject *obj = [[context executeFetchRequest:req error:&error] lastObject];
 
     if (error) {
-        NSLog(@"ERROR CREATING OBJECT %@\nOF TYPE %@",error.userInfo,NSStringFromClass(targetClass));
+        DLog(@"ERROR CREATING OBJECT %@\nOF TYPE %@",error.userInfo,NSStringFromClass(targetClass));
         return nil;
     } else {
         if (obj) {
@@ -211,7 +213,7 @@ NSString * const modelName = @"Model";
     NSError *error;
     NSArray *objects = [context executeFetchRequest:req error:&error];
     if (error) {
-        NSLog(@"ERROR FETCHING OBJECTS %@\nOF TYPE %@",error.userInfo,NSStringFromClass(targetClass));
+        DLog(@"ERROR FETCHING OBJECTS %@\nOF TYPE %@",error.userInfo,NSStringFromClass(targetClass));
         return nil;
     }
     
