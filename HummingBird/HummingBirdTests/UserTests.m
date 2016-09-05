@@ -29,8 +29,13 @@
 
 - (void)test_CreateUser {
     NSManagedObjectContext *context = [self.testStack mainContext];
-    User *user = [User userWithInfo:[FakeWebService userFakeData]
+    [User userWithInfo:[FakeWebService userFakeData]
                           inContext:context];
+    User *user = (User *)[[CoreDataStack queryObjectsFromClass:[User class]
+                                                 withPredicate:nil
+                                                       sortKey:@"username"
+                                                     ascending:YES
+                                                     inContext:context] lastObject];
     XCTAssertNotNil(user.username);
     XCTAssertNotNil(user.avatar);
 }

@@ -41,6 +41,7 @@
 		971C3A1B1CB85A6300ED6AD2 /* MediaArrayFakeData.json in Resources */ = {isa = PBXBuildFile; fileRef = 971C3A1A1CB85A6300ED6AD2 /* MediaArrayFakeData.json */; };
 		971C3A1D1CB85F0C00ED6AD2 /* UserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 971C3A1C1CB85F0C00ED6AD2 /* UserTests.m */; };
 		972B683D1CBC329700035BEA /* UserFakeData.json in Resources */ = {isa = PBXBuildFile; fileRef = 972B683C1CBC329700035BEA /* UserFakeData.json */; };
+		972B68491CBCA69700035BEA /* MiniUserFakeData.json in Resources */ = {isa = PBXBuildFile; fileRef = 972B68481CBCA69700035BEA /* MiniUserFakeData.json */; };
 		976AD6B61C8E5FDA00E15863 /* Entry+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 976AD6B31C8E5FDA00E15863 /* Entry+CoreDataProperties.m */; };
 		976AD6B71C8E5FDA00E15863 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 976AD6B51C8E5FDA00E15863 /* Entry.m */; };
 		976AD6BC1C8E657F00E15863 /* EntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 976AD6BA1C8E657F00E15863 /* EntryCell.m */; };
@@ -157,6 +158,7 @@
 		971C3A1A1CB85A6300ED6AD2 /* MediaArrayFakeData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MediaArrayFakeData.json; sourceTree = "<group>"; };
 		971C3A1C1CB85F0C00ED6AD2 /* UserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTests.m; sourceTree = "<group>"; };
 		972B683C1CBC329700035BEA /* UserFakeData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = UserFakeData.json; sourceTree = "<group>"; };
+		972B68481CBCA69700035BEA /* MiniUserFakeData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MiniUserFakeData.json; sourceTree = "<group>"; };
 		976AD6B21C8E5FDA00E15863 /* Entry+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Entry+CoreDataProperties.h"; sourceTree = "<group>"; };
 		976AD6B31C8E5FDA00E15863 /* Entry+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Entry+CoreDataProperties.m"; sourceTree = "<group>"; };
 		976AD6B41C8E5FDA00E15863 /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
@@ -662,6 +664,7 @@
 				971C3A181CB8598200ED6AD2 /* MediaFakeData.json */,
 				971C3A1A1CB85A6300ED6AD2 /* MediaArrayFakeData.json */,
 				972B683C1CBC329700035BEA /* UserFakeData.json */,
+				972B68481CBCA69700035BEA /* MiniUserFakeData.json */,
 			);
 			name = FakeData;
 			sourceTree = "<group>";
@@ -798,6 +801,7 @@
 			files = (
 				97F8D71A1CA9E2E100C2F311 /* MediaStoryFakeData.json in Resources */,
 				97F8D71C1CA9E30500C2F311 /* CommentStoryFakeData.json in Resources */,
+				972B68491CBCA69700035BEA /* MiniUserFakeData.json in Resources */,
 				971C3A141CB8551900ED6AD2 /* CommentStoryArrayFakeData.json in Resources */,
 				971C3A121CB854F600ED6AD2 /* MediaStoryArrayFakeData.json in Resources */,
 				971C3A191CB8598200ED6AD2 /* MediaFakeData.json in Resources */,

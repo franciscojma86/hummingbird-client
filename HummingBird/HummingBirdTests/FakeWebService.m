@@ -54,4 +54,9 @@
     return [FakeWebService fakeJSONDataWithName:@"UserFakeData"];
 }
 
++ (NSDictionary *)miniUserFakeData {
+    return [FakeWebService fakeJSONDataWithName:@"MiniUserFakeData"];
+}
+
+
 @end
