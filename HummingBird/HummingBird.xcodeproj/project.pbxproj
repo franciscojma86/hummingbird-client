@@ -335,8 +335,7 @@
 			isa = PBXGroup;
 			children = (
 				977036FB1D7E304800A02D00 /* Logging */,
-				97F894511C8CBBC800F73E9C /* AuthenticationHelper.h */,
-				97F894521C8CBBC800F73E9C /* AuthenticationHelper.m */,
+				9780335C1D7E3726006FD638 /* Authentication */,
 				978DCDA51C94D1370085BFB9 /* Flurry */,
 				9797F6141C9284E800376F84 /* Alerts */,
 				97F894221C890BDC00F73E9C /* Keychain */,
@@ -565,6 +564,15 @@
 				977036FD1D7E306D00A02D00 /* FMLogger.m */,
 			);
 			name = Logging;
+			sourceTree = "<group>";
+		};
+		9780335C1D7E3726006FD638 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				97F894511C8CBBC800F73E9C /* AuthenticationHelper.h */,
+				97F894521C8CBBC800F73E9C /* AuthenticationHelper.m */,
+			);
+			name = Authentication;
 			sourceTree = "<group>";
 		};
 		978DCDA51C94D1370085BFB9 /* Flurry */ = {
