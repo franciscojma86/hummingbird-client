@@ -11,14 +11,12 @@
 
 @protocol FMSearchBarTVCDelegate
 
-
 @end
 
 @interface FMSearchBarTVC : UITableViewController
 
 
 @property (nonatomic,strong) UISearchBar *searchBar;
-
 @property (nonatomic,weak) id<FMSearchBarTVCDelegate> delegate;
 
 - (instancetype)initWithContainerView:(UIView *)containerView

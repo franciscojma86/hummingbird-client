@@ -37,7 +37,7 @@ NSString * const modelName = @"Model";
                              options:options
                                error:&error];
     if (error) {
-        NSLog(@"Error adding persistent store");
+        DLog(@"Error adding persistent store");
     }
     return stack;
 }

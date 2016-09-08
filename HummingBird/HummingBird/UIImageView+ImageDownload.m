@@ -9,6 +9,7 @@
 #import "UIImageView+ImageDownload.h"
 #import "NetworkingCallsHelper.h"
 #import <objc/runtime.h>
+#import "FMLogger.h"
 
 @implementation UIImageView (ImageDownload)
 
@@ -32,7 +33,7 @@
                                      [self setImage:image];
                                  } failure:^(NSString *errorMessage, BOOL cancelled, NSError *error) {
                                      if (!cancelled) {
-                                         NSLog(@"ERROR DOWNLOADING IMAGE %@\n%@",imageURL,errorMessage);
+                                         DLog(@"ERROR DOWNLOADING IMAGE %@\n%@",imageURL,errorMessage);
                                      }
                                  }];
 }

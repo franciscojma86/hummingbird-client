@@ -12,6 +12,7 @@
 #import "CoreDataStack.h"
 #import "NSDictionary+NullObjects.h"
 #import "FMDateFormatter.h"
+#import "FMLogger.h"
 
 @implementation Substory
 
@@ -38,6 +39,10 @@
     substory.comment = [substoryInfo fm_objectForKeyNotNull:@"comment"];
     substory.episodeNumber = @([[substoryInfo fm_objectForKeyNotNull:@"episode_number"]integerValue]);
     substory.substoryStatus = [substory statusFormatted:[substoryInfo fm_objectForKeyNotNull:@"new_status"]];
+    if (!substory.substoryStatus) {
+        //If there is no new status, it must be a "watched episode" from the status type
+        substory.substoryStatus = [substory statusFormatted:substory.substoryType];
+    }
 
     NSDictionary *userInfo = [substoryInfo fm_objectForKeyNotNull:@"followed_user"];
     if (userInfo) substory.followedUser = [User userWithInfo:userInfo inContext:context];

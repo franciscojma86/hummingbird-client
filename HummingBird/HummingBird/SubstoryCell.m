@@ -10,6 +10,7 @@
 #import "Substory.h"
 #import "User.h"
 #import "Story.h"
+#import "Anime.h"
 #import "UIImageView+ImageDownload.h"
 #import "FMDateFormatter.h"
 
@@ -20,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *episodesLabel;
 
 @end
 
@@ -47,6 +49,8 @@
     [self.statusLabel setText:substory.substoryStatus];
     FMDateFormatter *formatter = [[FMDateFormatter alloc]initWithDateFormat:DateFormatUserOutput];
     [self.dateLabel setText:[formatter stringFromDate:substory.createdAt]];
+    NSString *episodesText = [NSString stringWithFormat:@"episode %zd/%zd",[substory.episodeNumber integerValue], [substory.substoryForStory.media.episodeCount integerValue]];
+    [self.episodesLabel setText:episodesText];
 }
 
 - (void)prepareForReuse {

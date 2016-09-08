@@ -7,6 +7,8 @@
 //
 
 #import "KeychainWrapper.h"
+#import "FMLogger.h"
+
 @import Security;
 
 //Unique string used to identify the keychain item:
@@ -123,7 +125,7 @@ static const UInt8 kKeychainItemIdentifier[] = "com.franciscojma86.HummingBird.K
         [self dictionaryToSecItemFormat:_keychainData];
         // Delete the keychain item in preparation for resetting the values:
         OSStatus errorcode = SecItemDelete((__bridge CFDictionaryRef)tmpDictionary);
-        NSLog(@"Coudln't find keychain item %zd",errorcode);
+        DLog(@"Coudln't find keychain item %zd",errorcode);
 
     }
     
@@ -216,7 +218,7 @@ static const UInt8 kKeychainItemIdentifier[] = "com.franciscojma86.HummingBird.K
                                            (__bridge CFDictionaryRef)updateItem,
                                            (__bridge CFDictionaryRef)tempCheck);
         NSAssert(errorcode == noErr, @"Couldn't update the Keychain Item." );
-        NSLog(@"Couldn't update the Keychain Item. %zd",errorcode);
+        DLog(@"Couldn't update the Keychain Item. %zd",errorcode);
     } else {
         // No previous item found; add the new item.
         // The new value was added to the keychainData dictionary in the mySetObject routine,
@@ -226,7 +228,7 @@ static const UInt8 kKeychainItemIdentifier[] = "com.franciscojma86.HummingBird.K
                                         (__bridge CFDictionaryRef)[self dictionaryToSecItemFormat:_keychainData],
                                         NULL);
         NSAssert(errorcode == noErr, @"Couldn't add the Keychain Item." );
-        NSLog(@"Couldn't update the Keychain Item. %zd",errorcode);
+        DLog(@"Couldn't update the Keychain Item. %zd",errorcode);
         if (attributes) CFRelease(attributes);
     }
     

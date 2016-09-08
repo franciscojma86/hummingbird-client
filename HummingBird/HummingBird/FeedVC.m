@@ -19,6 +19,8 @@
 //Helpers
 #import "UIViewController+Alerts.h"
 #import <Flurry.h>
+#import <SafariServices/SafariServices.h>
+
 @interface FeedVC () 
 
 @property (nonatomic,strong) NSArray *stories;
@@ -35,6 +37,12 @@
     [super viewDidLoad];
     //configure nav bar
     self.navigationItem.title = @"Hummingbird";
+    UIBarButtonItem *donationButton = [[UIBarButtonItem alloc] initWithTitle:@"Donate"
+                                                                       style:UIBarButtonItemStyleDone
+                                                                      target:self
+                                                                      action:@selector(showDonations)];
+    self.navigationItem.leftBarButtonItem = donationButton;
+    
     //register cells and headers
     UINib *headerNib = [UINib nibWithNibName:NSStringFromClass([StoryHeaderView class])
                                       bundle:nil];
@@ -56,7 +64,7 @@
 
 - (void)queryFeed {
     NSString *activeUserName = [self.authenticationHelper activeUsername];
-    activeUserName = @"matthewdias";
+//    activeUserName = @"matthewdias";
     if (!activeUserName) {
         [self showOfflineView];
         return;
@@ -114,6 +122,11 @@
     [self.tableView reloadData];
 }
 
+- (void)showDonations {
+    SFSafariViewController *controller = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:@"https://www.paypal.me/franciscojma86"]];
+    [self showViewController:controller sender:self];
+}
+
 #pragma mark -Tableview delegate
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     Story *story = self.stories[section];
@@ -137,6 +150,7 @@
     [cell configureWithSubstory:substories[indexPath.row]];
     return cell;
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 20;
 }

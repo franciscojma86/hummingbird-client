@@ -53,7 +53,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="hummingbird" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GOB-AJ-DXO">
-                                                    <rect key="frame" x="106" y="18" width="478" height="20"/>
+                                                    <rect key="frame" x="106" y="8" width="478" height="38.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
@@ -63,10 +63,12 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="GOB-AJ-DXO" firstAttribute="centerY" secondItem="lNM-Bz-727" secondAttribute="centerY" id="5Ea-1y-1hR"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="GOB-AJ-DXO" secondAttribute="bottom" id="A9d-fs-ab5"/>
                                                 <constraint firstItem="lNM-Bz-727" firstAttribute="centerY" secondItem="RBl-ho-9uL" secondAttribute="centerY" id="Bbp-AB-Ncs"/>
                                                 <constraint firstItem="lNM-Bz-727" firstAttribute="leading" secondItem="RBl-ho-9uL" secondAttribute="leadingMargin" id="JDp-th-fMG"/>
                                                 <constraint firstItem="GOB-AJ-DXO" firstAttribute="leading" secondItem="lNM-Bz-727" secondAttribute="trailing" constant="8" id="fGE-gU-ZRE"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="GOB-AJ-DXO" secondAttribute="trailing" constant="8" id="nWE-Ee-CTW"/>
+                                                <constraint firstItem="GOB-AJ-DXO" firstAttribute="top" secondItem="RBl-ho-9uL" secondAttribute="topMargin" id="yiI-tZ-mRn"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -79,7 +81,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jtP-eV-Gmd">
-                                                    <rect key="frame" x="8" y="14.5" width="90" height="20.5"/>
+                                                    <rect key="frame" x="8" y="15" width="90" height="20.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="n6k-fE-nGi"/>
                                                     </constraints>
@@ -88,7 +90,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="******" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2oC-lb-07u">
-                                                    <rect key="frame" x="106" y="14.5" width="478" height="20"/>
+                                                    <rect key="frame" x="106" y="8" width="478" height="33.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                     <connections>
@@ -99,9 +101,11 @@
                                             <constraints>
                                                 <constraint firstItem="2oC-lb-07u" firstAttribute="leading" secondItem="jtP-eV-Gmd" secondAttribute="trailing" constant="8" id="Kg6-s5-JA3"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="2oC-lb-07u" secondAttribute="trailing" constant="8" id="Mmg-z6-slQ"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="2oC-lb-07u" secondAttribute="bottom" id="Mou-aB-dy2"/>
                                                 <constraint firstItem="jtP-eV-Gmd" firstAttribute="leading" secondItem="0mp-RX-4j8" secondAttribute="leadingMargin" id="ipK-Do-VEo"/>
                                                 <constraint firstItem="2oC-lb-07u" firstAttribute="centerY" secondItem="jtP-eV-Gmd" secondAttribute="centerY" id="mkp-l8-BGQ"/>
                                                 <constraint firstItem="jtP-eV-Gmd" firstAttribute="centerY" secondItem="0mp-RX-4j8" secondAttribute="centerY" id="pAd-ZW-W34"/>
+                                                <constraint firstItem="2oC-lb-07u" firstAttribute="top" secondItem="0mp-RX-4j8" secondAttribute="topMargin" id="wBf-U6-DN6"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>

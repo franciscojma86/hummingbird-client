@@ -8,6 +8,8 @@
 
 #import "FakeWebService.h"
 #import "DummyClass.h"
+#import "FMLogger.h"
+
 @implementation FakeWebService
 
 + (id)fakeJSONDataWithName:(NSString *)name {
@@ -19,7 +21,7 @@
                                                            options:0
                                                              error:&error];
     if (error) {
-        NSLog(@"Error laoding fake data %@",[error userInfo]);
+        DLog(@"Error laoding fake data %@",[error userInfo]);
         return nil;
     }
     return result;

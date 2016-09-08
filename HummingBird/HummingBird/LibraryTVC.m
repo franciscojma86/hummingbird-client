@@ -211,10 +211,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)entryEditTVC:(EntryEditTVC *)sender
         didSaveEntry:(Entry *)entry
  forEditingIndexPath:(NSIndexPath *)indexPath {
-    [self dismissViewControllerAnimated:YES completion:^{
-        [self.tableView reloadRowsAtIndexPaths:@[indexPath]
-                              withRowAnimation:UITableViewRowAnimationAutomatic];
-    }];
+    [self queryEntries];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)userLoggedOut {

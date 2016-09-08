@@ -8,6 +8,7 @@
 
 #import "FMNetworkingClient.h"
 #import "FMNetworkingErrorMessages.h"
+#import "FMLogger.h"
 
 @interface FMNetworkingClient ()
 
@@ -99,7 +100,7 @@
     request = [self requestWithMethod:method
                                  path:path
                                  body:newBody];
-    NSLog(@"URL %@",request.URL);
+    DLog(@"URL %@",request.URL);
     NSURLSessionDataTask *dataTask = [_session dataTaskWithRequest:request
                                                  completionHandler:^(NSData *data,
                                                                      NSURLResponse *response,
