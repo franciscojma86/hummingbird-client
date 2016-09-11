@@ -333,6 +333,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="Fkx-c9-0GB">
+                            <rect key="frame" x="0.0" y="333" width="600" height="56"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D9h-7M-Bc3">
+                                    <rect key="frame" x="8" y="8" width="584" height="40"/>
+                                    <color key="backgroundColor" red="0.99215686270000003" green="0.36078431370000003" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" title="Mark as watched">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="markedWatchedPressed:" destination="l4m-WN-8oY" eventType="touchUpInside" id="9E2-im-K8J"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="D9h-7M-Bc3" firstAttribute="top" secondItem="Fkx-c9-0GB" secondAttribute="top" constant="8" id="NYP-4m-fEE"/>
+                                <constraint firstAttribute="trailing" secondItem="D9h-7M-Bc3" secondAttribute="trailing" constant="8" id="WOI-AO-maV"/>
+                                <constraint firstItem="D9h-7M-Bc3" firstAttribute="leading" secondItem="Fkx-c9-0GB" secondAttribute="leading" constant="8" id="eR7-HA-sq6"/>
+                                <constraint firstAttribute="bottom" secondItem="D9h-7M-Bc3" secondAttribute="bottom" constant="8" id="no8-OE-aTk"/>
+                            </constraints>
+                        </view>
                         <sections>
                             <tableViewSection id="L2D-QV-5Kx">
                                 <cells>
@@ -395,47 +418,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="B2w-UL-t6U">
-                                        <rect key="frame" x="0.0" y="227" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="B2w-UL-t6U" id="sfd-OC-JFk">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Episodes watched" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yMX-54-45Y">
-                                                    <rect key="frame" x="16" y="14" width="111" height="16"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1k-Lr-voD">
-                                                    <rect key="frame" x="542" y="11" width="50" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="50" id="xpk-tC-AFi"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="MrG-zL-LEh">
-                                                    <rect key="frame" x="440" y="7" width="94" height="29"/>
-                                                    <connections>
-                                                        <action selector="episodesStepperChanged:" destination="l4m-WN-8oY" eventType="valueChanged" id="Rve-3F-D68"/>
-                                                    </connections>
-                                                </stepper>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="yMX-54-45Y" firstAttribute="centerY" secondItem="sfd-OC-JFk" secondAttribute="centerY" id="5hA-zD-TTp"/>
-                                                <constraint firstItem="l1k-Lr-voD" firstAttribute="trailing" secondItem="sfd-OC-JFk" secondAttribute="trailingMargin" id="7GW-rv-3p2"/>
-                                                <constraint firstItem="MrG-zL-LEh" firstAttribute="centerY" secondItem="l1k-Lr-voD" secondAttribute="centerY" id="MJd-ea-yqe"/>
-                                                <constraint firstItem="l1k-Lr-voD" firstAttribute="leading" secondItem="MrG-zL-LEh" secondAttribute="trailing" constant="8" id="NIL-ul-URG"/>
-                                                <constraint firstItem="l1k-Lr-voD" firstAttribute="centerY" secondItem="sfd-OC-JFk" secondAttribute="centerY" id="QGc-CQ-4bx"/>
-                                                <constraint firstItem="yMX-54-45Y" firstAttribute="leading" secondItem="sfd-OC-JFk" secondAttribute="leadingMargin" constant="8" id="RGd-RD-KOt"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="Img-qn-mwc">
-                                        <rect key="frame" x="0.0" y="271" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="227" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Img-qn-mwc" id="TQG-5J-ZuR">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -460,7 +444,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="wMZ-xD-I6x">
-                                        <rect key="frame" x="0.0" y="315" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="271" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wMZ-xD-I6x" id="GEA-Ch-sz5">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -501,9 +485,8 @@
                         <outlet property="animeImageView" destination="4CB-ZB-TZq" id="X0o-3W-zza"/>
                         <outlet property="animeTitleLabel" destination="CvL-LB-Xfw" id="gwX-we-Qei"/>
                         <outlet property="entryStatusLabel" destination="EoF-fx-Jnp" id="BQi-Ww-aJT"/>
-                        <outlet property="episodesCountLabel" destination="l1k-Lr-voD" id="eGE-zM-fo5"/>
-                        <outlet property="episodesCountStepper" destination="MrG-zL-LEh" id="Ya3-Eb-6P6"/>
                         <outlet property="genresLabel" destination="x4c-g6-Mgb" id="AuV-Ez-rhy"/>
+                        <outlet property="markedWatchedButton" destination="D9h-7M-Bc3" id="NUH-OW-gu5"/>
                         <outlet property="rewatchingSwitch" destination="3o4-aa-2Kr" id="DLc-FX-AIr"/>
                         <outlet property="rewatchingTextField" destination="nG6-1Q-kXZ" id="gK9-DW-A6u"/>
                     </connections>

@@ -37,7 +37,14 @@
     substory.substoryID = substoryID;
     substory.substoryType = [substoryInfo fm_objectForKeyNotNull:@"substory_type"];
     substory.comment = [substoryInfo fm_objectForKeyNotNull:@"comment"];
-    substory.episodeNumber = @([[substoryInfo fm_objectForKeyNotNull:@"episode_number"]integerValue]);
+    
+    NSNumber *episodeNumber = [substoryInfo fm_objectForKeyNotNull:@"episode_number"];
+    if (episodeNumber) {
+        substory.episodeNumber = @([episodeNumber integerValue]);
+    } else {
+        substory.episodeNumber = nil;
+    }
+    
     substory.substoryStatus = [substory statusFormatted:[substoryInfo fm_objectForKeyNotNull:@"new_status"]];
     if (!substory.substoryStatus) {
         //If there is no new status, it must be a "watched episode" from the status type

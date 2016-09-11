@@ -49,8 +49,12 @@
     [self.statusLabel setText:substory.substoryStatus];
     FMDateFormatter *formatter = [[FMDateFormatter alloc]initWithDateFormat:DateFormatUserOutput];
     [self.dateLabel setText:[formatter stringFromDate:substory.createdAt]];
-    NSString *episodesText = [NSString stringWithFormat:@"episode %zd/%zd",[substory.episodeNumber integerValue], [substory.substoryForStory.media.episodeCount integerValue]];
-    [self.episodesLabel setText:episodesText];
+    if (substory.episodeNumber) {
+        NSString *episodesText = [NSString stringWithFormat:@"episode %zd/%zd",[substory.episodeNumber integerValue], [substory.substoryForStory.media.episodeCount integerValue]];
+        [self.episodesLabel setText:episodesText];
+    } else {
+        [self.episodesLabel setText:@""];
+    }
 }
 
 - (void)prepareForReuse {

@@ -25,13 +25,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *genresLabel;
 @property (weak, nonatomic) IBOutlet UISwitch *rewatchingSwitch;
 @property (weak, nonatomic) IBOutlet UITextField *rewatchingTextField;
-@property (weak, nonatomic) IBOutlet UILabel *episodesCountLabel;
-@property (weak, nonatomic) IBOutlet UIStepper *episodesCountStepper;
+@property (weak, nonatomic) IBOutlet UIButton *markedWatchedButton;
 
 @property (nonatomic,strong) NSURLSessionDataTask *updateTask;
-
-@property (nonatomic) NSUInteger episodeModifiedCount;
-
+@property (nonatomic) BOOL markedWatched;
 @end
 
 @implementation EntryEditTVC
@@ -40,6 +37,9 @@
     [super viewDidLoad];
     [self.animeImageView.layer setCornerRadius:3.0f];
     self.animeImageView.clipsToBounds = YES;
+    [self.markedWatchedButton.layer setCornerRadius:3.0f];
+    self.markedWatchedButton.clipsToBounds = YES;
+    
     self.navigationItem.title = self.entry.anime.title;
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]initWithTitle:@"Cancel"
                                                                     style:UIBarButtonItemStyleDone
@@ -62,26 +62,21 @@
     [self.genresLabel setText:self.entry.anime.genres];
     [self.rewatchingSwitch setOn:[self.entry.rewatching boolValue]];
     [self.rewatchingTextField setText:[self.entry.rewatchedTimes stringValue]];
-    self.episodeModifiedCount = [self.entry.episodesWatched unsignedIntegerValue];
-    self.episodesCountStepper.value = (double)self.episodeModifiedCount;
-    [self displayWatchedEpisodes:self.episodeModifiedCount];
-}
-
-- (void)displayWatchedEpisodes:(NSUInteger)count {
-    [self.episodesCountLabel setText:[NSString stringWithFormat:@"%zd/%@",count, self.entry.anime.episodeCount]];
 }
 
 - (NSDictionary *)dataToEdit {
     NSString *token = [self.authenticationHelper activeUserToken];
-    return @{@"id" : self.entry.anime.animeID,
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:@{@"id" : self.entry.anime.animeID,
              @"auth_token" : token,
              @"status" : [Entry formatStatusForServer:self.entryStatusLabel.text],
              @"rewatching" : self.rewatchingSwitch.on ? @"true" : @"false",
-             @"rewatched_times" : self.rewatchingTextField.text ? @([self.rewatchingTextField.text integerValue]) : @0,
-             @"episodes_watched" : @(self.episodeModifiedCount)};
-    
+             @"rewatched_times" : self.rewatchingTextField.text ? @([self.rewatchingTextField.text integerValue]) : @0}];
+    if (self.markedWatched) {
+        [dict setObject:@([self.entry.episodesWatched integerValue] + 1)
+                 forKey:@"episodes_watched"];
+    }
+    return dict;
 }
-
 
 #pragma mark - Networking methods
 - (void)updateEntry {
@@ -116,13 +111,9 @@
                                                       completion:nil];
 }
 
-- (IBAction)episodesStepperChanged:(UIStepper *)sender {
-    if (sender.value > [self.entry.anime.episodeCount integerValue]) {
-        sender.value = [self.entry.anime.episodeCount integerValue];
-        return;
-    }
-    [self displayWatchedEpisodes:(NSUInteger)sender.value];
-    self.episodeModifiedCount = sender.value;
+- (IBAction)markedWatchedPressed:(UIButton *)sender {
+    self.markedWatched = YES;
+    [self updateEntry];
 }
 
 #pragma mark - Tableview delegate
