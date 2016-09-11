@@ -9,7 +9,7 @@
 #import "UIImageView+ImageDownload.h"
 #import "NetworkingCallsHelper.h"
 #import <objc/runtime.h>
-#import "FMLogger.h"
+#import "TLogger.h"
 
 @implementation UIImageView (ImageDownload)
 

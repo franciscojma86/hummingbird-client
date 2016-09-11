@@ -8,7 +8,7 @@
 
 #import "CoreDataStack.h"
 #import "FlurryManager.h"
-#import "FMLogger.h"
+#import "TLogger.h"
 
 @interface CoreDataStack ()
 
@@ -173,7 +173,7 @@ NSString * const modelName = @"Model";
     [context deleteObject:object];
 }
 
-#pragma mark -Objects query
+#pragma mark - Objects query
 + (NSArray *)queryAllIDPropertiesFromClass:(Class)targetClass
                                  inContext:(NSManagedObjectContext *)context {
     NSFetchRequest *req = [[NSFetchRequest alloc]initWithEntityName:NSStringFromClass(targetClass)];

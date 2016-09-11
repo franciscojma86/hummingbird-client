@@ -42,12 +42,12 @@
     //to be overriden
 }
 
-#pragma mark -Tableview delegate
+#pragma mark - Tableview delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 0.0001f;
 }
 
-#pragma mark -UI methods
+#pragma mark - UI methods
 - (void)showOfflineView {
     if (self.tableView.backgroundView) return;
     self.navigationItem.leftBarButtonItem = nil;
@@ -68,7 +68,7 @@
 //To be overriden
 }
 
-#pragma mark -Login methods
+#pragma mark - Login methods
 - (void)showLoginTVC {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main"
                                                          bundle:nil];
@@ -87,7 +87,7 @@
 //To be overriden
 }
 
-#pragma mark -OfflineView delegate
+#pragma mark - OfflineView delegate
 - (void)offlineViewDidTapSignIn:(OfflineView *)sender {
     [self showLoginTVC];
 }

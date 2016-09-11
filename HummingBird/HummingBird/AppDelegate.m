@@ -17,7 +17,7 @@
 #import "AnimeSearchVC.h"
 #import "LibraryTVC.h"
 #import "AccountVC.h"
-#import "FMLogger.h"
+#import "TLogger.h"
 
 @interface AppDelegate ()
 
@@ -25,7 +25,7 @@
 
 @implementation AppDelegate
 
-#pragma mark -UI methods
+#pragma mark - UI methods
 - (void)createAppearance {
     //Global tint
     [self.window setTintColor:ACCENT_COLOR];
@@ -51,6 +51,10 @@
     UINavigationController *feedNavController = [[UINavigationController alloc]initWithRootViewController:feedController];
     feedNavController.tabBarItem.image = [UIImage imageNamed:@"feed"];
     feedNavController.tabBarItem.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
+    feedController.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@""
+                                                                                       style:UIBarButtonItemStyleDone
+                                                                                      target:nil
+                                                                                      action:nil];
     
     LibraryTVC *libraryController = [[LibraryTVC alloc]initWithStyle:UITableViewStyleGrouped];
     [libraryController setCoreDataStack:coreDataStack];
@@ -58,6 +62,11 @@
     UINavigationController *libraryNavController = [[UINavigationController alloc]initWithRootViewController:libraryController];
     libraryNavController.tabBarItem.image = [UIImage imageNamed:@"library"];
     libraryNavController.tabBarItem.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
+    libraryController.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@""
+                                                                                          style:UIBarButtonItemStyleDone
+                                                                                         target:nil
+                                                                                         action:nil];
+    
     
     AnimeSearchVC *animeController = [[AnimeSearchVC alloc]initWithStyle:UITableViewStyleGrouped];
     [animeController setCoreDataStack:coreDataStack];
@@ -66,6 +75,10 @@
     UINavigationController *animeNavController = [[UINavigationController alloc]initWithRootViewController:animeController];
     animeNavController.tabBarItem.image = [UIImage imageNamed:@"search"];
     animeNavController.tabBarItem.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
+    animeController.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@""
+                                                                                        style:UIBarButtonItemStyleDone
+                                                                                       target:nil
+                                                                                       action:nil];
     
    
     AccountVC *accountController = [[AccountVC alloc]init];
@@ -74,14 +87,18 @@
     UINavigationController *accountNavController = [[UINavigationController alloc]initWithRootViewController:accountController];
     accountNavController.tabBarItem.image = [UIImage imageNamed:@"account"];
     accountNavController.tabBarItem.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
-
+    accountNavController.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@""
+                                                                                             style:UIBarButtonItemStyleDone
+                                                                                            target:nil
+                                                                                            action:nil];
+    
     self.tabBarController.viewControllers = @[feedNavController,
                                               libraryNavController,
                                               animeNavController,
                                               accountNavController];
 }
 
-#pragma mark -Application delegate methods
+#pragma mark - Application delegate methods
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [self createAppearance];

@@ -1,5 +1,5 @@
 //
-//  FMLogger.h
+//  TLogger.h
 //  HummingBird
 //
 //  Created by Francisco Magdaleno on 9/5/16.
@@ -11,12 +11,12 @@
 #define DO_NOTHING nil
 
 #if DEBUG
-#define DLog(s, ...) [FMLogger LogMessage:(s), ## __VA_ARGS__]
+#define DLog(s, ...) [TLogger LogMessage:(s), ## __VA_ARGS__]
 #else
 #define DLog(...) DO_NOTHING
 #endif
 
-@interface FMLogger : NSObject
+@interface TLogger : NSObject
 
 + (void)LogMessage:(NSString *)message, ...;
 

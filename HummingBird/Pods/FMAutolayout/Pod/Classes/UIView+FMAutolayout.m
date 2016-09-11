@@ -10,7 +10,7 @@
 
 @implementation UIView (Autolayout)
 
-#pragma mark -View creation
+#pragma mark - View creation
 + (UIView *)autoLayoutView {
     UIView *view = [[UIView alloc]init];
     view.translatesAutoresizingMaskIntoConstraints = NO;
@@ -29,7 +29,7 @@
     }
 }
 
-#pragma mark -Fill subview
+#pragma mark - Fill subview
 - (NSArray<NSLayoutConstraint *> *)fitSubview:(UIView *)subView
                                        active:(BOOL)active {
     return [self alignView:subView
@@ -72,7 +72,7 @@
                     active:active];
 }
 
-#pragma mark -Dimensions
+#pragma mark - Dimensions
 - (NSArray<NSLayoutConstraint *> *)alignView:(UIView *)view1
                                       toView:(UIView *)view2
                                   dimensions:(ConstraintDimensions)dimensions
@@ -152,7 +152,7 @@
     return constraints;
 }
 
-#pragma mark -Align edges
+#pragma mark - Align edges
 - (NSArray<NSLayoutConstraint *> *)alignSubview:(UIView *)subview
                                           edges:(ConstraintEdges)edges
                                          active:(BOOL)active {
@@ -262,7 +262,7 @@
 }
 
 
-#pragma mark -Centers
+#pragma mark - Centers
 - (NSArray<NSLayoutConstraint *> *)alignSubView:(UIView *)subView
                                         centers:(ConstraintCenters)centers
                                          active:(BOOL)active {
@@ -334,7 +334,7 @@
     return constraints;
 }
 
-#pragma mark -Position
+#pragma mark - Position
 - (NSArray<NSLayoutConstraint *> *)arrangeView:(UIView *)view1
                                         toView:(UIView *)view2
                                       position:(ConstraintPositions)positions

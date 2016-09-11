@@ -8,7 +8,7 @@
 
 #import "FakeWebService.h"
 #import "DummyClass.h"
-#import "FMLogger.h"
+#import "TLogger.h"
 
 @implementation FakeWebService
 

@@ -100,7 +100,7 @@
     }
 }
 
-#pragma mark -Login TVC delegate
+#pragma mark - Login TVC delegate
 - (void)loginTVCDidSignIn:(LoginTVC *)sender {
     [self dismissViewControllerAnimated:YES completion:^{
         self.activeUser = [self activeUser];

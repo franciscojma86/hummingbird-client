@@ -1,15 +1,15 @@
 //
-//  FMLogger.m
+//  TLogger.m
 //  HummingBird
 //
 //  Created by Francisco Magdaleno on 9/5/16.
 //  Copyright © 2016 franciscojma86. All rights reserved.
 //
 
-#import "FMLogger.h"
+#import "TLogger.h"
 
 
-@implementation FMLogger
+@implementation TLogger
 
 + (void)LogMessage:(NSString *)message, ... {
     va_list args;

@@ -60,7 +60,7 @@
     return anime;
 }
 
-#pragma mark -Formatting
+#pragma mark - Formatting
 - (NSString *)formatGenres:(NSArray *)genres {
     return [[genres valueForKeyPath:@"name"] componentsJoinedByString:@"・"];
 }

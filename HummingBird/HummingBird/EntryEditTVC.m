@@ -16,17 +16,22 @@
 #import "UIViewController+Alerts.h"
 #import "StatusFilterTVC.h"
 #import "AnimeDetailsVC.h"
+
 @interface EntryEditTVC () <StatusFilterTVCDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *entryStatusLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *animeImageView;
 @property (weak, nonatomic) IBOutlet UILabel *animeTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *genresLabel;
-@property (weak, nonatomic) IBOutlet UISwitch *privateSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *rewatchingSwitch;
 @property (weak, nonatomic) IBOutlet UITextField *rewatchingTextField;
+@property (weak, nonatomic) IBOutlet UILabel *episodesCountLabel;
+@property (weak, nonatomic) IBOutlet UIStepper *episodesCountStepper;
 
 @property (nonatomic,strong) NSURLSessionDataTask *updateTask;
+
+@property (nonatomic) NSUInteger episodeModifiedCount;
+
 @end
 
 @implementation EntryEditTVC
@@ -35,7 +40,7 @@
     [super viewDidLoad];
     [self.animeImageView.layer setCornerRadius:3.0f];
     self.animeImageView.clipsToBounds = YES;
-    self.navigationItem.title = @"Edit";
+    self.navigationItem.title = self.entry.anime.title;
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]initWithTitle:@"Cancel"
                                                                     style:UIBarButtonItemStyleDone
                                                                    target:self
@@ -55,10 +60,15 @@
     [self.entryStatusLabel setText:self.entry.status];
     [self.animeTitleLabel setText:self.entry.anime.title];
     [self.genresLabel setText:self.entry.anime.genres];
-    [self.privateSwitch setOn:[self.entry.isPrivate boolValue]];
     [self.rewatchingSwitch setOn:[self.entry.rewatching boolValue]];
     [self.rewatchingTextField setText:[self.entry.rewatchedTimes stringValue]];
-    
+    self.episodeModifiedCount = [self.entry.episodesWatched unsignedIntegerValue];
+    self.episodesCountStepper.value = (double)self.episodeModifiedCount;
+    [self displayWatchedEpisodes:self.episodeModifiedCount];
+}
+
+- (void)displayWatchedEpisodes:(NSUInteger)count {
+    [self.episodesCountLabel setText:[NSString stringWithFormat:@"%zd/%@",count, self.entry.anime.episodeCount]];
 }
 
 - (NSDictionary *)dataToEdit {
@@ -67,18 +77,19 @@
              @"auth_token" : token,
              @"status" : [Entry formatStatusForServer:self.entryStatusLabel.text],
              @"rewatching" : self.rewatchingSwitch.on ? @"true" : @"false",
-             @"rewatched_times" : self.rewatchingTextField.text ? @([self.rewatchingTextField.text integerValue]) : @0};
+             @"rewatched_times" : self.rewatchingTextField.text ? @([self.rewatchingTextField.text integerValue]) : @0,
+             @"episodes_watched" : @(self.episodeModifiedCount)};
     
 }
 
 
-#pragma mark -Networking methods
+#pragma mark - Networking methods
 - (void)updateEntry {
     [self fm_startLoading];
     if (self.updateTask) [self.updateTask cancel];
-    NSDictionary *data = [self dataToEdit];
+    NSDictionary *dataToEdit = [self dataToEdit];
     self.updateTask = [NetworkingCallsHelper updateLibraryEntry:self.entry.anime.animeID
-                                                      entryInfo:data
+                                                      entryInfo:dataToEdit
                                                         success:^(id json) {
                                                             [self fm_stopLoading];
                                                             self.entry = [Entry entryWithInfo:json
@@ -95,7 +106,7 @@
                                                         }];
 }
 
-#pragma mark -Button methods
+#pragma mark - Button methods
 - (void)savePressed {
     [self updateEntry];
 }
@@ -105,7 +116,16 @@
                                                       completion:nil];
 }
 
-#pragma mark -Tableview delegate
+- (IBAction)episodesStepperChanged:(UIStepper *)sender {
+    if (sender.value > [self.entry.anime.episodeCount integerValue]) {
+        sender.value = [self.entry.anime.episodeCount integerValue];
+        return;
+    }
+    [self displayWatchedEpisodes:(NSUInteger)sender.value];
+    self.episodeModifiedCount = sender.value;
+}
+
+#pragma mark - Tableview delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 0.0001f;
 }
@@ -123,7 +143,7 @@
     }
 }
 
-#pragma mark -Anime detiails
+#pragma mark - Anime detiails
 - (void)showAnimeDetails:(Anime *)anime {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main"
                                                          bundle:nil];
@@ -133,7 +153,7 @@
     [self showViewController:controller sender:self];
 }
 
-#pragma mark -Status filter delegate
+#pragma mark - Status filter delegate
 - (void)showStatusFilter {
     StatusFilterTVC *controller = [[StatusFilterTVC alloc]initWithStyle:UITableViewStyleGrouped];
     [controller setDelegate:self];

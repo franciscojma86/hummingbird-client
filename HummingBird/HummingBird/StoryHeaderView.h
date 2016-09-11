@@ -9,7 +9,18 @@
 #import <UIKit/UIKit.h>
 
 @class Anime;
+@class StoryHeaderView;
+
+@protocol StoryHeaderViewDelegate <NSObject>
+
+@optional
+- (void)storyHeaderViewTapped:(StoryHeaderView *)sender anime:(Anime *)anime;
+
+@end
+
 @interface StoryHeaderView : UITableViewHeaderFooterView
+
+@property (nonatomic, weak) id<StoryHeaderViewDelegate>delegate;
 
 - (void)configureWithAnime:(Anime *)anime;
 

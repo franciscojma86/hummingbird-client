@@ -15,7 +15,7 @@
 @implementation UIViewController (Loading)
 
 @dynamic fm_spinner;
-#pragma mark -Object association
+#pragma mark - Object association
 - (void)setFm_spinner:(UIActivityIndicatorView *)newSpinner {
     objc_setAssociatedObject(self,
                              @selector(fm_spinner),
@@ -27,7 +27,7 @@
    return objc_getAssociatedObject(self, @selector(fm_spinner));
 }
 
-#pragma mark -Loading methods
+#pragma mark - Loading methods
 - (void)fm_startLoading {
     if (self.fm_spinner) return;
     self.fm_spinner = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];

@@ -59,7 +59,7 @@
     if (self.signinTask) [self.signinTask cancel];
 }
 
-#pragma mark -Textfield delegate methods
+#pragma mark - Textfield delegate methods
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField == self.usernameTextField) {
         [self.passwordTextField becomeFirstResponder];
@@ -69,7 +69,7 @@
     return YES;
 }
 
-#pragma mark -Login methods
+#pragma mark - Login methods
 - (void)login {
     [self.view endEditing:YES];
     NSString *username = self.usernameTextField.text;

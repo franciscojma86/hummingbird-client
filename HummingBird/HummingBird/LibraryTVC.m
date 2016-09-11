@@ -55,7 +55,7 @@
     [self downloadLibrary];
 }
 
-#pragma mark -Networking
+#pragma mark - Networking
 - (void)downloadLibrary {
     NSString *activeUsername = [self.authenticationHelper activeUsername];
     if (!activeUsername) {
@@ -117,13 +117,13 @@
                       animated:YES];
 }
 
-#pragma mark -Login delegate 
+#pragma mark - Login delegate 
 - (void)loginTVCDidSignIn:(LoginTVC *)sender {
     [self dismissViewControllerAnimated:YES completion:^{
     }];
 }
 
-#pragma mark -Offline methods
+#pragma mark - Offline methods
 - (void)showOfflineView {
     [super showOfflineView];
     self.entries = nil;
@@ -131,7 +131,7 @@
     [self.tableView reloadData];
 }
 
-#pragma mark -Table view delegate 
+#pragma mark - Table view delegate 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return self.entriesStatus[section];
 }
@@ -207,7 +207,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     }
 }
 
-#pragma mark -Entry edit delegate 
+#pragma mark - Entry edit delegate 
 - (void)entryEditTVC:(EntryEditTVC *)sender
         didSaveEntry:(Entry *)entry
  forEditingIndexPath:(NSIndexPath *)indexPath {

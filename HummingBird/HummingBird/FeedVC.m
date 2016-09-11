@@ -7,6 +7,7 @@
 //
 
 #import "FeedVC.h"
+#import "AnimeDetailsVC.h"
 //Model
 #import "Anime.h"
 #import "Story.h"
@@ -21,7 +22,7 @@
 #import <Flurry.h>
 #import <SafariServices/SafariServices.h>
 
-@interface FeedVC () 
+@interface FeedVC () <StoryHeaderViewDelegate>
 
 @property (nonatomic,strong) NSArray *stories;
 @property (nonatomic,strong) NSArray *subStories;
@@ -36,7 +37,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //configure nav bar
-    self.navigationItem.title = @"Hummingbird";
+    self.navigationItem.title = @"Tako";
     UIBarButtonItem *donationButton = [[UIBarButtonItem alloc] initWithTitle:@"Donate"
                                                                        style:UIBarButtonItemStyleDone
                                                                       target:self
@@ -56,7 +57,7 @@
     [self queryFeed];
 }
 
-#pragma mark -Feed methods
+#pragma mark - Feed methods
 - (void)refreshPulled {
     [Flurry logEvent:@"REFRESHED"];
     [self queryFeed];
@@ -64,7 +65,6 @@
 
 - (void)queryFeed {
     NSString *activeUserName = [self.authenticationHelper activeUsername];
-//    activeUserName = @"matthewdias";
     if (!activeUserName) {
         [self showOfflineView];
         return;
@@ -127,11 +127,12 @@
     [self showViewController:controller sender:self];
 }
 
-#pragma mark -Tableview delegate
+#pragma mark - Tableview delegate
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     Story *story = self.stories[section];
     StoryHeaderView *storyView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:HEADER_IDENTIFIER];
     [storyView configureWithAnime:story.media];
+    [storyView setDelegate:self];
     
     return storyView;
 }
@@ -155,7 +156,21 @@
     return 20;
 }
 
-#pragma mark -Login methods
+#pragma mark - StoryHeaderView delegate
+- (void)storyHeaderViewTapped:(StoryHeaderView *)sender anime:(Anime *)anime {
+    [self showAnimeDetails:anime];
+}
+
+- (void)showAnimeDetails:(Anime *)anime {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main"
+                                                         bundle:nil];
+    AnimeDetailsVC *controller = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([AnimeDetailsVC class])];
+    [controller setAnime:anime];
+    [controller setShouldShowAddButton:NO];
+    [self showViewController:controller sender:self];
+}
+
+#pragma mark - Login methods
 - (void)loginTVCDidSignIn:(LoginTVC *)sender {
     [self dismissViewControllerAnimated:YES
                              completion:^{

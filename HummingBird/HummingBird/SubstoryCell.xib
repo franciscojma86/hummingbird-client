@@ -8,7 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" rowHeight="55" id="9P3-ZD-6IA" customClass="SubstoryCell">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="55" id="9P3-ZD-6IA" customClass="SubstoryCell">
             <rect key="frame" x="0.0" y="0.0" width="412" height="55"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9P3-ZD-6IA" id="qaY-yj-Fk5">
@@ -18,7 +18,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="41Q-zp-wvd">
                         <rect key="frame" x="56" y="8" width="66.5" height="19"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" red="1" green="0.26161967679999998" blue="0.1125130189" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.99215686270000003" green="0.36078431370000003" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJR-qb-fM1">
@@ -63,6 +63,7 @@
                     <constraint firstItem="lfP-mo-4aj" firstAttribute="top" secondItem="qaY-yj-Fk5" secondAttribute="topMargin" id="zyS-jX-HAV"/>
                 </constraints>
             </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="avatarImageView" destination="lfP-mo-4aj" id="89c-Ai-ny0"/>
                 <outlet property="dateLabel" destination="ZdF-dG-TwK" id="fPh-vC-Erk"/>
@@ -74,6 +75,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="placeholder" width="80" height="80"/>
+        <image name="placeholder" width="60" height="60"/>
     </resources>
 </document>

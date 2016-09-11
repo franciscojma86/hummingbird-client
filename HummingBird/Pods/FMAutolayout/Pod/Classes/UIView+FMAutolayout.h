@@ -47,7 +47,7 @@ typedef NS_OPTIONS(NSUInteger, ConstraintPositions)  {
     ConstraintPositionsToTrail = (1 << 3)
 };
 
-#pragma mark -View creation
+#pragma mark - View creation
 + (UIView *)autoLayoutView;
 
 ///Activates an array of constraints
@@ -55,7 +55,7 @@ typedef NS_OPTIONS(NSUInteger, ConstraintPositions)  {
 ///Deactivates an array of constraints
 + (void)deactivateConstraints:(NSArray<NSLayoutConstraint *> *)constraints;
 
-#pragma mark -Fill subview
+#pragma mark - Fill subview
 ///Constraints the subview to the size of the superview.
 - (NSArray<NSLayoutConstraint *> *)fitSubview:(UIView *)subView
                                         active:(BOOL)active;
@@ -70,7 +70,7 @@ typedef NS_OPTIONS(NSUInteger, ConstraintPositions)  {
                                 overalloffset:(CGFloat)overalloffset
                                    multiplier:(CGFloat)multiplier
                                         active:(BOOL)active;
-#pragma mark -Dimensions
+#pragma mark - Dimensions
 ///Aligns two views to the same width/height.
 - (NSArray<NSLayoutConstraint *> *)alignView:(UIView *)view1
                                       toView:(UIView *)view2
@@ -90,7 +90,7 @@ typedef NS_OPTIONS(NSUInteger, ConstraintPositions)  {
                                                size:(CGFloat)size
                                         active:(BOOL)active;
 
-#pragma mark -Align edges
+#pragma mark - Align edges
 ///Align the subview to the super view edges.
 - (NSArray<NSLayoutConstraint *> *)alignSubview:(UIView *)subview
                                           edges:(ConstraintEdges)edges
@@ -116,7 +116,7 @@ typedef NS_OPTIONS(NSUInteger, ConstraintPositions)  {
                                   multiplier:(CGFloat)multiplier
                                        edges:(ConstraintEdges)edges
                                         active:(BOOL)active;
-#pragma mark -Centers
+#pragma mark - Centers
 ///Align the subview center to the superview.
 - (NSArray<NSLayoutConstraint *> *)alignSubView:(UIView *)subView
                                         centers:(ConstraintCenters)centers
@@ -143,7 +143,7 @@ typedef NS_OPTIONS(NSUInteger, ConstraintPositions)  {
                                      centers:(ConstraintCenters)centers
                                         active:(BOOL)active;
 
-#pragma mark -Position
+#pragma mark - Position
 ///Position a view in relation to another view.
 - (NSArray<NSLayoutConstraint *> *)arrangeView:(UIView *)view1
                                         toView:(UIView *)view2

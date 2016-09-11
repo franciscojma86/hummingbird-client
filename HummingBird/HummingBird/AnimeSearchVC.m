@@ -82,10 +82,11 @@
     return _animeCreateBackgroundQueue;
 }
 
-#pragma mark -Search methods
+#pragma mark - Search methods
 - (void)cancelPressed {
     [self.searchBar setText:nil];
     [self.searchBar resignFirstResponder];
+    self.results = nil;
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
@@ -148,7 +149,7 @@
     }
 }
 
-#pragma mark -Tableview delegate
+#pragma mark - Tableview delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     [self hideMessageLabel:self.results.count != 0];
     return self.results.count;
@@ -167,7 +168,7 @@
     [self showAnimeDetailsVCWithAnime:anime];
 }
 
-#pragma mark -Show anime details
+#pragma mark - Show anime details
 - (void)showAnimeDetailsVCWithAnime:(Anime *)anime {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main"
                                                          bundle:nil];

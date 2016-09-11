@@ -12,7 +12,7 @@
 #import "CoreDataStack.h"
 #import "NSDictionary+NullObjects.h"
 #import "FMDateFormatter.h"
-#import "FMLogger.h"
+#import "TLogger.h"
 
 @implementation Substory
 

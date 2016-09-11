@@ -96,7 +96,7 @@
 #import "UIImage+ImageEffects.h"
 #import <Accelerate/Accelerate.h>
 #import <float.h>
-#import "FMLogger.h"
+#import "TLogger.h"
 
 @implementation UIImage (ImageEffects)
 

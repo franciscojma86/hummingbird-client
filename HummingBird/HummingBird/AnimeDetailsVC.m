@@ -77,7 +77,7 @@
     [self showFilterVC];
 }
 
-#pragma mark -Filter VC methods
+#pragma mark - Filter VC methods
 - (void)showFilterVC {
     StatusFilterTVC *controller = [[StatusFilterTVC alloc]initWithStyle:UITableViewStyleGrouped];
     [controller setDelegate:self];
@@ -112,7 +112,7 @@
     
 }
 
-#pragma mark -Table view delegate
+#pragma mark - Table view delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 0.001f;
 }

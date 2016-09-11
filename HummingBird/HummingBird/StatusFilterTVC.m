@@ -28,7 +28,7 @@
 }
 
 
-#pragma mark -Tableview delegate
+#pragma mark - Tableview delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.options.count;
 }
