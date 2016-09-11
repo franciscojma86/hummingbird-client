@@ -37,8 +37,14 @@
     [super viewDidLoad];
     [self.animeImageView.layer setCornerRadius:3.0f];
     self.animeImageView.clipsToBounds = YES;
-    [self.markedWatchedButton.layer setCornerRadius:3.0f];
-    self.markedWatchedButton.clipsToBounds = YES;
+    if ([self.entry.episodesWatched unsignedIntegerValue] >= [self.entry.anime.episodeCount unsignedIntegerValue]) {
+        self.markedWatchedButton.hidden = YES;
+    } else {
+        [self.markedWatchedButton.layer setCornerRadius:3.0f];
+        self.markedWatchedButton.clipsToBounds = YES;
+        [self.markedWatchedButton setTitle:[NSString stringWithFormat:@"Mark EP %zd as watched",[self.entry.episodesWatched unsignedIntegerValue] + 1]
+                                  forState:UIControlStateNormal];
+    }
     
     self.navigationItem.title = self.entry.anime.title;
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]initWithTitle:@"Cancel"

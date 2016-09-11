@@ -227,7 +227,7 @@ static const UInt8 kKeychainItemIdentifier[] = "com.franciscojma86.HummingBird.K
         OSStatus errorcode = SecItemAdd(
                                         (__bridge CFDictionaryRef)[self dictionaryToSecItemFormat:_keychainData],
                                         NULL);
-        NSAssert(errorcode == noErr, @"Couldn't add the Keychain Item." );
+        //NSAssert(errorcode == noErr, @"Couldn't add the Keychain Item." );
         DLog(@"Couldn't update the Keychain Item. %zd",errorcode);
         if (attributes) CFRelease(attributes);
     }
